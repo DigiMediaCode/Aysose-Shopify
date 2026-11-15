@@ -374,6 +374,24 @@ checks for businesses the owner already knows, then ask for the monthly fee; bui
   serious Commonwealth offence to import or possess. Suppliers: Calvista (Victoria) is a large adult wholesaler,
   dropship terms unconfirmed; Dropshipzone has an Adult Products category with thin local stock in a sample.
 
+### 15 Nov 2026 — RESET again: backup income via an AI middleman platform
+**Owner's brief:** adult store was never wanted. He already runs a print-on-demand store (separate project,
+waiting on sales) and needs a backup that earns. Wants a platform where people transact and he takes a service
+fee as the middleman, AI-related. Money is urgent.
+
+**Recommendation given to the owner:** an AI catering-quote middleman for South-West Sydney. A customer types
+the event (headcount, budget, cuisine, date); AI builds an instant quote from local food shops' menus; the shop
+fulfils; the platform keeps a commission (target about 12%). Supply side starts with the food shops the owner
+already works with. Start manually (a simple page plus messaging) before building a platform.
+- Competition found: EatFirst / Order-In (corporate catering, CBD focus, 800–1,100 caterers, "small commission",
+  rate not published); Oneflare and Airtasker (quote requests; Oneflare lists 33 caterers in Campbelltown). No
+  local instant-quote catering platform found for Campbelltown / Macarthur.
+- Reference order size: a Oneflare job post showed a Campbelltown Christmas dinner at $40 a head for 20 people.
+- Honest limits told to the owner: marketplaces are slow to start; each order needs coordination; food safety
+  and delivery stay with the shop and must be written into the terms.
+- Validation proposed: get 3 shops to agree to a commission and send package menus, then land 3 paid orders
+  in December before writing any platform code.
+
 ### Open items
-- Owner decision on what business to pursue (AI recommendation checker proposed; adult store being considered).
-- Parked: Shopify store on trial plan, Dropshipzone account, Uber Support question, aysose.com migration.
+- Owner decision on the catering middleman idea.
+- Parked: AI recommendation checker, Shopify store "Aysose" on trial, Dropshipzone account, aysose.com migration.
