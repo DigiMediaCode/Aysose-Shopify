@@ -429,6 +429,18 @@ developer brief. Owner does the first jobs himself, then adds developers.
   launch-week traffic (ads), a server / crew listing site timed for the 2027 online launch, or services for
   GTA content creators.
 
+### 15 Nov 2026 — Digital product ideas around GTA 6 (marketplace requirement dropped)
+- **Search signals (Google Australia suggestions):** "gta 6 pc release date", "gta 6 pc requirements",
+  "gta 6 pc specs", "gta 6 how to play on pc", "can i run gta 6 on my pc / laptop / rtx 3050",
+  "gta 6 companion app", "gta 6 map poster", "gta 6 cheats ps5".
+- **PC version:** not announced. Estimates range from Q1 2027 (GamesBeat report, unconfirmed) to Q1 2028
+  (GameSpot's guess). Past Rockstar PC ports arrived 7–19 months after console.
+- **Recommendation given to the owner:** a "can my PC run it" checker plus release alert list for PC players
+  waiting for GTA 6, earning from hardware affiliate links now and game-sale affiliate links at PC launch.
+  Requirements are unknown, so any figures must be labelled as estimates. Avoid "GTA" in the domain and any
+  Rockstar logos or game images.
+- Other ideas listed: completion tracker with share cards, cheat-code quick reference, AI "ask anything" helper.
+
 ### Open items
-- Owner decision on direction; he is reviewing Google Trends for ideas.
+- Owner decision on the GTA 6 PC checker idea.
 - Parked: everything above this entry, including the Shopify store "Aysose" on its trial plan.
