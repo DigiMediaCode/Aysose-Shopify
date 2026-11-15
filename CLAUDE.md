@@ -192,8 +192,42 @@ Session 1 should end with a written decision on: niche angle, market, supplier t
 - **Theme repo:** unmodified Horizon 4.5.0 (from github.com/Shopify/horizon, 10 Nov 2026 release) added to this
   repo. Branches `dev` (work) and `main` (live) created from it.
 
+### 15 Nov 2026 — Store connections confirmed
+- Store renamed to **Aysose**. Still on the Trial plan.
+- GitHub themes connected and synced: `Aysose-Shopify/dev` (id 147642581076, unpublished) and
+  `Aysose-Shopify/main` (id 147642613844, unpublished). The original Horizon (id 147591233620) is still the
+  live theme; `main` has not been published yet.
+
+### 15 Nov 2026 — Supplier research for modest activewear (web research, nothing ordered)
+**Competitor prices (read from their public catalogues on 15 Nov 2026)**
+- Modelle (Australian store, AUD): tops $30–50, pants $60, jackets $70–120, lounge sets $110–120.
+- Lyra Modest (AU storefront, AUD): active tops $80–190, active hijab $32.
+- Dignitii (prices in USD): sports hijab $31–36, sports dress $70, performance top / jacket $86.
+- Haya Active (UK, GBP): tops £45–50, joggers £37, sports hijab £27.
+- Also in the space: Puma, Adidas and Gymshark modest ranges; Metamorfic (South Australian founder).
+
+**Supplier routes found**
+- *Australian-warehouse dropship (CJ and similar):* no listing of modest cuts (long-line tops, loose pants,
+  sports hijabs) with Australian stock was found. CJ's catalogue needs a login, so this is unconfirmed, but
+  third-party reviews call CJ's Australian fashion range narrow. China-shipped CJ orders are quoted at 7–17 days.
+- *Print-on-demand (Printful / Printify):* no sports hijab or long tunic in the range. Printful quotes 2–7
+  business days to make plus shipping, 8–14 days average to Australia. Base costs not confirmed.
+- *Small wholesale packs from Turkey:* e.g. turanline.com lists a two-piece set (long zip-neck tunic + pants)
+  at US$24 per piece, sold in packs of 6 (1 M, 2 L, 2 XL, 1 XXL), US$500 minimum order. Shipping to Australia,
+  fabric content and photo rights not stated. Hicabistan (Istanbul) claims a 10-piece minimum with private label.
+- *Small private-label runs:* an Alibaba listing shows a modest long-sleeve set at US$17.99 for 50–499 units
+  with logo; Sialkot (Pakistan) factories advertise 10–20 pieces per design. No quotes obtained.
+
+**Conclusion:** pure dropshipping of modest activewear with tracked delivery under ~10 business days was not
+found. The realistic options are (a) dropship from overseas with an honest 2–3 week delivery promise, or
+(b) hold a very small stock of 2–3 hero pieces in Sydney and ship in 1–2 days. Recommendation given to the
+owner: (b), bought only after samples pass. Awaiting the owner's decision, since it changes the "no stock" model.
+
+**Draft price band (not final):** tops $49–69, pants $55–69, sets $99–119, sports hijab $22–29 (AUD).
+
 ### Open items
-- Owner to connect the repo in Shopify admin: `dev` as an unpublished theme, `main` as the live theme.
-- Still open from section 6: supplier type, price band and margin, business address for the store, traffic
-  truth for aysose.com (Cloudflare Web Analytics, Search Console), WooCommerce customer export.
-- Store name ("My Store 4" → AYSOSE), paid plan, and refund / shipping / terms policies are not done yet.
+- Owner decision: stay pure dropship (slow delivery) or hold a small Sydney stock of hero pieces.
+- Owner to check CJ Dropshipping for modest pieces with "Ship from: Australia".
+- Still open from section 6: business address for the store, traffic truth for aysose.com (Cloudflare Web
+  Analytics, Search Console), WooCommerce customer export.
+- Paid plan and refund / shipping / terms policies are not done yet.
