@@ -414,6 +414,21 @@ does it, the platform keeps about 20%. AI reads the app and error, picks the rig
 developer brief. Owner does the first jobs himself, then adds developers.
 - Validation proposed: one page with six priced packages; 5 paid jobs within 3 weeks before building the platform.
 
+### 15 Nov 2026 — Owner rejected the app-rescue marketplace; asked what to build around GTA 6
+- **Google Trends:** automated access was rate-limited after one query. "Trending now" is news and sport; the
+  useful view is Explore → Related queries → Rising with buying-word seeds. Owner is browsing it himself.
+- **GTA 6 facts found:** launches 19 Nov 2026 on PS5 and Xbox Series X|S only, US$79.99, single-player only.
+  No online multiplayer at launch (expected 2027, unconfirmed by Rockstar). No PC version announced. Analyst
+  first-year forecasts 30–60 million copies, about US$3 billion.
+- **Rules:** Rockstar's mod guidelines make modding non-commercial unless sold through its own approved
+  storefront, and ban loot boxes, NFTs and custom currencies. Take-Two has a history of shutting down fan projects.
+- **Already built by others:** interactive maps (State of Leonida with about 1,600 markers, GTA BOOM, gtadb),
+  long-running fan sites, and Discord / Reddit groups for finding crews (HeistTeams about 102,000 members).
+- **Assessment given to the owner:** big audience, but a poor fit for a fee-taking marketplace right now: no
+  online play, no PC mods, and paid mods routed through Rockstar's store. Options offered: a small fan tool for
+  launch-week traffic (ads), a server / crew listing site timed for the 2027 online launch, or services for
+  GTA content creators.
+
 ### Open items
-- Owner decision on the fixed-price app-rescue marketplace.
+- Owner decision on direction; he is reviewing Google Trends for ideas.
 - Parked: everything above this entry, including the Shopify store "Aysose" on its trial plan.
