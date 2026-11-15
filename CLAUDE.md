@@ -340,10 +340,28 @@ on Australian marketplaces matched to its catalogue) so nothing is chosen on the
 - **Decision rule:** no sign goes in the car until Uber Support confirms in writing. The store does not depend
   on the sign; videos are the main channel.
 
+### 15 Nov 2026 — RESET by the owner: no longer limited to an online store
+**Owner's brief:** reset everything above. Act as a top digital entrepreneur. The business can be a website,
+store, platform or app, as long as it is digital, easy to market, in demand and takes little time to run.
+All niche ideas above (activewear, cat containment, injection-pen store, driver-tested car gear) are parked.
+The Shopify store "Aysose" and the Horizon theme branches are left untouched and unused for now.
+
+**Trend data found**
+- BrightLocal (US, Feb 2026, 1,002 adults): share of consumers using AI for local business recommendations
+  rose from 6% in 2025 to 45% in 2026; ChatGPT used by 31%. No Australian survey exists; Roy Morgan reports 58%
+  of Australians 14+ used AI tools in a four-week period.
+- AI-visibility tracking tools: Otterly from US$29/month, Peec about US$95, BrightLocal US$39 per location.
+  Australian agencies sell audits at $1,000/month (3-month minimum) and $2,497 one-off; several give free audits.
+- Dossis Digital (June 2026, 84 trade queries): ChatGPT named the same businesses only 8% of the time across
+  three identical runs; Claude 89%. Any tracker must run each question several times and report frequency.
+- Solo-founder products reported as earning in 2026 include AI search visibility tools and form back-ends.
+
+**Recommendation given to the owner:** an "AI recommendation checker" for local businesses — a free instant
+check of whether ChatGPT, Gemini and Claude name a business for "best X in suburb", a low monthly plan for
+re-checks and competitor comparison, and a done-for-you fix sold through DigiMedia Code. Weekly public
+"who AI recommends in [suburb]" pages are the marketing. Proposed validation before building: 20 manual
+checks for businesses the owner already knows, then ask for the monthly fee; build only if at least 3 pay.
+
 ### Open items
-- Owner to ask Uber Support in the Driver app about an interior QR card (message drafted in chat).
-- Owner decision on the "road-tested by a driver" store.
-- Dropshipzone account awaiting approval (needed for wholesale prices and shipping fees).
-- New brand name and domain if a non-activewear store goes ahead.
-- Still open: business address for the store, traffic truth for aysose.com, WooCommerce customer export.
-- Paid plan and refund / shipping / terms policies are not done yet.
+- Owner decision on the AI recommendation checker.
+- Parked: Shopify store on trial plan, Dropshipzone account, Uber Support question, aysose.com migration.
