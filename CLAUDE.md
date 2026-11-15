@@ -307,10 +307,28 @@ pens), FRIO Australia, Fridge-to-Go, Diabetes HQ, Diabetes WA shop. All are posi
 Australian products (their importer carries the device compliance) and compete on audience and content. No
 money to be spent until the TGA answers. Cat containment margin test continues in parallel as the fallback.
 
+### 15 Nov 2026 — Owner rejected medical / regulated niches; "out of the box" idea
+**Owner's brief:** nothing with medical or legal headaches; something easy to sell; think out of the box.
+Injection-pen store dropped. No TGA enquiry needed.
+
+**Checked and dropped:** personalised AI-assisted songs as gifts (fits the owner's music skills) — already sold
+in Australia from about $15–49 with "ready in 10 minutes" delivery, and AI-music ownership terms are unsettled.
+
+**Idea put to the owner — "road-tested by a driver":** a store of everyday car and commute gear that the owner
+actually uses in his rideshare car about 60 hours a week. The car is the showroom (100+ passengers a week see
+the products in use), the test bench (real wear, real heat) and the content (build-in-public videos of a driver
+building a store to quit driving). Products are picked from Dropshipzone's weekly "Winners" list (top sellers
+on Australian marketplaces matched to its catalogue) so nothing is chosen on theory.
+- Dropshipzone local stock, sample of 80 per keyword: car organisers 87%, boot organisers 85%, car fridges 90%,
+  floor mats 57%, cleaning kits 27%. Import-only (slower delivery): phone holders, seat gap fillers, travel mugs,
+  steering wheel covers, car vacuums.
+- Rule for this range: no mains-powered electrical items (Australian electrical compliance), no safety claims.
+- To verify before any in-car QR sign: Uber's rules on promoting a business to riders.
+- Margins unknown until the Dropshipzone account is approved.
+
 ### Open items
-- Owner to send the TGA advertising enquiry (draft given in chat) and decide whether to continue this niche.
-- Ask IBD Medical and Fridge-to-Go for wholesale / dropship terms.
-- Dropshipzone account awaiting approval (cat containment margin test, strength-at-home range).
-- New brand name and domain if a non-activewear niche goes ahead.
+- Owner decision on the "road-tested by a driver" store.
+- Dropshipzone account awaiting approval (needed for wholesale prices and shipping fees).
+- New brand name and domain if a non-activewear store goes ahead.
 - Still open: business address for the store, traffic truth for aysose.com, WooCommerce customer export.
 - Paid plan and refund / shipping / terms policies are not done yet.
