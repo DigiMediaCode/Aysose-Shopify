@@ -2,8 +2,82 @@
   "sections": {
     "main": {
       "type": "pc-checker",
-      "settings": {}
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is GTA 6 coming to PC?",
+            "answer": "Rockstar has not announced a PC version. Grand Theft Auto VI launches on 19 November 2026 on PlayStation 5 and Xbox Series X|S only. Rockstar's earlier games reached PC later: GTA IV after about 7 months, Red Dead Redemption 2 after about a year, and GTA V after about 19 months."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "What are the GTA 6 PC system requirements?",
+            "answer": "There are no official GTA 6 PC requirements yet. Our estimate for the lowest level, 1080p at low settings, is a graphics card around a GTX 1660 Super or RX 5600 XT with 6 GB of video memory, a processor around a Core i5-10400 or Ryzen 5 3600, 16 GB of RAM and an SSD. The table above lists our estimate for each level."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can an RTX 3050 or RTX 3060 run GTA 6?",
+            "answer": "On our estimate, both clear the lowest level, 1080p at low settings, if the processor and memory keep up. Both fall short of our estimate for 1080p at high settings, which is around an RTX 3060 Ti or RX 6700 XT."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I run GTA 6 on a laptop?",
+            "answer": "Possibly. Laptop versions of a graphics card are slower than the desktop card with the same name, so tick the laptop box in the checker and it lowers the score by about a fifth. A laptop with built-in graphics only is unlikely to run it."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Is 8 GB of RAM enough for GTA 6?",
+            "answer": "We do not expect so. Our estimate is 16 GB for every level up to 1440p and 32 GB for 4K. This is an estimate, not an official figure."
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Will GTA 6 need an SSD on PC?",
+            "answer": "We expect so. Every console the game launches on uses an SSD, so the checker marks a hard drive as borderline at every level."
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "How accurate is this checker?",
+            "answer": "It is an estimate. We base the lowest level on the console hardware the game launches on, and the higher levels on how earlier console games from the same studio ran on PC. Part scores are approximate averages. We will replace the estimates with the official requirements as soon as they are published."
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "When will the official PC requirements be announced?",
+            "answer": "Nobody outside Rockstar knows. Requirements are normally published shortly before a PC release. Leave your email in the checker and we will tell you when a PC release date or official requirements are announced."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "heading": "Can my PC run",
+        "heading_highlight": "GTA 6?",
+        "intro": "Pick your graphics card and processor to see our estimate for Grand Theft Auto VI on PC at four quality levels."
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

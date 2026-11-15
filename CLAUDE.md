@@ -525,11 +525,34 @@ It was disconnected again on the owner's instruction; always confirm the connect
   business name and address from the owner (Settings → Policies → Contact information).
 - No terms of service, refund or shipping policy exist yet (not needed until something is sold).
 
+### 16 Nov 2026 — Owner will pay for Shopify; checker stays as the homepage; SEO pass (on `dev` only)
+**Owner's decision:** he will subscribe to a Shopify plan, so the checker stays as the main landing page
+(homepage), not the password page.
+
+**SEO work done in the theme**
+- Homepage heading now reads "Can my PC run GTA 6?" (the term people search), with "Grand Theft Auto VI"
+  in the introduction.
+- New editable **Common questions** part of the section (blocks of type "Question"; add, edit or reorder them
+  in the theme editor). Eight questions written around real search phrases: PC release, PC system
+  requirements, RTX 3050 / 3060, laptops, 8 GB RAM, SSD, accuracy, when requirements will be announced.
+  Answers are plain text visible to everyone and to search engines, and are also output as FAQ structured data.
+- Answers that quote our estimates must be kept in step with `TIERS` in `assets/pc-checker.js`.
+- Release-gap facts used: GTA IV about 7 months to PC, Red Dead Redemption 2 about a year, GTA V about 19 months.
+- Theme Check: still 7 warnings, all in stock Horizon files.
+
+**SEO items only the owner can do (Shopify admin, no API for them)**
+- Online Store → Preferences → homepage title and meta description (text supplied in chat).
+- Choose a plan and remove the storefront password; until then search engines cannot index the site.
+- Connect a domain, then add the site to Google Search Console and submit `/sitemap.xml`.
+- Social sharing image in Preferences (original artwork only, no game images or logos).
+
+**Idea noted, not built:** one page per graphics card ("Can an RTX 3050 run GTA 6?") to catch long-tail
+searches. It conflicts with hiding the result behind the email form, so it needs an owner decision.
+
 ### Open items
+- Owner: paste the homepage title and description, pick a plan, remove the password, connect a domain.
 - Owner to supply the business name and address for the contact information policy.
 - Owner to preview the `dev` theme homepage and try a real signup with his own email.
-- Owner decision: how the public reaches the page (pick a Shopify plan and remove the password, or put the
-  checker on the password page).
 - Merge to `main` only on the owner's word; then the owner publishes the `main` theme.
-- Owner decisions: store name and domain, affiliate programs for the upgrade links.
+- Owner decisions: store name and domain, affiliate programs for the upgrade links, per-card pages.
 - Parked: all earlier niche ideas above.

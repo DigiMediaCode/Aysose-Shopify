@@ -334,6 +334,45 @@
       {% endif %}
     </section>
 
+    {% if section.blocks.size > 0 %}
+      <section class="pc-checker__faq">
+        {% if section.settings.faq_heading != blank %}
+          <h2 class="pc-checker__subtitle">{{ section.settings.faq_heading | escape }}</h2>
+        {% endif %}
+        <div class="pc-checker__faq-list">
+          {% for block in section.blocks %}
+            <details
+              class="pc-checker__faq-item"
+              {{ block.shopify_attributes }}
+            >
+              <summary class="pc-checker__faq-question">{{ block.settings.question | escape }}</summary>
+              <p class="pc-checker__faq-answer">{{ block.settings.answer | escape }}</p>
+            </details>
+          {% endfor %}
+        </div>
+      </section>
+
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {%- for block in section.blocks -%}
+              {
+                "@type": "Question",
+                "name": {{ block.settings.question | json }},
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": {{ block.settings.answer | json }}
+                }
+              }
+              {%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ]
+        }
+      </script>
+    {% endif %}
+
     {% if section.settings.disclaimer != blank %}
       <p class="pc-checker__disclaimer">{{ section.settings.disclaimer | escape }}</p>
     {% endif %}
@@ -981,6 +1020,64 @@
     text-transform: uppercase;
   }
 
+  .pc-checker__faq {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 46rem;
+  }
+
+  .pc-checker__faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pc-checker__faq-item {
+    border: 1px solid var(--pc-line);
+    border-radius: 0.875rem;
+    background: var(--pc-surface);
+  }
+
+  .pc-checker__faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .pc-checker__faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .pc-checker__faq-question::after {
+    content: '+';
+    flex: none;
+    color: var(--pc-accent);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .pc-checker__faq-item[open] .pc-checker__faq-question::after {
+    content: '\2212';
+  }
+
+  .pc-checker__faq-question:focus-visible {
+    outline: 2px solid var(--pc-accent);
+    outline-offset: 2px;
+    border-radius: 0.875rem;
+  }
+
+  .pc-checker__faq-answer {
+    padding: 0 1.125rem 1.125rem;
+    color: var(--pc-muted);
+    font-size: 0.9375rem;
+  }
+
   .pc-checker__legal {
     display: flex;
     flex-wrap: wrap;
@@ -1060,6 +1157,12 @@
       "id": "disclaimer",
       "label": "Disclaimer",
       "default": "Unofficial fan-made tool. Not affiliated with or endorsed by Rockstar Games or Take-Two Interactive. Grand Theft Auto is a trademark of its owner."
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "Questions heading",
+      "default": "Common questions"
     },
     {
       "type": "header",
@@ -1179,6 +1282,27 @@
       "default": 56
     }
   ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Answer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
   "presets": [
     {
       "name": "PC checker"
