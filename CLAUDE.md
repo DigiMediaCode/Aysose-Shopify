@@ -225,9 +225,39 @@ owner: (b), bought only after samples pass. Awaiting the owner's decision, since
 
 **Draft price band (not final):** tops $49–69, pants $55–69, sets $99–119, sports hijab $22–29 (AUD).
 
+### 15 Nov 2026 — Owner dropped activewear; new niche research
+**Owner's brief:** forget activewear. Find a niche with less competition, that solves a problem, and works as
+pure dropshipping. Sections 1–2 above describe the old activewear plan and are superseded once a niche is chosen.
+
+**Supply finding:** Dropshipzone (dropshipzone.com.au) is the main Australian-warehouse dropship supplier: free
+to join, needs an ABN, most items dispatched in 1–2 business days, has a Shopify app. Its public search shows
+which items are locally stocked versus "IMPORT" (shipped from overseas). Wholesale prices are only visible after
+login, so margins are not confirmed yet. Search counts below are from a sample of 80 results per keyword.
+
+| Niche | Locally stocked share of sample | Notes |
+|---|---|---|
+| Cat containment (catios, enclosures, cat runs) | cat enclosure 62%, catio 13 of 15 | Demand pushed by council cat-containment rules |
+| Senior / injured dog mobility (ramps, stairs, strollers, playpens) | ramps 85%, car ramps 97%, stairs 70%, strollers 62% | Same products listed on Woolworths, Kmart, Bunnings marketplaces |
+| Ageing-in-place aids (shower chairs, bed rails, lift recliners) | 72–90% | Many are medical devices under TGA rules. Avoid. |
+| Backyard chickens / small animals (coops, hutches) | coops 60%, hutches 95% | Established specialists already exist |
+| Mould and damp for renters (dehumidifiers) | 35% | Electrical compliance risk, big-box competition |
+| Braces, posture, hearing, knee supports | 0% | Import only. Not viable for fast delivery. |
+
+**Competition notes**
+- Cat containment specialists: Somerzby (catios about $300–410) and Catnets (portable enclosures about $440–800).
+  Budget wooden catios on Amazon from about $200. Reported rules: ACT requires cats born after 1 July 2022 to be
+  contained; several Victorian councils (e.g. Knox) have 24-hour containment; a WA bill letting councils make cat
+  laws was awaiting final approval in October 2026. Council rules to be checked against official pages before
+  any of this is used in store copy.
+- Senior dog mobility: no specialist store found, but the identical i.Pet / PaWz products are sold through
+  major retailer marketplaces, so price comparison is easy for shoppers.
+
+**Recommendation given to the owner:** cat containment, with senior dog mobility as the second choice.
+Awaiting the owner's decision and a check of Dropshipzone wholesale prices.
+
 ### Open items
-- Owner decision: stay pure dropship (slow delivery) or hold a small Sydney stock of hero pieces.
-- Owner to check CJ Dropshipping for modest pieces with "Ship from: Australia".
-- Still open from section 6: business address for the store, traffic truth for aysose.com (Cloudflare Web
-  Analytics, Search Console), WooCommerce customer export.
+- Owner decision on the new niche.
+- Owner to create a free Dropshipzone account (needs the ABN) so wholesale prices and shipping fees can be checked.
+- Brand question: AYSOSE / aysose.com was built for activewear; decide whether to keep the name for the new niche.
+- Still open: business address for the store, traffic truth for aysose.com, WooCommerce customer export.
 - Paid plan and refund / shipping / terms policies are not done yet.
