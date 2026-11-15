@@ -326,7 +326,22 @@ on Australian marketplaces matched to its catalogue) so nothing is chosen on the
 - To verify before any in-car QR sign: Uber's rules on promoting a business to riders.
 - Margins unknown until the Dropshipzone account is approved.
 
+### 15 Nov 2026 — Uber rules check for the in-car QR sign
+- **Read:** Uber Community Guidelines, Australia and New Zealand, last modified 4 Oct 2026.
+- **No rule found** on promoting your own business, selling products or QR signs inside the car.
+- **Grey area:** under "Other unacceptable activities" the guidelines say unauthorised or third-party items
+  "such as lights, placards, signs" may confuse riders. Only excerpts were read; it appears to be about
+  Uber-branded / identification items, but a sign in the car could be read as covered.
+- **Clear rules that shape the design:** never solicit or accept payment outside the Uber platform; contact
+  ends when the trip ends; do not make riders uncomfortable; breaking any guideline, or low ratings, can cost
+  account access.
+- **Not read:** the driver services agreement (only in the Driver app). NSW Point to Point fact sheets could not
+  be opened; search results show only exterior rules (retroreflective sign required, nothing resembling a taxi).
+- **Decision rule:** no sign goes in the car until Uber Support confirms in writing. The store does not depend
+  on the sign; videos are the main channel.
+
 ### Open items
+- Owner to ask Uber Support in the Driver app about an interior QR card (message drafted in chat).
 - Owner decision on the "road-tested by a driver" store.
 - Dropshipzone account awaiting approval (needed for wholesale prices and shipping fees).
 - New brand name and domain if a non-activewear store goes ahead.
