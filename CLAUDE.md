@@ -362,6 +362,18 @@ re-checks and competitor comparison, and a done-for-you fix sold through DigiMed
 "who AI recommends in [suburb]" pages are the marketing. Proposed validation before building: 20 manual
 checks for businesses the owner already knows, then ask for the monthly fee; build only if at least 3 pay.
 
+### 15 Nov 2026 — Owner asked about hippie/boho accessory stores and adult dropshipping
+- **Hippie / boho accessories:** no official count; estimate a few hundred Australian online stores. Owner judged
+  it not a good idea.
+- **Adult products store (requirements researched, not decided):** no special licence found for selling adult
+  toys online, but state-level rules were not verified. Shopify allows the storefront; Shopify Payments is
+  widely reported as unavailable for sex toys, so a separate payment provider is likely needed (not confirmed
+  against the current Australian terms). Meta bars ads for products focused on sexual pleasure; Google strongly
+  restricts sex-toy ads and Shopping listings. Age-restricted material codes (from 9 March 2026) target
+  pornography; whether a toy retailer's product images are caught was not confirmed. Child-like sex dolls are a
+  serious Commonwealth offence to import or possess. Suppliers: Calvista (Victoria) is a large adult wholesaler,
+  dropship terms unconfirmed; Dropshipzone has an Adult Products category with thin local stock in a sample.
+
 ### Open items
-- Owner decision on the AI recommendation checker.
+- Owner decision on what business to pursue (AI recommendation checker proposed; adult store being considered).
 - Parked: Shopify store on trial plan, Dropshipzone account, Uber Support question, aysose.com migration.
