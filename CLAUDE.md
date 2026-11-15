@@ -184,7 +184,16 @@ Session 1 should end with a written decision on: niche angle, market, supplier t
   still says "My Store 4". No refund, shipping or terms policy yet. No apps besides the Claude connector.
 - **Old store on shop.aysose.com** is a separate, frozen store. Not used for this project.
 
+### 15 Nov 2026 — Session 1 decisions (owner)
+- **Market:** Australia only at launch. Currency AUD.
+- **Niche:** modest activewear. Supplier availability to be verified before the catalogue is locked.
+- **Budget:** $700–$1,500 for samples plus the first ad tests. Nothing spent without owner approval; each ad
+  test gets a written stop-loss.
+- **Theme repo:** unmodified Horizon 4.5.0 (from github.com/Shopify/horizon, 10 Nov 2026 release) added to this
+  repo. Branches `dev` (work) and `main` (live) created from it.
+
 ### Open items
-- Session 1 decisions (section 6) are still open.
-- Store name, legal policies, and the Horizon → GitHub connection (`dev` / `main` branches) are not done yet.
-- Real traffic numbers for aysose.com (Cloudflare Web Analytics, Search Console) still needed from the owner.
+- Owner to connect the repo in Shopify admin: `dev` as an unpublished theme, `main` as the live theme.
+- Still open from section 6: supplier type, price band and margin, business address for the store, traffic
+  truth for aysose.com (Cloudflare Web Analytics, Search Console), WooCommerce customer export.
+- Store name ("My Store 4" → AYSOSE), paid plan, and refund / shipping / terms policies are not done yet.
