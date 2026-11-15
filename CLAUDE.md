@@ -441,6 +441,36 @@ developer brief. Owner does the first jobs himself, then adds developers.
   Rockstar logos or game images.
 - Other ideas listed: completion tracker with share cards, cheat-code quick reference, AI "ask anything" helper.
 
+### 15 Nov 2026 — PC checker built in the Aysose theme (owner said go)
+**Decision:** build the "can my PC run it" checker inside the Aysose Shopify store, collect emails there, and
+later sell original print-on-demand designs to that list. No merchandise may use the game's name, logo,
+characters, map or artwork (trademark / copyright of Take-Two); designs must be original PC-gamer humour.
+
+**Files added on `dev` (not on `main`):**
+- `sections/pc-checker.liquid` — the page section. All text, the email signup and five optional upgrade links
+  are editable in the theme editor. A link only shows when its box is filled.
+- `assets/pc-checker.js` — parts lists (about 75 graphics cards, 50 processors) with approximate scores, and
+  the four estimated requirement levels (`TIERS`). Update `TIERS` when official requirements are published.
+- `templates/page.pc-checker.json` — page template "pc-checker" that shows the section.
+
+**Estimates used (ours, not official):** 1080p low = GTX 1660 Super class, 6 GB video memory, Core i5-10400
+class, 16 GB RAM; 1080p high = RTX 3060 Ti class, 8 GB; 1440p high = RTX 4070 Super class, 12 GB; 4K high =
+RTX 4080 class, 16 GB, 32 GB RAM. A hard drive is always marked borderline. Laptop cards are scored 20% lower.
+
+**Checks run:** Shopify Theme Check — 7 warnings, all in stock Horizon files, none in the new files. Verdict
+logic tested on five sample PCs. Rendered at 380px and 1200px with no sideways scroll and no script errors.
+
+**Email signup** uses Shopify's customer form and tags subscribers `newsletter` and `pc-version-alert`.
+
+**Domain names found available on 15 Nov (not bought):** willmyrigrun.com, rigchecksix.com, pcreadycheck.com,
+US$17 first year each. Preferred: willmyrigrun.com.
+
+**Gotcha:** the Shopify connector had switched back to another store (SeenSheen). Nothing was changed there.
+It was disconnected again on the owner's instruction; always confirm the connected store before store changes.
+
 ### Open items
-- Owner decision on the GTA 6 PC checker idea.
-- Parked: everything above this entry, including the Shopify store "Aysose" on its trial plan.
+- Owner to reconnect the Shopify connector to the Aysose store.
+- Then: confirm the three files synced to the `dev` theme, create a page using the "pc-checker" template,
+  preview it, and merge to `main` only on the owner's word.
+- Owner decisions: store name and domain, Shopify plan, affiliate programs for the upgrade links.
+- Parked: all earlier niche ideas above.

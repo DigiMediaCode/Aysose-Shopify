@@ -1,0 +1,735 @@
+{% comment %}
+  PC checker: lets a visitor pick their PC parts and see an estimate of whether the game would run.
+  The parts lists and the estimated requirements live in assets/pc-checker.js.
+{% endcomment %}
+
+<script
+  src="{{ 'pc-checker.js' | asset_url }}"
+  type="module"
+></script>
+
+<div class="section-background"></div>
+<div
+  class="section section--page-width spacing-style"
+  style="{% render 'spacing-padding', settings: section.settings %}"
+>
+  <div
+    class="pc-checker"
+    data-pc-checker
+  >
+    <script
+      type="application/json"
+      data-pc-checker-config
+    >
+      {
+        "links": {
+          "gpu": {{ section.settings.gpu_link | json }},
+          "cpu": {{ section.settings.cpu_link | json }},
+          "ram": {{ section.settings.ram_link | json }},
+          "ssd": {{ section.settings.ssd_link | json }},
+          "pc": {{ section.settings.pc_link | json }}
+        },
+        "affiliateNote": {{ section.settings.affiliate_note | json }}
+      }
+    </script>
+
+    <header class="pc-checker__intro">
+      {% if section.settings.heading != blank %}
+        <h1 class="pc-checker__title h1">{{ section.settings.heading | escape }}</h1>
+      {% endif %}
+      {% if section.settings.intro != blank %}
+        <p class="pc-checker__lede">{{ section.settings.intro | escape }}</p>
+      {% endif %}
+      {% if section.settings.notice != blank %}
+        <p class="pc-checker__notice">{{ section.settings.notice | escape }}</p>
+      {% endif %}
+    </header>
+
+    <div class="pc-checker__grid">
+      <form
+        class="pc-checker__form"
+        data-pc-checker-form
+      >
+        <h2 class="pc-checker__subtitle h4">Your PC</h2>
+
+        <label
+          class="pc-checker__label"
+          for="PcCheckerGpu-{{ section.id }}"
+        >
+          Graphics card
+        </label>
+        <select
+          class="pc-checker__select"
+          id="PcCheckerGpu-{{ section.id }}"
+          name="gpu"
+        ></select>
+
+        <label class="pc-checker__check">
+          <input
+            type="checkbox"
+            name="laptop"
+          >
+          <span>It is a laptop</span>
+        </label>
+
+        <label
+          class="pc-checker__label"
+          for="PcCheckerCpu-{{ section.id }}"
+        >
+          Processor
+        </label>
+        <select
+          class="pc-checker__select"
+          id="PcCheckerCpu-{{ section.id }}"
+          name="cpu"
+        ></select>
+
+        <label
+          class="pc-checker__label"
+          for="PcCheckerRam-{{ section.id }}"
+        >
+          Memory (RAM)
+        </label>
+        <select
+          class="pc-checker__select"
+          id="PcCheckerRam-{{ section.id }}"
+          name="ram"
+        >
+          <option value="8">8 GB</option>
+          <option value="12">12 GB</option>
+          <option
+            value="16"
+            selected
+          >
+            16 GB
+          </option>
+          <option value="24">24 GB</option>
+          <option value="32">32 GB</option>
+          <option value="64">64 GB or more</option>
+        </select>
+
+        <label
+          class="pc-checker__label"
+          for="PcCheckerStorage-{{ section.id }}"
+        >
+          Drive the game would be installed on
+        </label>
+        <select
+          class="pc-checker__select"
+          id="PcCheckerStorage-{{ section.id }}"
+          name="storage"
+        >
+          <option value="ssd">SSD</option>
+          <option value="hdd">Hard drive (HDD)</option>
+        </select>
+
+        <p class="pc-checker__hint">
+          Not sure what you have? On Windows, press Ctrl + Shift + Esc and open the Performance tab.
+        </p>
+      </form>
+
+      <div
+        class="pc-checker__output"
+        data-pc-checker-output
+        aria-live="polite"
+      >
+        <noscript>This checker needs JavaScript. The estimated requirements are listed below.</noscript>
+      </div>
+    </div>
+
+    <section class="pc-checker__method">
+      <h2 class="pc-checker__subtitle h4">Estimated requirements</h2>
+      <div class="pc-checker__table-wrap">
+        <table class="pc-checker__table">
+          <thead>
+            <tr>
+              <th scope="col">Level</th>
+              <th scope="col">Graphics card</th>
+              <th scope="col">Processor</th>
+              <th scope="col">Memory</th>
+            </tr>
+          </thead>
+          <tbody data-pc-checker-estimates></tbody>
+        </table>
+      </div>
+      {% if section.settings.method != blank %}
+        <p class="pc-checker__method-note">{{ section.settings.method | escape }}</p>
+      {% endif %}
+      {% if section.settings.updated != blank %}
+        <p class="pc-checker__method-note">{{ section.settings.updated | escape }}</p>
+      {% endif %}
+    </section>
+
+    {% if section.settings.show_signup %}
+      <section class="pc-checker__signup">
+        {% if section.settings.signup_heading != blank %}
+          <h2 class="pc-checker__subtitle h4">{{ section.settings.signup_heading | escape }}</h2>
+        {% endif %}
+        {% if section.settings.signup_text != blank %}
+          <p class="pc-checker__signup-text">{{ section.settings.signup_text | escape }}</p>
+        {% endif %}
+        {% assign signup_form_id = 'PcCheckerSignup-' | append: section.id %}
+        {%- form 'customer', id: signup_form_id, class: 'pc-checker__signup-form' -%}
+          <input
+            type="hidden"
+            name="contact[tags]"
+            value="newsletter,pc-version-alert"
+          >
+          <label
+            class="visually-hidden"
+            for="PcCheckerEmail-{{ section.id }}"
+          >
+            Email address
+          </label>
+          <input
+            class="pc-checker__email"
+            id="PcCheckerEmail-{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            autocomplete="email"
+            autocapitalize="off"
+            placeholder="you@example.com"
+            required
+          >
+          <button
+            class="button pc-checker__button"
+            type="submit"
+          >
+            {{ section.settings.signup_button | escape }}
+          </button>
+          {% if form.posted_successfully? %}
+            <p
+              class="pc-checker__form-message"
+              role="status"
+            >
+              You are on the list. We will email you when there is news.
+            </p>
+          {% elsif form.errors %}
+            <p
+              class="pc-checker__form-message pc-checker__form-message--error"
+              role="alert"
+            >
+              That email address did not work. Check it and try again.
+            </p>
+          {% endif %}
+        {%- endform -%}
+      </section>
+    {% endif %}
+
+    {% if section.settings.disclaimer != blank %}
+      <p class="pc-checker__disclaimer">{{ section.settings.disclaimer | escape }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pc-checker {
+    --pc-line: rgb(var(--color-foreground-rgb) / 0.14);
+    --pc-soft: rgb(var(--color-foreground-rgb) / 0.05);
+    --pc-muted: rgb(var(--color-foreground-rgb) / 0.68);
+    --pc-pass: #1f9d55;
+    --pc-near: #d98a00;
+    --pc-fail: #d64545;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 64rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .pc-checker__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 44rem;
+  }
+
+  .pc-checker__title {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .pc-checker__lede,
+  .pc-checker__notice,
+  .pc-checker__hint,
+  .pc-checker__method-note,
+  .pc-checker__signup-text,
+  .pc-checker__disclaimer,
+  .pc-checker__example,
+  .pc-checker__advice-note {
+    margin: 0;
+  }
+
+  .pc-checker__lede {
+    font-size: 1.125rem;
+  }
+
+  .pc-checker__notice {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--pc-line);
+    border-radius: 0.5rem;
+    background: var(--pc-soft);
+    font-size: 0.9375rem;
+  }
+
+  .pc-checker__grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media screen and (min-width: 750px) {
+    .pc-checker__grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+  }
+
+  .pc-checker__form,
+  .pc-checker__output,
+  .pc-checker__method,
+  .pc-checker__signup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .pc-checker__subtitle {
+    margin: 0;
+  }
+
+  .pc-checker__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+  }
+
+  .pc-checker__select,
+  .pc-checker__email {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--pc-line);
+    border-radius: var(--style-border-radius-inputs, 0.375rem);
+    background: var(--color-input-background, var(--color-background));
+    color: var(--color-input-text, var(--color-foreground));
+    font: inherit;
+    font-size: 1rem;
+  }
+
+  .pc-checker__select:focus-visible,
+  .pc-checker__email:focus-visible,
+  .pc-checker__check input:focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  .pc-checker__check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .pc-checker__check input {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin: 0;
+  }
+
+  .pc-checker__hint,
+  .pc-checker__method-note,
+  .pc-checker__disclaimer,
+  .pc-checker__example,
+  .pc-checker__advice-note,
+  .pc-checker__scale-note,
+  .pc-checker__tier-note {
+    color: var(--pc-muted);
+    font-size: 0.875rem;
+  }
+
+  .pc-checker__output {
+    padding: 1.25rem;
+    border: 1px solid var(--pc-line);
+    border-radius: 0.75rem;
+    gap: 1.25rem;
+  }
+
+  .pc-checker__headline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-inline-start: 0.875rem;
+    border-inline-start: 4px solid var(--pc-muted);
+  }
+
+  .pc-checker__headline--pass {
+    border-color: var(--pc-pass);
+  }
+
+  .pc-checker__headline--near {
+    border-color: var(--pc-near);
+  }
+
+  .pc-checker__headline--fail {
+    border-color: var(--pc-fail);
+  }
+
+  .pc-checker__eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pc-muted);
+  }
+
+  .pc-checker__headline-text {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 1.375rem;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  .pc-checker__tiers,
+  .pc-checker__advice-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-checker__tier {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-block: 0.75rem;
+    border-top: 1px solid var(--pc-line);
+  }
+
+  .pc-checker__tier:last-child {
+    border-bottom: 1px solid var(--pc-line);
+  }
+
+  .pc-checker__tier-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+  }
+
+  .pc-checker__tier-label {
+    font-weight: 600;
+  }
+
+  .pc-checker__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex: none;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    background: var(--pc-soft);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .pc-checker__pill::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--pc-muted);
+  }
+
+  .pc-checker__pill--pass::before {
+    background: var(--pc-pass);
+  }
+
+  .pc-checker__pill--near::before {
+    background: var(--pc-near);
+  }
+
+  .pc-checker__pill--fail::before {
+    background: var(--pc-fail);
+  }
+
+  .pc-checker__scales {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pc-checker__scale {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .pc-checker__scale-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .pc-checker__track {
+    position: relative;
+    height: 0.75rem;
+    border-radius: 999px;
+    background: var(--pc-soft);
+  }
+
+  .pc-checker__fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--color-foreground);
+    transition: width 0.25s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pc-checker__fill {
+      transition: none;
+    }
+  }
+
+  .pc-checker__tick {
+    position: absolute;
+    top: -0.25rem;
+    bottom: -0.25rem;
+    width: 2px;
+    background: var(--pc-near);
+    transform: translateX(-1px);
+  }
+
+  .pc-checker__advice {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: var(--pc-soft);
+  }
+
+  .pc-checker__advice-title {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .pc-checker__advice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    font-size: 0.9375rem;
+  }
+
+  .pc-checker__link {
+    text-decoration: underline;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .pc-checker__table-wrap {
+    overflow-x: auto;
+  }
+
+  .pc-checker__table {
+    width: 100%;
+    min-width: 34rem;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pc-checker__table th,
+  .pc-checker__table td {
+    padding: 0.625rem 0.75rem 0.625rem 0;
+    border-bottom: 1px solid var(--pc-line);
+    text-align: start;
+    vertical-align: top;
+  }
+
+  .pc-checker__table thead th {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pc-muted);
+  }
+
+  .pc-checker__signup {
+    padding: 1.25rem;
+    border: 1px solid var(--pc-line);
+    border-radius: 0.75rem;
+  }
+
+  .pc-checker__signup-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .pc-checker__email {
+    flex: 1 1 14rem;
+    width: auto;
+  }
+
+  .pc-checker__button {
+    flex: 0 0 auto;
+    min-height: 2.75rem;
+  }
+
+  .pc-checker__form-message {
+    flex-basis: 100%;
+    margin: 0;
+    font-size: 0.9375rem;
+  }
+
+  .pc-checker__form-message--error {
+    color: var(--pc-fail);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PC checker",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Can my PC run Grand Theft Auto VI?"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "Pick your graphics card and processor to see our estimate for each quality level."
+    },
+    {
+      "type": "textarea",
+      "id": "notice",
+      "label": "Notice shown under the introduction",
+      "default": "No PC version has been announced and no official requirements exist. Everything on this page is our own estimate and will change when real requirements are published."
+    },
+    {
+      "type": "textarea",
+      "id": "method",
+      "label": "How the estimate is made",
+      "default": "The game launches on PlayStation 5 and Xbox Series X|S, including the less powerful Series S. We estimate the lowest level from that hardware and the higher levels from how earlier console games from the same studio ran on PC. Part scores are approximate averages, so two PCs with the same parts can still perform differently."
+    },
+    {
+      "type": "text",
+      "id": "updated",
+      "label": "Last updated line",
+      "default": "Estimates last reviewed November 2026."
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "Unofficial fan-made tool. Not affiliated with or endorsed by Rockstar Games or Take-Two Interactive. Grand Theft Auto is a trademark of its owner."
+    },
+    {
+      "type": "header",
+      "content": "Email alerts"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_signup",
+      "label": "Show email signup",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "signup_heading",
+      "label": "Signup heading",
+      "default": "Get an email when the PC version is announced"
+    },
+    {
+      "type": "textarea",
+      "id": "signup_text",
+      "label": "Signup text",
+      "default": "One email when a PC release date or official requirements are published. Unsubscribe any time."
+    },
+    {
+      "type": "text",
+      "id": "signup_button",
+      "label": "Signup button",
+      "default": "Notify me"
+    },
+    {
+      "type": "header",
+      "content": "Upgrade links",
+      "info": "Optional. A link only appears on the page when its box is filled in."
+    },
+    {
+      "type": "url",
+      "id": "gpu_link",
+      "label": "Graphics cards link"
+    },
+    {
+      "type": "url",
+      "id": "cpu_link",
+      "label": "Processors link"
+    },
+    {
+      "type": "url",
+      "id": "ram_link",
+      "label": "Memory link"
+    },
+    {
+      "type": "url",
+      "id": "ssd_link",
+      "label": "SSDs link"
+    },
+    {
+      "type": "url",
+      "id": "pc_link",
+      "label": "Gaming PCs link"
+    },
+    {
+      "type": "text",
+      "id": "affiliate_note",
+      "label": "Note shown with upgrade links",
+      "default": "We may earn a commission if you buy through these links."
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "PC checker"
+    }
+  ]
+}
+{% endschema %}
