@@ -468,9 +468,21 @@ US$17 first year each. Preferred: willmyrigrun.com.
 **Gotcha:** the Shopify connector had switched back to another store (SeenSheen). Nothing was changed there.
 It was disconnected again on the owner's instruction; always confirm the connected store before store changes.
 
+### 15 Nov 2026 — PC checker page live on the `dev` theme only
+- Connector confirmed on the Aysose store (`9jfwxy-kf.myshopify.com`, Trial plan).
+- The three new files synced to theme `Aysose-Shopify/dev` (id 147642581076). They are not on `main` or on the
+  live Horizon theme.
+- Page created: "Can my PC run Grand Theft Auto VI?", handle `can-my-pc-run-it`, id 116122124372, template
+  `pc-checker`, published. On the live theme the page falls back to the default page layout and shows only its
+  title, because the template exists only on `dev`.
+- In-store check: the section renders, both part lists fill, the example verdict and estimates table appear.
+- **Gotcha:** the connector's theme screenshot tool does not load Horizon's compiled section styles; stock
+  pages (e.g. Contact on the untouched `main` theme) also come out unstyled. Styling inside Shopify therefore
+  has to be checked by the owner in the theme preview.
+- Preview address: `/pages/can-my-pc-run-it?preview_theme_id=147642581076`.
+
 ### Open items
-- Owner to reconnect the Shopify connector to the Aysose store.
-- Then: confirm the three files synced to the `dev` theme, create a page using the "pc-checker" template,
-  preview it, and merge to `main` only on the owner's word.
+- Owner to open the preview on his phone and confirm it looks right, then say "merge it to main".
+- After merge: publish the `main` theme (owner, in Shopify admin), add the page to the menu.
 - Owner decisions: store name and domain, Shopify plan, affiliate programs for the upgrade links.
 - Parked: all earlier niche ideas above.
