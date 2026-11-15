@@ -514,11 +514,22 @@ It was disconnected again on the owner's instruction; always confirm the connect
   1280px: no sideways scroll, no script errors; locked state, signup-then-unlock (parts kept) and return visit
   (stays unlocked) all behaved. The real Shopify signup round trip has not been tested in the store.
 
+### 16 Nov 2026 — Privacy policy checked (owner asked to fix it)
+- Read the live policy: it now says "Aysose" throughout, dated 15 November 2026, contact staff@aysose.com.
+  It is Shopify's automatic privacy policy, which picked up the store rename by itself. Nothing was changed.
+- Left as the automatic version on purpose: overwriting it through the API would turn it into a fixed
+  hand-written policy that no longer updates itself.
+- It covers marketing emails and unsubscribing in general terms. It does not specifically describe the PC
+  release alert list or the parts saved in the visitor's browser.
+- **Still broken:** the policy points to a "contact information policy" that does not exist. That needs the
+  business name and address from the owner (Settings → Policies → Contact information).
+- No terms of service, refund or shipping policy exist yet (not needed until something is sold).
+
 ### Open items
+- Owner to supply the business name and address for the contact information policy.
 - Owner to preview the `dev` theme homepage and try a real signup with his own email.
 - Owner decision: how the public reaches the page (pick a Shopify plan and remove the password, or put the
   checker on the password page).
-- Fix the privacy policy wording before collecting emails.
 - Merge to `main` only on the owner's word; then the owner publishes the `main` theme.
 - Owner decisions: store name and domain, affiliate programs for the upgrade links.
 - Parked: all earlier niche ideas above.
