@@ -298,23 +298,103 @@ function scaleBar(title, value, max, marks, valueLabel) {
   return wrap;
 }
 
+const STORE_KEY = 'pcChecker:parts';
+const UNLOCK_KEY = 'pcChecker:unlocked';
+
+function readStore(key) {
+  try {
+    return window.localStorage.getItem(key);
+  } catch (error) {
+    return null;
+  }
+}
+
+function writeStore(key, value) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch (error) {
+    // Storage can be blocked (private windows); the checker still works without it.
+  }
+}
+
+function countItems(groups) {
+  return Object.values(groups).reduce((total, items) => total + items.length, 0);
+}
+
+function lockedPlaceholder() {
+  const wrap = el('div', 'pc-checker__placeholder');
+  wrap.setAttribute('aria-hidden', 'true');
+  const head = el('div', 'pc-checker__headline');
+  head.append(el('span', 'pc-checker__eyebrow', 'Our estimate'));
+  head.append(el('p', 'pc-checker__headline-text', 'Your result appears here.'));
+  wrap.append(head);
+  const list = el('ul', 'pc-checker__tiers');
+  for (const tier of TIERS) {
+    const item = el('li', 'pc-checker__tier');
+    const text = el('div', 'pc-checker__tier-text');
+    text.append(el('span', 'pc-checker__tier-label', tier.label));
+    text.append(el('span', 'pc-checker__tier-note', tier.target));
+    item.append(text);
+    item.append(el('span', 'pc-checker__pill', 'Hidden'));
+    list.append(item);
+  }
+  wrap.append(list);
+  return wrap;
+}
+
 function init(root) {
   const configNode = root.querySelector('[data-pc-checker-config]');
   const config = configNode ? JSON.parse(configNode.textContent || '{}') : {};
   const form = root.querySelector('[data-pc-checker-form]');
   const output = root.querySelector('[data-pc-checker-output]');
   const table = root.querySelector('[data-pc-checker-estimates]');
+  const stats = root.querySelector('[data-pc-checker-stats]');
+  const gate = root.querySelector('[data-pc-checker-gate]');
   if (!form || !output) return;
 
   const gpuSelect = form.querySelector('[name="gpu"]');
   const cpuSelect = form.querySelector('[name="cpu"]');
+  const ramSelect = form.querySelector('[name="ram"]');
+  const storageSelect = form.querySelector('[name="storage"]');
+  const laptopBox = form.querySelector('[name="laptop"]');
   fillSelect(gpuSelect, GPUS, 'RTX 3060');
   fillSelect(cpuSelect, CPUS, 'Ryzen 5 5600');
+
+  // Bring back the parts the visitor chose before the email form reloaded the page.
+  let touched = false;
+  try {
+    const saved = JSON.parse(readStore(STORE_KEY) || 'null');
+    if (saved && find(GPUS, saved.gpu) && find(CPUS, saved.cpu)) {
+      gpuSelect.value = saved.gpu;
+      cpuSelect.value = saved.cpu;
+      if (saved.ram) ramSelect.value = String(saved.ram);
+      if (saved.storage) storageSelect.value = saved.storage;
+      laptopBox.checked = Boolean(saved.laptop);
+      touched = true;
+    }
+  } catch (error) {
+    // Ignore unreadable saved parts and start from the example.
+  }
+
+  if (stats) {
+    const facts = [
+      [countItems(GPUS), 'graphics cards'],
+      [countItems(CPUS), 'processors'],
+      [TIERS.length, 'quality levels'],
+    ];
+    for (const [number, label] of facts) {
+      const item = document.createElement('li');
+      item.append(el('strong', '', String(number)), label);
+      stats.append(item);
+    }
+  }
 
   if (table) {
     for (const tier of TIERS) {
       const row = document.createElement('tr');
-      row.append(el('th', '', tier.label));
+      const head = el('th', '', tier.label);
+      head.scope = 'row';
+      row.append(head);
       row.append(el('td', '', `${tier.gpuExample}, ${tier.vram} GB`));
       row.append(el('td', '', tier.cpuExample));
       row.append(el('td', '', `${tier.ram} GB`));
@@ -322,27 +402,57 @@ function init(root) {
     }
   }
 
-  let touched = false;
+  // The result unlocks once the email form has been sent successfully, and stays unlocked on this device.
+  const justPosted = Boolean(root.querySelector('[data-pc-checker-posted]'));
+  if (justPosted) writeStore(UNLOCK_KEY, '1');
+  let unlocked = !gate || justPosted || readStore(UNLOCK_KEY) === '1';
+  let reveal = justPosted;
+
+  function saveParts() {
+    writeStore(
+      STORE_KEY,
+      JSON.stringify({
+        gpu: gpuSelect.value,
+        cpu: cpuSelect.value,
+        ram: Number(ramSelect.value),
+        storage: storageSelect.value,
+        laptop: laptopBox.checked,
+      })
+    );
+  }
 
   function render() {
+    output.replaceChildren();
+
+    if (!unlocked) {
+      output.classList.add('is-locked');
+      output.append(lockedPlaceholder());
+      gate.hidden = false;
+      return;
+    }
+    output.classList.remove('is-locked');
+    if (gate) gate.hidden = true;
+
     const gpu = find(GPUS, gpuSelect.value);
     const cpu = find(CPUS, cpuSelect.value);
     if (!gpu || !cpu) return;
-    const laptop = form.querySelector('[name="laptop"]').checked;
+    const laptop = laptopBox.checked;
     const pc = {
       gpu: Math.round(gpu[1] * (laptop ? LAPTOP_FACTOR : 1)),
       vram: gpu[2],
       cpu: cpu[1],
-      ram: Number(form.querySelector('[name="ram"]').value),
-      ssd: form.querySelector('[name="storage"]').value === 'ssd',
+      ram: Number(ramSelect.value),
+      ssd: storageSelect.value === 'ssd',
     };
     const results = TIERS.map((tier) => ({ tier, ...checkTier(pc, tier) }));
     const best = [...results].reverse().find((result) => result.status === 'pass');
     const lowest = results[0];
 
-    output.replaceChildren();
+    const body = el('div', reveal ? 'pc-checker__output-body pc-checker__reveal' : 'pc-checker__output-body');
+    reveal = false;
 
-    if (!touched) output.append(el('p', 'pc-checker__example', 'Example result. Choose your own parts above.'));
+    if (justPosted) body.append(el('p', 'pc-checker__example', 'You are on the list. Here is your result.'));
+    else if (!touched) body.append(el('p', 'pc-checker__example', 'Example result. Choose your own parts.'));
 
     let headline;
     let headlineStatus;
@@ -359,7 +469,7 @@ function init(root) {
     const head = el('div', `pc-checker__headline pc-checker__headline--${headlineStatus}`);
     head.append(el('span', 'pc-checker__eyebrow', 'Our estimate'));
     head.append(el('p', 'pc-checker__headline-text', headline));
-    output.append(head);
+    body.append(head);
 
     const list = el('ul', 'pc-checker__tiers');
     for (const result of results) {
@@ -378,7 +488,7 @@ function init(root) {
       item.append(el('span', `pc-checker__pill pc-checker__pill--${result.status}`, STATUS_TEXT[result.status]));
       list.append(item);
     }
-    output.append(list);
+    body.append(list);
 
     const scales = el('div', 'pc-checker__scales');
     scales.append(
@@ -399,7 +509,7 @@ function init(root) {
         `${cpu[0]}. Marks show the estimate for each level.`
       )
     );
-    output.append(scales);
+    body.append(scales);
 
     const next = results.find((result) => result.status !== 'pass');
     if (next) {
@@ -446,15 +556,20 @@ function init(root) {
       if (config.affiliateNote && Object.values(links).some(Boolean)) {
         advice.append(el('p', 'pc-checker__advice-note', config.affiliateNote));
       }
-      output.append(advice);
+      body.append(advice);
     }
+
+    output.append(body);
   }
 
   form.addEventListener('change', () => {
     touched = true;
+    saveParts();
     render();
   });
   form.addEventListener('submit', (event) => event.preventDefault());
+  const gateForm = gate ? gate.querySelector('form') : null;
+  if (gateForm) gateForm.addEventListener('submit', saveParts);
   render();
 }
 

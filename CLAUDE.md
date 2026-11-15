@@ -497,8 +497,25 @@ It was disconnected again on the owner's instruction; always confirm the connect
 - The store has only the default privacy policy (still says "My Store 4"); it must be corrected before
   collecting emails.
 
+### 15 Nov 2026 — Premium redesign and email-before-result (on `dev` only)
+**Owner's instruction:** make the checker look more premium and show the result only after email signup.
+- **Design:** the section now has its own fixed dark look (graphite surfaces, amber-to-coral accent, soft glow
+  and faint grid behind the heading), independent of the theme's colours. Heading is split into a plain part
+  and a highlighted part (two settings). A facts row shows the real counts from the parts lists
+  (70 graphics cards, 50 processors, 4 quality levels — the earlier "about 75" was wrong).
+- **Email before result:** new setting "Ask for an email before showing the result" (on by default). The result
+  panel shows a blurred placeholder and an email form. After a successful signup Shopify reloads the page; the
+  script restores the chosen parts and shows the result. The device stays unlocked afterwards (browser storage).
+  When the setting is on, the separate signup box is not shown. The requirements table stays visible to
+  everyone, so the gate is soft, and search engines can still read the page.
+- The gate text states that subscribing also means PC-release emails, with an unsubscribe note and a privacy
+  policy link, so consent is clear.
+- **Checks:** Theme Check still 7 warnings, all in stock Horizon files. Tested outside Shopify at 380px and
+  1280px: no sideways scroll, no script errors; locked state, signup-then-unlock (parts kept) and return visit
+  (stays unlocked) all behaved. The real Shopify signup round trip has not been tested in the store.
+
 ### Open items
-- Owner to preview the `dev` theme homepage on his phone and confirm it looks right.
+- Owner to preview the `dev` theme homepage and try a real signup with his own email.
 - Owner decision: how the public reaches the page (pick a Shopify plan and remove the password, or put the
   checker on the password page).
 - Fix the privacy policy wording before collecting emails.
