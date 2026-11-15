@@ -481,8 +481,27 @@ It was disconnected again on the owner's instruction; always confirm the connect
   has to be checked by the owner in the theme preview.
 - Preview address: `/pages/can-my-pc-run-it?preview_theme_id=147642581076`.
 
+### 15 Nov 2026 — Checker turned into the homepage landing page (on `dev` only)
+**Owner's instruction:** do not merge yet; make it a landing page until the email list has grown.
+- `templates/index.json` on `dev` now shows only the PC checker section (the stock hero and product list are gone).
+- New section setting **Landing page mode** (on by default): hides the store menu, cart and footer on the page
+  showing the section, and shows a slim brand line plus a copyright / privacy-policy line instead. Untick it in
+  the theme editor when the store opens.
+- Email signup moved up, directly under the result.
+- The separate page `can-my-pc-run-it` (id 116122124372) was unpublished to avoid two copies of the same page.
+- Theme Check: still 7 warnings, all in stock Horizon files.
+- Sync confirmed by reading `templates/index.json` back from the `dev` theme. The connector's screenshot tool
+  kept showing the old homepage on two tries (looks cached), so the homepage has not been seen rendered.
+- **Not yet true:** the store is on the Trial plan and password-protected, so the public sees the password
+  page, not this landing page. No emails can be collected until that is resolved.
+- The store has only the default privacy policy (still says "My Store 4"); it must be corrected before
+  collecting emails.
+
 ### Open items
-- Owner to open the preview on his phone and confirm it looks right, then say "merge it to main".
-- After merge: publish the `main` theme (owner, in Shopify admin), add the page to the menu.
-- Owner decisions: store name and domain, Shopify plan, affiliate programs for the upgrade links.
+- Owner to preview the `dev` theme homepage on his phone and confirm it looks right.
+- Owner decision: how the public reaches the page (pick a Shopify plan and remove the password, or put the
+  checker on the password page).
+- Fix the privacy policy wording before collecting emails.
+- Merge to `main` only on the owner's word; then the owner publishes the `main` theme.
+- Owner decisions: store name and domain, affiliate programs for the upgrade links.
 - Parked: all earlier niche ideas above.
