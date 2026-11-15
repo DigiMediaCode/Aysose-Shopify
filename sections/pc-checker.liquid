@@ -8,6 +8,15 @@
   type="module"
 ></script>
 
+{% if section.settings.landing_mode %}
+  {% style %}
+    .shopify-section-group-header-group,
+    .shopify-section-group-footer-group {
+      display: none;
+    }
+  {% endstyle %}
+{% endif %}
+
 <div class="section-background"></div>
 <div
   class="section section--page-width spacing-style"
@@ -32,6 +41,10 @@
         "affiliateNote": {{ section.settings.affiliate_note | json }}
       }
     </script>
+
+    {% if section.settings.landing_mode %}
+      <p class="pc-checker__brand">{{ shop.name | escape }}</p>
+    {% endif %}
 
     <header class="pc-checker__intro">
       {% if section.settings.heading != blank %}
@@ -137,29 +150,6 @@
       </div>
     </div>
 
-    <section class="pc-checker__method">
-      <h2 class="pc-checker__subtitle h4">Estimated requirements</h2>
-      <div class="pc-checker__table-wrap">
-        <table class="pc-checker__table">
-          <thead>
-            <tr>
-              <th scope="col">Level</th>
-              <th scope="col">Graphics card</th>
-              <th scope="col">Processor</th>
-              <th scope="col">Memory</th>
-            </tr>
-          </thead>
-          <tbody data-pc-checker-estimates></tbody>
-        </table>
-      </div>
-      {% if section.settings.method != blank %}
-        <p class="pc-checker__method-note">{{ section.settings.method | escape }}</p>
-      {% endif %}
-      {% if section.settings.updated != blank %}
-        <p class="pc-checker__method-note">{{ section.settings.updated | escape }}</p>
-      {% endif %}
-    </section>
-
     {% if section.settings.show_signup %}
       <section class="pc-checker__signup">
         {% if section.settings.signup_heading != blank %}
@@ -216,8 +206,40 @@
       </section>
     {% endif %}
 
+    <section class="pc-checker__method">
+      <h2 class="pc-checker__subtitle h4">Estimated requirements</h2>
+      <div class="pc-checker__table-wrap">
+        <table class="pc-checker__table">
+          <thead>
+            <tr>
+              <th scope="col">Level</th>
+              <th scope="col">Graphics card</th>
+              <th scope="col">Processor</th>
+              <th scope="col">Memory</th>
+            </tr>
+          </thead>
+          <tbody data-pc-checker-estimates></tbody>
+        </table>
+      </div>
+      {% if section.settings.method != blank %}
+        <p class="pc-checker__method-note">{{ section.settings.method | escape }}</p>
+      {% endif %}
+      {% if section.settings.updated != blank %}
+        <p class="pc-checker__method-note">{{ section.settings.updated | escape }}</p>
+      {% endif %}
+    </section>
+
     {% if section.settings.disclaimer != blank %}
       <p class="pc-checker__disclaimer">{{ section.settings.disclaimer | escape }}</p>
+    {% endif %}
+
+    {% if section.settings.landing_mode %}
+      <p class="pc-checker__legal">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}
+        {% if shop.privacy_policy %}
+          <a href="{{ shop.privacy_policy.url }}">Privacy policy</a>
+        {% endif %}
+      </p>
     {% endif %}
   </div>
 </div>
@@ -237,6 +259,29 @@
     max-width: 64rem;
     margin-inline: auto;
     width: 100%;
+  }
+
+  .pc-checker__brand {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .pc-checker__legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--pc-line);
+    color: var(--pc-muted);
+    font-size: 0.875rem;
+  }
+
+  .pc-checker__legal a {
+    text-decoration: underline;
   }
 
   .pc-checker__intro {
@@ -597,6 +642,13 @@
   "name": "PC checker",
   "tag": "section",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "landing_mode",
+      "label": "Landing page mode",
+      "info": "Hides the store menu, cart and footer on the page that shows this section. Untick when the store is ready to open.",
+      "default": true
+    },
     {
       "type": "header",
       "content": "Text"
