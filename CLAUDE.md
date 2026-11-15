@@ -281,9 +281,36 @@ hero product (a travel cooling case for pens), then storage, tracking and streng
   is unverified and must be checked against TGA guidance before launch. Cooling-time claims must come from the
   owner's own tests.
 
+### 15 Nov 2026 — Three checks on the injection-pen companion store
+**1. Regulator wording rules — NOT cleared.** tga.gov.au could not be opened from this environment, so the
+primary guidance was not read; findings are from search summaries. Advertising is anything that on its face
+promotes the use or supply of a therapeutic good, directly or indirectly. No guidance was found on accessories
+that mention a medicine. Second open question: competitors describe their cooling wallets as "TGA approved"
+(Fridge-to-Go) and "FDA Listed" (Glucology), which suggests a medication cooling case may itself be a medical
+device needing an ARTG entry if imported under our own brand. Unverified. Needs a direct answer from the TGA.
+What competitors do in practice: IBD Medical says "insulin pens or GLP-1 injections" with no brand names and
+no weight-loss wording; Diabetes HQ lists Ozempic among medicines a cooler suits. Practice, not legal clearance.
+
+**2. Supplier prices — listings only, no quotes.** Alibaba EVA pen cooler cases US$0.85–1.23 each at 500 units;
+some listings from 1–100 units; versions with ice packs not priced. Australian retail: cooling wallets mostly
+$30–60 (median about $50).
+
+**3. Demand — confirmed in kind, not in volume.** Google Australia suggests "mounjaro travel case australia",
+"mounjaro travel case chemist warehouse", "ozempic travel case australia", "wegovy travel case australia",
+"mounjaro fridge storage case". No monthly volumes (needs Google Keyword Planner in the owner's Ads account).
+
+**Correction to the earlier entry:** the Australian market is not empty. Sellers found: IBD Medical / Glucology
+(Australian-owned since 2016, stocked by Chemist Warehouse, 21 of 23 cooling products already mention GLP-1
+pens), FRIO Australia, Fridge-to-Go, Diabetes HQ, Diabetes WA shop. All are positioned as diabetes brands.
+
+**Revised recommendation:** do not import an own-brand case. If this niche goes ahead, resell existing
+Australian products (their importer carries the device compliance) and compete on audience and content. No
+money to be spent until the TGA answers. Cat containment margin test continues in parallel as the fallback.
+
 ### Open items
-- Owner decision: go with the injection-pen companion store, or fall back to cat containment.
-- If yes: new brand name and domain (AYSOSE does not fit), TGA wording check, supplier quotes, 3 sample cases.
-- Dropshipzone account awaiting approval (still useful for the strength-at-home range).
+- Owner to send the TGA advertising enquiry (draft given in chat) and decide whether to continue this niche.
+- Ask IBD Medical and Fridge-to-Go for wholesale / dropship terms.
+- Dropshipzone account awaiting approval (cat containment margin test, strength-at-home range).
+- New brand name and domain if a non-activewear niche goes ahead.
 - Still open: business address for the store, traffic truth for aysose.com, WooCommerce customer export.
 - Paid plan and refund / shipping / terms policies are not done yet.
