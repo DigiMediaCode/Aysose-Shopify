@@ -255,9 +255,35 @@ login, so margins are not confirmed yet. Search counts below are from a sample o
 **Recommendation given to the owner:** cat containment, with senior dog mobility as the second choice.
 Awaiting the owner's decision and a check of Dropshipzone wholesale prices.
 
+### 15 Nov 2026 — Trend-led niche decision (owner removed the earlier conditions)
+**Owner's brief:** drop the "low competition / problem-solving / pure dropship" conditions; read current market
+trends and pick the store most likely to produce real sales.
+
+**Trend data found**
+- Australia Post 2026 report: online spend $82.6b in 2025, up 14%. Fastest categories: books/stationery +24.1%,
+  hobbies and recreational goods +17.1% (+22% in the latest quarter). Fastest-growing shoppers are the oldest groups.
+- GLP-1 medicines (Ozempic, Wegovy, Mounjaro): about 500,000 Australians using them, a 10-fold rise from 2020 to
+  2025 (UNSW-led report, not yet peer reviewed). About 7.8 million adults eligible. Nearly half pay privately,
+  $200–700 a month. PBAC recommended PBS listing for Wegovy in January 2026; price negotiations under way.
+- TikTok Shop is not live in Australia (reports point to early 2027), so US "viral product" lists don't transfer.
+- Book nook kits: Amazon US unit sales fell about 24% month on month in July 2026; top 10 listings hold ~59%.
+
+**Recommendation given to the owner:** a specialist store for people who use weekly injection pens, led by one
+hero product (a travel cooling case for pens), then storage, tracking and strength-at-home products.
+- Competition found in Australia: one cooling pouch at Chemist Warehouse (Glucology); 4AllFamily ships from the US.
+  No Australian specialist store found.
+- Supply: small accessories are not stocked locally on Dropshipzone (cooler cases 5% local, portion plates and
+  bands 0%). Strength gear is (dumbbells 90%, walking pads 87%). So the hero product needs a small stock held
+  in Sydney, bought only after samples pass. Supplier prices not yet quoted.
+- **Legal limit (must be respected in all copy and ads):** the TGA prohibits advertising prescription medicines
+  including GLP-1s to the public, with large penalties. The store must not promote the medicines, name them in
+  the brand, or make weight-loss or treatment claims. Whether "fits X pen" compatibility wording is acceptable
+  is unverified and must be checked against TGA guidance before launch. Cooling-time claims must come from the
+  owner's own tests.
+
 ### Open items
-- Owner decision on the new niche.
-- Owner to create a free Dropshipzone account (needs the ABN) so wholesale prices and shipping fees can be checked.
-- Brand question: AYSOSE / aysose.com was built for activewear; decide whether to keep the name for the new niche.
+- Owner decision: go with the injection-pen companion store, or fall back to cat containment.
+- If yes: new brand name and domain (AYSOSE does not fit), TGA wording check, supplier quotes, 3 sample cases.
+- Dropshipzone account awaiting approval (still useful for the strength-at-home range).
 - Still open: business address for the store, traffic truth for aysose.com, WooCommerce customer export.
 - Paid plan and refund / shipping / terms policies are not done yet.
