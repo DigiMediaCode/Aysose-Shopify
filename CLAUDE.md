@@ -174,8 +174,17 @@ Session 1 should end with a written decision on: niche angle, market, supplier t
 - **Still unknown (owner only):** real human traffic (Cloudflare Web Analytics, Search Console), WooCommerce
   orders and customer list.
 
+### 15 Nov 2026 — New Shopify store connected
+- **Store:** "My Store 4" (needs renaming to AYSOSE), `9jfwxy-kf.myshopify.com`, created 14 Nov 2026.
+- **Plan:** Trial. Must be upgraded to a paid plan before it can sell.
+- **Settings found:** currency AUD, timezone Sydney, contact email staff@aysose.com, one market (Australia),
+  one location ("Shop location", id 82412208212).
+- **Theme:** Horizon is the live theme (id 147591233620). Not yet connected to GitHub.
+- **Content:** 0 products, 1 default collection, 1 page (Contact), default menus, default privacy policy that
+  still says "My Store 4". No refund, shipping or terms policy yet. No apps besides the Claude connector.
+- **Old store on shop.aysose.com** is a separate, frozen store. Not used for this project.
+
 ### Open items
-- Shopify connector was pointing at a different store (not this project). Disconnected on 15 Nov; waiting on
-  the owner to authorise the AYSOSE store.
-- Repo is empty apart from this file. Horizon theme and the `dev` / `main` branches come after the store is
-  connected.
+- Session 1 decisions (section 6) are still open.
+- Store name, legal policies, and the Horizon → GitHub connection (`dev` / `main` branches) are not done yet.
+- Real traffic numbers for aysose.com (Cloudflare Web Analytics, Search Console) still needed from the owner.
