@@ -392,6 +392,28 @@ already works with. Start manually (a simple page plus messaging) before buildin
 - Validation proposed: get 3 shops to agree to a commission and send package menus, then land 3 paid orders
   in December before writing any platform code.
 
+### 15 Nov 2026 — FULL RESET: digital marketplace, owner profile reduced to "web programmer"
+**Owner's brief:** forget every earlier idea and everything about his other work and clients. No food ideas.
+Only two facts to use: he is a web programmer and wants a digital marketplace business. It must be digital,
+easy to market, in demand and take little time to run.
+
+**Research**
+- Vibe-coding tools: Lovable about 8 million users and 100,000+ new projects a day, about 4 in 5 users
+  non-technical; Bolt 5–7 million users; Replit 35–50 million. Figures are from secondary reports and conflict.
+  One report cites Barclays data showing traffic falling (Lovable -40%, Bolt -27%); unverified.
+- Help for stuck builders today: agencies ($1,500 audits, $6,000–50,000 rescues), hourly experts
+  ($60–200+ an hour on MentorCruise), Lovable's own partner directory, VibeCodeFixers (free directory, about 300
+  developers, only 30–40 projects matched as of a 2025 report, payment arranged privately), vibecodejobs.io
+  (job board, $1 to post). No marketplace found with fixed-price small jobs, checkout and held payment.
+- Rejected: marketplace for AI agent skills / workflow templates — over a million free listings, sellers mostly
+  earn $0–50 a month, 10% commissions on $10–25 items.
+
+**Recommendation given to the owner:** a fixed-price "finish my AI-built app" marketplace. Non-technical
+builders pick a priced job (deploy, bug fix, security check, payments setup), pay up front, a vetted developer
+does it, the platform keeps about 20%. AI reads the app and error, picks the right package and writes the
+developer brief. Owner does the first jobs himself, then adds developers.
+- Validation proposed: one page with six priced packages; 5 paid jobs within 3 weeks before building the platform.
+
 ### Open items
-- Owner decision on the catering middleman idea.
-- Parked: AI recommendation checker, Shopify store "Aysose" on trial, Dropshipzone account, aysose.com migration.
+- Owner decision on the fixed-price app-rescue marketplace.
+- Parked: everything above this entry, including the Shopify store "Aysose" on its trial plan.
