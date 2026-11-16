@@ -80,7 +80,22 @@
     </script>
 
     {% if section.settings.landing_mode %}
-      <p class="pc-checker__brand">{{ shop.name | escape }}</p>
+      {% assign brand_logo = settings.logo_inverse | default: settings.logo %}
+      {% if brand_logo != blank %}
+        <a
+          class="pc-checker__brand pc-checker__brand--logo"
+          href="{{ routes.root_url }}"
+          style="--pc-logo-height: {{ settings.logo_height }}px; --pc-logo-height-mobile: {{ settings.logo_height_mobile }}px;"
+        >
+          {{
+            brand_logo
+            | image_url: height: 200
+            | image_tag: alt: shop.name, class: 'pc-checker__brand-image', loading: 'eager'
+          }}
+        </a>
+      {% else %}
+        <p class="pc-checker__brand">{{ shop.name | escape }}</p>
+      {% endif %}
     {% endif %}
 
     <header class="pc-checker__intro">
@@ -596,12 +611,36 @@
     color: inherit;
   }
 
+  /* The hidden attribute must win over the display rules below. */
+  .pc-checker [hidden] {
+    display: none;
+  }
+
   .pc-checker__brand {
+    align-self: center;
     font-family: var(--font-heading--family);
     font-size: 1.0625rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+  }
+
+  .pc-checker__brand--logo {
+    display: block;
+    line-height: 0;
+  }
+
+  .pc-checker__brand-image {
+    display: block;
+    width: auto;
+    height: var(--pc-logo-height-mobile, 28px);
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pc-checker__brand-image {
+      height: var(--pc-logo-height, 36px);
+    }
   }
 
   .pc-checker__intro {
