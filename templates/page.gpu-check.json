@@ -4,7 +4,6 @@
       "type": "pc-checker",
       "settings": {
         "use_page_content": true,
-        "cards_menu": "graphics-cards",
         "eyebrow": "Unofficial estimate"
       }
     }

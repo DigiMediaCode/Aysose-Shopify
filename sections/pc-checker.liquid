@@ -508,8 +508,7 @@
       </script>
     {% endif %}
 
-    {% assign cards_menu = section.settings.cards_menu %}
-    {% if cards_menu != blank and cards_menu.links.size > 0 %}
+    {% if section.settings.show_card_links %}
       <nav
         class="pc-checker__cards"
         aria-label="{{ section.settings.cards_heading | escape }}"
@@ -518,11 +517,7 @@
           <h2 class="pc-checker__subtitle">{{ section.settings.cards_heading | escape }}</h2>
         {% endif %}
         <ul class="pc-checker__cards-list">
-          {% for link in cards_menu.links %}
-            <li>
-              <a href="{{ link.url }}">{{ link.title | escape }}</a>
-            </li>
-          {% endfor %}
+          {% render 'pc-card-links' %}
         </ul>
       </nav>
     {% endif %}
@@ -1388,9 +1383,10 @@
       "default": false
     },
     {
-      "type": "link_list",
-      "id": "cards_menu",
-      "label": "Menu listing the graphics card pages"
+      "type": "checkbox",
+      "id": "show_card_links",
+      "label": "Show links to the graphics card pages",
+      "default": true
     },
     {
       "type": "text",
