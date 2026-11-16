@@ -605,9 +605,14 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Consent scope:** the signup text only promises PC release and requirements news. Before sending
   merchandise or other promotions to this list, the signup text must say so. Owner to decide on the wording.
 
+### 16 Nov 2026 — Signup wording widened (live)
+- On the owner's word, the text beside the email box now also says subscribers get "occasional updates from
+  Aysose" (both the locked-result text and the separate signup box). This applies to people who sign up from
+  now on. Anyone who subscribed before this change only agreed to PC release and requirements news.
+- The welcome email should carry the same line.
+
 ### Open items
 - Owner: turn on double opt-in, paste the two emails, test with a fresh email address.
-- Owner decision: widen the signup wording to cover occasional Aysose updates (needed before any promotions).
 - Owner: Search Console clean-up steps and sitemap submission.
 - Owner to supply the business name and address for the contact information policy.
 - Owner decisions: affiliate programs for the upgrade links.
