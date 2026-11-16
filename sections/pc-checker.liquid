@@ -22,13 +22,26 @@
 {% endif %}
 
 {% liquid
-  assign card = blank
+  assign card_name = blank
   assign card_gpu = blank
   if request.page_type == 'page' and section.settings.use_page_content
-    assign card = page.metafields.custom.card.value
-    if card != blank
-      assign card_gpu = card.n
-    endif
+    assign card_name = page.title | remove_first: 'Can the ' | remove: ' run GTA 6?' | strip
+  endif
+%}
+{% capture card_row %}{% render 'pc-card-data', name: card_name %}{% endcapture %}
+{% liquid
+  assign card_row = card_row | strip
+  if card_row != blank
+    assign card_fields = card_row | split: '|'
+    assign card_gpu = card_name
+    assign card_memory = card_fields[0]
+    assign levels = card_fields[1] | split: ''
+    assign reasons = card_fields[2] | split: ''
+    assign card_best = card_fields[3] | plus: 0
+    assign card_next = card_fields[4] | plus: 0
+    assign card_laptop = card_fields[5] | plus: 0
+    assign card_down = card_fields[6]
+    assign card_up = card_fields[7]
   endif
 
   comment
@@ -76,22 +89,18 @@
       {% endif %}
       {% if request.page_type == 'page' and section.settings.use_page_content %}
         <h1 class="pc-checker__title pc-checker__title--page">{{ page.title | escape }}</h1>
-        {% if card != blank %}
-          {% liquid
-            assign levels = card.l | split: ''
-            assign reasons = card.r | split: ''
-          %}
+        {% if card_gpu != blank %}
           <div class="pc-checker__article">
             <p>
               <strong>
-                {%- if card.b >= 0 -%}
-                  Our estimate: the {{ card.n | escape }} should run GTA 6 on PC at {{ level_names[card.b] }}, as long
+                {%- if card_best >= 0 -%}
+                  Our estimate: the {{ card_name | escape }} should run GTA 6 on PC at {{ level_names[card_best] }}, as long
                   as the processor, memory and drive keep up.
                 {%- elsif levels[0] == 'n' -%}
-                  Our estimate: the {{ card.n | escape }} is borderline for GTA 6 on PC, even at 1080p with low
+                  Our estimate: the {{ card_name | escape }} is borderline for GTA 6 on PC, even at 1080p with low
                   settings.
                 {%- else -%}
-                  Our estimate: the {{ card.n | escape }} is unlikely to run GTA 6 on PC.
+                  Our estimate: the {{ card_name | escape }} is unlikely to run GTA 6 on PC.
                 {%- endif -%}
               </strong>
             </p>
@@ -100,7 +109,7 @@
               estimate and not an official figure.
             </p>
 
-            <h2>{{ card.n | escape }} at each quality level</h2>
+            <h2>{{ card_name | escape }} at each quality level</h2>
             <ul>
               {% for level_name in level_names %}
                 {% liquid
@@ -119,9 +128,9 @@
                   {% if why == 's' %}
                     (not fast enough on our estimate)
                   {% elsif why == 'v' %}
-                    ({{ card.v }} GB of video memory against an estimated {{ level_memory[forloop.index0] }} GB)
+                    ({{ card_memory }} GB of video memory against an estimated {{ level_memory[forloop.index0] }} GB)
                   {% elsif why == 'b' %}
-                    (not fast enough on our estimate; {{ card.v }} GB of video memory against an estimated
+                    (not fast enough on our estimate; {{ card_memory }} GB of video memory against an estimated
                     {{ level_memory[forloop.index0] }} GB)
                   {% endif %}
                 </li>
@@ -129,28 +138,28 @@
             </ul>
 
             <h2>What would it take to go higher?</h2>
-            {% if card.x >= 0 %}
+            {% if card_next >= 0 %}
               <p>
-                The {{ card.n | escape }} has {{ card.v }} GB of video memory. Our estimate for
-                {{ level_names[card.x] }} is a card around {{ level_cards[card.x] }} with {{ level_memory[card.x] }} GB.
+                The {{ card_name | escape }} has {{ card_memory }} GB of video memory. Our estimate for
+                {{ level_names[card_next] }} is a card around {{ level_cards[card_next] }} with {{ level_memory[card_next] }} GB.
               </p>
             {% else %}
               <p>
-                The {{ card.n | escape }} has {{ card.v }} GB of video memory and clears every level in our estimate,
+                The {{ card_name | escape }} has {{ card_memory }} GB of video memory and clears every level in our estimate,
                 including 4K at high settings.
               </p>
             {% endif %}
-            {% if card.d != blank or card.u != blank %}
+            {% if card_down != blank or card_up != blank %}
               <p>
                 For comparison:
-                {% if card.d != blank %}
-                  {% assign down_handle = card.d | handleize %}
-                  <a href="{{ routes.root_url }}pages/can-the-{{ down_handle }}-run-gta-6">{{ card.d | escape }}</a>
+                {% if card_down != blank %}
+                  {% assign down_handle = card_down | handleize %}
+                  <a href="{{ routes.root_url }}pages/can-the-{{ down_handle }}-run-gta-6">{{ card_down | escape }}</a>
                   is the next card down in our list.
                 {% endif %}
-                {% if card.u != blank %}
-                  {% assign up_handle = card.u | handleize %}
-                  <a href="{{ routes.root_url }}pages/can-the-{{ up_handle }}-run-gta-6">{{ card.u | escape }}</a>
+                {% if card_up != blank %}
+                  {% assign up_handle = card_up | handleize %}
+                  <a href="{{ routes.root_url }}pages/can-the-{{ up_handle }}-run-gta-6">{{ card_up | escape }}</a>
                   is the next card up.
                 {% endif %}
               </p>
@@ -160,8 +169,8 @@
             <p>
               Laptop versions of a graphics card are roughly a fifth slower than the desktop card with the same name.
               If yours is in a laptop, our estimate
-              {% if card.t >= 0 %}
-                is {{ level_names[card.t] }}.
+              {% if card_laptop >= 0 %}
+                is {{ level_names[card_laptop] }}.
               {% else %}
                 falls below the lowest level.
               {% endif %}
