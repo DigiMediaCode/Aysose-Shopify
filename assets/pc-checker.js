@@ -7,7 +7,7 @@
  */
 
 // [name, score, video memory in GB]
-const GPUS = {
+export const GPUS = {
   'Nvidia GeForce RTX 50': [
     ['RTX 5090', 400, 32],
     ['RTX 5080', 300, 16],
@@ -101,7 +101,7 @@ const GPUS = {
 };
 
 // [name, score]
-const CPUS = {
+export const CPUS = {
   'AMD Ryzen 9000': [
     ['Ryzen 7 9800X3D', 230],
     ['Ryzen 9 9950X3D', 225],
@@ -172,7 +172,7 @@ const CPUS = {
   ],
 };
 
-const TIERS = [
+export const TIERS = [
   {
     id: 'min',
     label: '1080p, low settings',
@@ -361,6 +361,7 @@ function init(root) {
   fillSelect(cpuSelect, CPUS, 'Ryzen 5 5600');
 
   // Bring back the parts the visitor chose before the email form reloaded the page.
+  const preselect = root.dataset.preselectGpu || '';
   let touched = false;
   try {
     const saved = JSON.parse(readStore(STORE_KEY) || 'null');
@@ -374,6 +375,12 @@ function init(root) {
     }
   } catch (error) {
     // Ignore unreadable saved parts and start from the example.
+  }
+
+  // A page about one graphics card starts with that card selected.
+  if (preselect && find(GPUS, preselect)) {
+    gpuSelect.value = preselect;
+    touched = true;
   }
 
   if (stats) {

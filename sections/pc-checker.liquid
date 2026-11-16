@@ -21,6 +21,13 @@
   {% endstyle %}
 {% endif %}
 
+{% liquid
+  assign card_gpu = blank
+  if request.page_type == 'page' and section.settings.use_page_content
+    assign card_gpu = page.metafields.custom.gpu.value
+  endif
+%}
+
 <div
   class="pc-checker-shell"
   style="{% render 'spacing-padding', settings: section.settings %}"
@@ -28,6 +35,9 @@
   <div
     class="pc-checker"
     data-pc-checker
+    {% if card_gpu != blank %}
+      data-preselect-gpu="{{ card_gpu | escape }}"
+    {% endif %}
   >
     <script
       type="application/json"
@@ -53,14 +63,24 @@
       {% if section.settings.eyebrow != blank %}
         <p class="pc-checker__chip">{{ section.settings.eyebrow | escape }}</p>
       {% endif %}
-      <h1 class="pc-checker__title">
-        {{ section.settings.heading | escape }}
-        {% if section.settings.heading_highlight != blank %}
-          <span class="pc-checker__title-highlight">{{ section.settings.heading_highlight | escape }}</span>
+      {% if request.page_type == 'page' and section.settings.use_page_content %}
+        <h1 class="pc-checker__title pc-checker__title--page">{{ page.title | escape }}</h1>
+        {% if page.content != blank %}
+          <div class="pc-checker__article">{{ page.content }}</div>
         {% endif %}
-      </h1>
-      {% if section.settings.intro != blank %}
-        <p class="pc-checker__lede">{{ section.settings.intro | escape }}</p>
+        <p class="pc-checker__back">
+          <a href="{{ routes.root_url }}">Check a different PC</a>
+        </p>
+      {% else %}
+        <h1 class="pc-checker__title">
+          {{ section.settings.heading | escape }}
+          {% if section.settings.heading_highlight != blank %}
+            <span class="pc-checker__title-highlight">{{ section.settings.heading_highlight | escape }}</span>
+          {% endif %}
+        </h1>
+        {% if section.settings.intro != blank %}
+          <p class="pc-checker__lede">{{ section.settings.intro | escape }}</p>
+        {% endif %}
       {% endif %}
       <ul
         class="pc-checker__stats"
@@ -371,6 +391,25 @@
           ]
         }
       </script>
+    {% endif %}
+
+    {% assign cards_menu = section.settings.cards_menu %}
+    {% if cards_menu != blank and cards_menu.links.size > 0 %}
+      <nav
+        class="pc-checker__cards"
+        aria-label="{{ section.settings.cards_heading | escape }}"
+      >
+        {% if section.settings.cards_heading != blank %}
+          <h2 class="pc-checker__subtitle">{{ section.settings.cards_heading | escape }}</h2>
+        {% endif %}
+        <ul class="pc-checker__cards-list">
+          {% for link in cards_menu.links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title | escape }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
     {% endif %}
 
     {% if section.settings.disclaimer != blank %}
@@ -1078,6 +1117,74 @@
     font-size: 0.9375rem;
   }
 
+  .pc-checker__title--page {
+    font-size: clamp(2rem, 6.5vw, 3.5rem);
+  }
+
+  .pc-checker__article {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    max-width: 40rem;
+    color: var(--pc-text);
+    font-size: 1.0625rem;
+  }
+
+  .pc-checker__article :where(h2) {
+    margin-top: 0.5rem;
+    font-family: var(--font-heading--family);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--pc-text);
+  }
+
+  .pc-checker__article :where(ul) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding-inline-start: 1.25rem;
+  }
+
+  .pc-checker__article :where(a),
+  .pc-checker__back a {
+    color: var(--pc-accent);
+    text-decoration: underline;
+  }
+
+  .pc-checker__back {
+    font-size: 0.9375rem;
+  }
+
+  .pc-checker__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .pc-checker__cards-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-checker__cards-list a {
+    display: inline-block;
+    padding: 0.4375rem 0.75rem;
+    border: 1px solid var(--pc-line);
+    border-radius: 999px;
+    background: var(--pc-surface);
+    color: var(--pc-text);
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+
+  .pc-checker__cards-list a:hover {
+    border-color: var(--pc-accent);
+    color: var(--pc-accent);
+  }
+
   .pc-checker__legal {
     display: flex;
     flex-wrap: wrap;
@@ -1157,6 +1264,24 @@
       "id": "disclaimer",
       "label": "Disclaimer",
       "default": "Unofficial fan-made tool. Not affiliated with or endorsed by Rockstar Games or Take-Two Interactive. Grand Theft Auto is a trademark of its owner."
+    },
+    {
+      "type": "checkbox",
+      "id": "use_page_content",
+      "label": "Use the page's own title and text",
+      "info": "For pages about one graphics card. The heading and introduction above are then not used.",
+      "default": false
+    },
+    {
+      "type": "link_list",
+      "id": "cards_menu",
+      "label": "Menu listing the graphics card pages"
+    },
+    {
+      "type": "text",
+      "id": "cards_heading",
+      "label": "Heading above the graphics card links",
+      "default": "Check a specific graphics card"
     },
     {
       "type": "text",

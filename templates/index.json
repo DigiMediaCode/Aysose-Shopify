@@ -73,7 +73,8 @@
       "settings": {
         "heading": "Can my PC run",
         "heading_highlight": "GTA 6?",
-        "intro": "Pick your graphics card and processor to see our estimate for Grand Theft Auto VI on PC at four quality levels."
+        "intro": "Pick your graphics card and processor to see our estimate for Grand Theft Auto VI on PC at four quality levels.",
+        "cards_menu": "graphics-cards"
       }
     }
   },
