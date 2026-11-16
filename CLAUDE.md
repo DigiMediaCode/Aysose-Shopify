@@ -579,9 +579,25 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 
 **Logo:** a gaming-themed AYSOSE logo was started in Canva (see chat for the design link).
 
+### 16 Nov 2026 — First real signup: overlay bug fixed, logo in the header (live)
+- **Owner's test:** signup with his own email worked (the customer appeared in Shopify and the page unlocked
+  with his parts kept), but the email form stayed on top of the result.
+- **Cause and fix:** the form overlay's `display: flex` rule beat its `hidden` attribute. Added a rule so
+  `hidden` always wins inside the checker. The earlier local test missed it because the test page had its own
+  rule doing that. Pushed to `dev` and `main` because the bug was on the live site.
+- **Verified on aysose.com:** locked state shows the form; with the device unlocked the form is gone and the
+  result shows with the chosen card kept.
+- **No email after signup is expected:** Shopify does not send anything to a new subscriber unless a welcome
+  automation is set up (Marketing → Automations). Not set up yet; owner's choice.
+- **Logo:** the owner uploaded the logo in theme settings (logo and inverse logo). In landing page mode the
+  section now shows the inverse logo, centred at the top, linking to the homepage, at the theme's "Logo
+  height" settings (currently 36px desktop, 28px mobile). Falls back to the shop name as text if no logo is set.
+- **Gotcha:** Shopify commits theme-editor changes to the `main` branch ("Update from Shopify for theme ...").
+  Always `git fetch origin main` and merge it before pushing, or the push is rejected or settings are lost.
+
 ### Open items
-- Owner: test a real signup on aysose.com with his own email.
+- Owner decision: set up a welcome email for new subscribers (draft offered in chat).
 - Owner: Search Console clean-up steps and sitemap submission.
 - Owner to supply the business name and address for the contact information policy.
-- Owner decisions: logo choice, affiliate programs for the upgrade links.
+- Owner decisions: affiliate programs for the upgrade links.
 - Parked: all earlier niche ideas above.
