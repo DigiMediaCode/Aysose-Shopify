@@ -595,8 +595,19 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Gotcha:** Shopify commits theme-editor changes to the `main` branch ("Update from Shopify for theme ...").
   Always `git fetch origin main` and merge it before pushing, or the push is rejected or settings are lost.
 
+### 16 Nov 2026 — Subscriber emails
+- Recommended turning **Marketing double opt-in** on (Settings → Notifications → Customer notifications →
+  Customer marketing confirmation), because the result is locked behind the email box and that invites junk
+  addresses. Shopify Messaging is already installed in the store.
+- Wrote two emails for the owner to paste in (text is in the chat): the confirmation email (same Notifications
+  screen, change wording only, keep the code in curly brackets) and a welcome email (Marketing → Automations →
+  "Welcome new subscribers").
+- **Consent scope:** the signup text only promises PC release and requirements news. Before sending
+  merchandise or other promotions to this list, the signup text must say so. Owner to decide on the wording.
+
 ### Open items
-- Owner decision: set up a welcome email for new subscribers (draft offered in chat).
+- Owner: turn on double opt-in, paste the two emails, test with a fresh email address.
+- Owner decision: widen the signup wording to cover occasional Aysose updates (needed before any promotions).
 - Owner: Search Console clean-up steps and sitemap submission.
 - Owner to supply the business name and address for the contact information policy.
 - Owner decisions: affiliate programs for the upgrade links.
