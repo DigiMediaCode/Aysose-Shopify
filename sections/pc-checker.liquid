@@ -22,10 +22,21 @@
 {% endif %}
 
 {% liquid
+  assign card = blank
   assign card_gpu = blank
   if request.page_type == 'page' and section.settings.use_page_content
-    assign card_gpu = page.metafields.custom.gpu.value
+    assign card = page.metafields.custom.card.value
+    if card != blank
+      assign card_gpu = card.n
+    endif
   endif
+
+  comment
+    Level names and example parts for the single-card text. Keep in step with TIERS in assets/pc-checker.js.
+  endcomment
+  assign level_names = '1080p, low settings|1080p, high settings|1440p, high settings|4K, high settings' | split: '|'
+  assign level_cards = 'GTX 1660 Super or RX 5600 XT|RTX 3060 Ti or RX 6700 XT|RTX 4070 Super or RX 7800 XT|RTX 4080 or RX 9070 XT' | split: '|'
+  assign level_memory = '6|8|12|16' | split: '|'
 %}
 
 <div
@@ -65,7 +76,102 @@
       {% endif %}
       {% if request.page_type == 'page' and section.settings.use_page_content %}
         <h1 class="pc-checker__title pc-checker__title--page">{{ page.title | escape }}</h1>
-        {% if page.content != blank %}
+        {% if card != blank %}
+          {% liquid
+            assign levels = card.l | split: ''
+            assign reasons = card.r | split: ''
+          %}
+          <div class="pc-checker__article">
+            <p>
+              <strong>
+                {%- if card.b >= 0 -%}
+                  Our estimate: the {{ card.n | escape }} should run GTA 6 on PC at {{ level_names[card.b] }}, as long
+                  as the processor, memory and drive keep up.
+                {%- elsif levels[0] == 'n' -%}
+                  Our estimate: the {{ card.n | escape }} is borderline for GTA 6 on PC, even at 1080p with low
+                  settings.
+                {%- else -%}
+                  Our estimate: the {{ card.n | escape }} is unlikely to run GTA 6 on PC.
+                {%- endif -%}
+              </strong>
+            </p>
+            <p>
+              Rockstar has not announced a PC version of Grand Theft Auto VI or its requirements, so this is our own
+              estimate and not an official figure.
+            </p>
+
+            <h2>{{ card.n | escape }} at each quality level</h2>
+            <ul>
+              {% for level_name in level_names %}
+                {% liquid
+                  assign state = levels[forloop.index0]
+                  assign why = reasons[forloop.index0]
+                %}
+                <li>
+                  {{ level_name }}:
+                  {% if state == 'p' %}
+                    Should run
+                  {% elsif state == 'n' %}
+                    Borderline
+                  {% else %}
+                    Unlikely
+                  {% endif %}
+                  {% if why == 's' %}
+                    (not fast enough on our estimate)
+                  {% elsif why == 'v' %}
+                    ({{ card.v }} GB of video memory against an estimated {{ level_memory[forloop.index0] }} GB)
+                  {% elsif why == 'b' %}
+                    (not fast enough on our estimate; {{ card.v }} GB of video memory against an estimated
+                    {{ level_memory[forloop.index0] }} GB)
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+
+            <h2>What would it take to go higher?</h2>
+            {% if card.x >= 0 %}
+              <p>
+                The {{ card.n | escape }} has {{ card.v }} GB of video memory. Our estimate for
+                {{ level_names[card.x] }} is a card around {{ level_cards[card.x] }} with {{ level_memory[card.x] }} GB.
+              </p>
+            {% else %}
+              <p>
+                The {{ card.n | escape }} has {{ card.v }} GB of video memory and clears every level in our estimate,
+                including 4K at high settings.
+              </p>
+            {% endif %}
+            {% if card.d != blank or card.u != blank %}
+              <p>
+                For comparison:
+                {% if card.d != blank %}
+                  {% assign down_handle = card.d | handleize %}
+                  <a href="{{ routes.root_url }}pages/can-the-{{ down_handle }}-run-gta-6">{{ card.d | escape }}</a>
+                  is the next card down in our list.
+                {% endif %}
+                {% if card.u != blank %}
+                  {% assign up_handle = card.u | handleize %}
+                  <a href="{{ routes.root_url }}pages/can-the-{{ up_handle }}-run-gta-6">{{ card.u | escape }}</a>
+                  is the next card up.
+                {% endif %}
+              </p>
+            {% endif %}
+
+            <h2>Laptop version</h2>
+            <p>
+              Laptop versions of a graphics card are roughly a fifth slower than the desktop card with the same name.
+              If yours is in a laptop, our estimate
+              {% if card.t >= 0 %}
+                is {{ level_names[card.t] }}.
+              {% else %}
+                falls below the lowest level.
+              {% endif %}
+            </p>
+            <p>
+              The graphics card is only one part. Add your processor, memory and drive in the checker below for the
+              full result.
+            </p>
+          </div>
+        {% elsif page.content != blank %}
           <div class="pc-checker__article">{{ page.content }}</div>
         {% endif %}
         <p class="pc-checker__back">
