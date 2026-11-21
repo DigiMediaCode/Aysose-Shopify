@@ -611,8 +611,24 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
   now on. Anyone who subscribed before this change only agreed to PC release and requirements news.
 - The welcome email should carry the same line.
 
+### 21 Nov 2026 — Signups arriving but stuck as "pending"
+- **Owner's report:** many emails are coming in, but they show as pending subscribers. Cause: double opt-in is
+  on, so a signup only counts once the person taps the link in the confirmation email, and most do not.
+- **Decision recommended to the owner:** turn double opt-in off (Settings → Notifications → Customer
+  notifications → Customer marketing confirmation). New signups are then subscribed straight away. This reverses
+  the earlier advice; the real numbers showed the confirmation step loses most of the list.
+- **Wording changed (live):** the text beside the email box now says "By entering your email you agree to
+  receive emails from Aysose: news about the PC version and its official requirements, and occasional updates.
+  Unsubscribe any time." This is the consent that single opt-in relies on.
+- **Existing pending signups:** advised NOT to convert them to subscribed by hand. The confirmation email they
+  received says "If this wasn't you, ignore this email and you won't hear from us", and some of those addresses
+  will be junk or belong to someone else. Owner's call.
+- **Gotcha repeated:** the Shopify connector was pointing at SeenSheen again on 21 Nov. Nothing was read beyond
+  the store name and nothing was changed. This task needed no store access. Check the store before any store call.
+
 ### Open items
-- Owner: turn on double opt-in, paste the two emails, test with a fresh email address.
+- Owner: turn double opt-in off; decide what to do with the existing pending signups.
+- Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps and sitemap submission.
 - Owner to supply the business name and address for the contact information policy.
 - Owner decisions: affiliate programs for the upgrade links.
