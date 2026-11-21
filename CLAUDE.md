@@ -689,9 +689,26 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - Not done: other countries' Amazon stores (Amazon OneLink, set up inside the owner's Amazon account, can
   redirect UK / Canada / Germany visitors; it needs sign-ups to those programs).
 
+### 22 Nov 2026 — Amazon IDs live; 50 processor pages (live)
+- **Amazon IDs:** `aysoseus-20` (Amazon.com) and `aysose-22` (Amazon.com.au). The owner entered them on the
+  homepage; the card pages showed no links because section settings are saved per template. The same IDs are
+  now written into `templates/page.gpu-check.json`. If an ID ever changes, change it in both templates.
+- **Processor pages:** 50 pages, one per processor in the checker, titled "Can the <processor> run GTA 6?",
+  address `/pages/can-the-<processor>-run-gta-6`, same page template `gpu-check` as the graphics card pages.
+  The section looks the name up in `snippets/pc-card-data.liquid` (graphics cards) and then
+  `snippets/pc-cpu-data.liquid` (processors). Each page has a free written estimate for that processor, links
+  to the next processor up and down, Amazon links, and the checker with that processor already selected.
+- `tools/generate-card-pages.mjs` now also writes `pc-cpu-data.liquid` and `pc-cpu-links.liquid`. The example
+  processors per level are repeated in the section (`level_cpus`); keep them in step with `TIERS`.
+- Homepage and every part page now list links to all 69 graphics card pages and all 50 processor pages.
+- **Verified on aysose.com at 380px:** a processor page from a United States time zone links to Amazon.com
+  with `aysoseus-20`; from Sydney to Amazon.com.au with `aysose-22`; the RTX 3050 card page now shows its three
+  Amazon links; the Amazon notice shows; no sideways scroll; no script errors.
+- **Gotcha:** in Liquid, do not test a variable that was assigned `blank` with `!= blank`; assign `''` instead.
+- Not tested: whether Amazon credits a real purchase (only the owner's Associates reports can show that).
+
 ### Open items
-- Owner: paste both Amazon tracking IDs into the theme editor (homepage and the graphics card page template).
-- Owner decision: build processor pages next (recommended).
+- Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps and sitemap submission.
 - Owner to supply the business name and address for the contact information policy.
