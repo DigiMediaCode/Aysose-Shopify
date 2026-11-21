@@ -64,6 +64,27 @@
   assign level_memory = '6|8|12|16' | split: '|'
   assign level_cpus = 'Core i5-10400 or Ryzen 5 3600|Core i5-12400 or Ryzen 5 5600|Core i5-12600K or Ryzen 5 5600X|Core i5-13600K or Ryzen 7 7700X' | split: '|'
   assign amazon_tag = section.settings.amazon_tag | strip
+
+  comment
+    Upgrade guide pages: "Best graphics card for GTA 6 ..." and "Best processor for GTA 6 ...".
+  endcomment
+  assign best_kind = ''
+  assign best_levels = '0,1,2,3' | split: ','
+  if request.page_type == 'page' and section.settings.use_page_content
+    assign guide_title = page.title | downcase
+    if guide_title contains 'best graphics card for gta 6'
+      assign best_kind = 'gpu'
+    elsif guide_title contains 'best processor for gta 6'
+      assign best_kind = 'cpu'
+    endif
+    if guide_title contains ' at 1080p'
+      assign best_levels = '0,1' | split: ','
+    elsif guide_title contains ' at 1440p'
+      assign best_levels = '2' | split: ','
+    elsif guide_title contains ' at 4k'
+      assign best_levels = '3' | split: ','
+    endif
+  endif
 %}
 
 <div
@@ -355,6 +376,101 @@
               The processor is only one part, and in most games the graphics card decides the quality level. Add
               your graphics card, memory and drive in the checker below for the full result.
             </p>
+          </div>
+        {% elsif best_kind != '' %}
+          <div class="pc-checker__article">
+            <p>
+              <strong>
+                {%- if best_kind == 'gpu' -%}
+                  These are the graphics cards we would look at for GTA 6 on PC, by quality level, based on our own
+                  estimate of what the game will need.
+                {%- else -%}
+                  These are the processors we would look at for GTA 6 on PC, by quality level, based on our own
+                  estimate of what the game will need.
+                {%- endif -%}
+              </strong>
+            </p>
+            <p>
+              Rockstar has not announced a PC version of Grand Theft Auto VI or its requirements, so this is our own
+              estimate and not an official figure. If you can wait, the safest time to buy is after the official
+              requirements are published.
+            </p>
+
+            {% for level_text in best_levels %}
+              {% liquid
+                assign level_index = level_text | plus: 0
+                assign best_key = best_kind | append: level_text
+              %}
+              {% capture best_row %}{% render 'pc-best-data', key: best_key %}{% endcapture %}
+              {% assign best_parts = best_row | strip | split: ';' %}
+              <h2>{{ level_names[level_index] }}</h2>
+              <p>
+                {% if best_kind == 'gpu' %}
+                  Our estimate for this level is a card around {{ level_cards[level_index] }} with
+                  {{ level_memory[level_index] }} GB of video memory. The smallest cards still sold new that clear it:
+                {% else %}
+                  Our estimate for this level is a processor around {{ level_cpus[level_index] }}. The smallest
+                  processors still sold new that clear it:
+                {% endif %}
+              </p>
+              <ul>
+                {% for best_part in best_parts %}
+                  {% liquid
+                    assign part_fields = best_part | split: '~'
+                    assign part_name = part_fields[0]
+                    assign part_handle = part_name | handleize
+                    if best_kind == 'gpu'
+                      assign part_words = part_name | append: ' graphics card'
+                    else
+                      assign part_words = part_name | append: ' processor'
+                    endif
+                  %}
+                  <li>
+                    <a href="{{ routes.root_url }}pages/can-the-{{ part_handle }}-run-gta-6">{{ part_name | escape }}</a>
+                    {%- if best_kind == 'gpu' %} ({{ part_fields[1] }} GB of video memory){% endif -%}
+                    {%- if amazon_tag != blank -%}
+                      :
+                      <a
+                        href="https://www.amazon.com/s?k={{ part_words | url_encode }}&tag={{ amazon_tag | url_encode }}"
+                        data-pc-amazon="{{ part_words | escape }}"
+                        target="_blank"
+                        rel="sponsored nofollow noopener"
+                      >
+                        see today's price on Amazon
+                      </a>
+                    {%- endif -%}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endfor %}
+
+            {% if amazon_tag != blank and section.settings.amazon_note != blank %}
+              <p class="pc-checker__advice-note">{{ section.settings.amazon_note | escape }}</p>
+            {% endif %}
+
+            <h2>Before you buy</h2>
+            <ul>
+              <li>Prices change often, so we do not list them here. Check the price on the day.</li>
+              {% if best_kind == 'gpu' %}
+                <li>
+                  Check that your power supply has enough watts and the right cables for the card, and that the card
+                  fits in your case.
+                </li>
+                <li>
+                  A fast graphics card is held back by a slow processor. Put your own parts in the checker below to
+                  see which part limits your PC.
+                </li>
+              {% else %}
+                <li>
+                  A processor only fits a motherboard with the matching socket, and newer ones may need new memory
+                  too. Check what your motherboard supports first.
+                </li>
+                <li>
+                  In most games the graphics card decides the quality level. Put your own parts in the checker
+                  below to see which part limits your PC.
+                </li>
+              {% endif %}
+            </ul>
           </div>
         {% elsif page.content != blank %}
           <div class="pc-checker__article">{{ page.content }}</div>
@@ -685,6 +801,17 @@
     {% endif %}
 
     {% if section.settings.show_card_links %}
+      <nav
+        class="pc-checker__cards"
+        aria-label="{{ section.settings.guides_heading | escape }}"
+      >
+        {% if section.settings.guides_heading != blank %}
+          <h2 class="pc-checker__subtitle">{{ section.settings.guides_heading | escape }}</h2>
+        {% endif %}
+        <ul class="pc-checker__cards-list">
+          {% render 'pc-best-links' %}
+        </ul>
+      </nav>
       <nav
         class="pc-checker__cards"
         aria-label="{{ section.settings.cards_heading | escape }}"
@@ -1600,8 +1727,14 @@
     {
       "type": "checkbox",
       "id": "show_card_links",
-      "label": "Show links to the graphics card and processor pages",
+      "label": "Show links to the upgrade guides, graphics card and processor pages",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "guides_heading",
+      "label": "Heading above the upgrade guide links",
+      "default": "Upgrade guides"
     },
     {
       "type": "text",
