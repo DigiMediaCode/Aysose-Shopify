@@ -634,9 +634,24 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - Not known: whether the earlier pending signups were switched by the owner by hand or changed when double
   opt-in was turned off.
 
+### 22 Nov 2026 — Traffic so far (Shopify analytics, 15–22 Nov)
+- **683 sessions** in total. By day: 15 Nov 13, 16 Nov 73, 17 Nov 44, 18 Nov 15, 19 Nov 169, 20 Nov 160,
+  21 Nov 187, 22 Nov 22 (part day). The jump on 19 Nov is when the card pages started getting search visits.
+- **Sources:** Google search 426 (62%), direct 235 (34%), Brave 11, Facebook 8, others 3. Some of the direct
+  sessions are the owner's visits and the automated checks run from this project, so real direct is lower.
+- **Landing pages:** homepage 90 sessions (13%); nearly all the rest land on the single-card pages. Top ones:
+  RTX 2080 Ti 23, RX 6900 XT 19, RTX 3060 Ti 18, RTX 5070 18, RTX 3080 Ti 17, RX 5700 XT 17, RTX 4080 Super 15.
+- **Countries:** United States 196 (29%), South Korea 27, India 24, United Kingdom 23, Germany 23, Pakistan 22,
+  Netherlands 21, Egypt 18, Australia 16, Turkey 16, Canada 15. The audience is global, not Australian.
+- **Devices:** desktop 348, mobile 334.
+- **Signups:** 47 real signups against roughly 650 visitors, about 7%.
+- **Implications:** the card pages are the traffic engine, so more pages of the same kind (processors, laptop
+  cards) are the obvious next step; upgrade links should point at retailers that serve the United States first.
+
 ### Open items
+- Owner decision: build processor pages next (recommended).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps and sitemap submission.
 - Owner to supply the business name and address for the contact information policy.
-- Owner decisions: affiliate programs for the upgrade links.
+- Owner decisions: affiliate programs for the upgrade links (US-first, given the traffic).
 - Parked: all earlier niche ideas above.
