@@ -22,16 +22,28 @@
 {% endif %}
 
 {% liquid
-  assign card_name = blank
-  assign card_gpu = blank
+  assign card_name = ''
+  assign card_gpu = ''
   if request.page_type == 'page' and section.settings.use_page_content
     assign card_name = page.title | remove_first: 'Can the ' | remove: ' run GTA 6?' | strip
   endif
 %}
 {% capture card_row %}{% render 'pc-card-data', name: card_name %}{% endcapture %}
+{% capture cpu_row %}{% render 'pc-cpu-data', name: card_name %}{% endcapture %}
 {% liquid
+  assign card_cpu = ''
+  assign cpu_row = cpu_row | strip
+  if cpu_row contains '|'
+    assign cpu_fields = cpu_row | split: '|'
+    assign card_cpu = card_name
+    assign cpu_levels = cpu_fields[0] | split: ''
+    assign cpu_best = cpu_fields[1] | plus: 0
+    assign cpu_next = cpu_fields[2] | plus: 0
+    assign cpu_down = cpu_fields[3]
+    assign cpu_up = cpu_fields[4]
+  endif
   assign card_row = card_row | strip
-  if card_row != blank
+  if card_row contains '|'
     assign card_fields = card_row | split: '|'
     assign card_gpu = card_name
     assign card_memory = card_fields[0]
@@ -50,6 +62,7 @@
   assign level_names = '1080p, low settings|1080p, high settings|1440p, high settings|4K, high settings' | split: '|'
   assign level_cards = 'GTX 1660 Super or RX 5600 XT|RTX 3060 Ti or RX 6700 XT|RTX 4070 Super or RX 7800 XT|RTX 4080 or RX 9070 XT' | split: '|'
   assign level_memory = '6|8|12|16' | split: '|'
+  assign level_cpus = 'Core i5-10400 or Ryzen 5 3600|Core i5-12400 or Ryzen 5 5600|Core i5-12600K or Ryzen 5 5600X|Core i5-13600K or Ryzen 7 7700X' | split: '|'
   assign amazon_tag = section.settings.amazon_tag | strip
 %}
 
@@ -62,6 +75,9 @@
     data-pc-checker
     {% if card_gpu != blank %}
       data-preselect-gpu="{{ card_gpu | escape }}"
+    {% endif %}
+    {% if card_cpu != blank %}
+      data-preselect-cpu="{{ card_cpu | escape }}"
     {% endif %}
   >
     <script
@@ -232,6 +248,112 @@
             <p>
               The graphics card is only one part. Add your processor, memory and drive in the checker below for the
               full result.
+            </p>
+          </div>
+        {% elsif card_cpu != blank %}
+          <div class="pc-checker__article">
+            <p>
+              <strong>
+                {%- if cpu_best >= 0 -%}
+                  Our estimate: the {{ card_name | escape }} is fast enough for GTA 6 on PC at
+                  {{ level_names[cpu_best] }}, as long as the graphics card, memory and drive keep up.
+                {%- elsif cpu_levels[0] == 'n' -%}
+                  Our estimate: the {{ card_name | escape }} is borderline for GTA 6 on PC, even at 1080p with low
+                  settings.
+                {%- else -%}
+                  Our estimate: the {{ card_name | escape }} is unlikely to keep up with GTA 6 on PC.
+                {%- endif -%}
+              </strong>
+            </p>
+            <p>
+              Rockstar has not announced a PC version of Grand Theft Auto VI or its requirements, so this is our own
+              estimate and not an official figure.
+            </p>
+
+            <h2>{{ card_name | escape }} at each quality level</h2>
+            <ul>
+              {% for level_name in level_names %}
+                {% assign state = cpu_levels[forloop.index0] %}
+                <li>
+                  {{ level_name }}:
+                  {% if state == 'p' %}
+                    Fast enough
+                  {% elsif state == 'n' %}
+                    Borderline (a little slower than our estimate of {{ level_cpus[forloop.index0] }})
+                  {% else %}
+                    Unlikely (slower than our estimate of {{ level_cpus[forloop.index0] }})
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+
+            <h2>What would it take to go higher?</h2>
+            {% if cpu_next >= 0 %}
+              <p>
+                Our estimate for {{ level_names[cpu_next] }} is a processor around
+                {% assign upgrade_cpus = level_cpus[cpu_next] | split: ' or ' %}
+                {%- for upgrade_cpu in upgrade_cpus -%}
+                  {%- unless forloop.first %} or {% endunless -%}
+                  {%- if amazon_tag != blank -%}
+                    {%- assign upgrade_search = upgrade_cpu | append: ' processor' | url_encode -%}
+                    <a
+                      href="https://www.amazon.com/s?k={{ upgrade_search }}&tag={{ amazon_tag | url_encode }}"
+                      data-pc-amazon="{{ upgrade_cpu | append: ' processor' | escape }}"
+                      target="_blank"
+                      rel="sponsored nofollow noopener"
+                    >
+                      {{- upgrade_cpu -}}
+                    </a>
+                  {%- else -%}
+                    {{- upgrade_cpu -}}
+                  {%- endif -%}
+                {%- endfor -%}
+                . A newer processor often needs a new motherboard, and sometimes new memory, so check what fits
+                your PC before buying.
+              </p>
+            {% else %}
+              <p>
+                The {{ card_name | escape }} clears every level in our estimate, including 4K at high settings. At
+                the higher levels the graphics card matters far more than the processor.
+              </p>
+            {% endif %}
+            {% if cpu_down != blank or cpu_up != blank %}
+              <p>
+                For comparison:
+                {% if cpu_down != blank %}
+                  {% assign down_handle = cpu_down | handleize %}
+                  <a href="{{ routes.root_url }}pages/can-the-{{ down_handle }}-run-gta-6">{{ cpu_down | escape }}</a>
+                  is the next processor down in our list.
+                {% endif %}
+                {% if cpu_up != blank %}
+                  {% assign up_handle = cpu_up | handleize %}
+                  <a href="{{ routes.root_url }}pages/can-the-{{ up_handle }}-run-gta-6">{{ cpu_up | escape }}</a>
+                  is the next processor up.
+                {% endif %}
+              </p>
+            {% endif %}
+
+            {% if amazon_tag != blank %}
+              {% assign own_search = card_name | append: ' processor' | url_encode %}
+              <p>
+                <a
+                  href="https://www.amazon.com/s?k={{ own_search }}&tag={{ amazon_tag | url_encode }}"
+                  data-pc-amazon="{{ card_name | append: ' processor' | escape }}"
+                  target="_blank"
+                  rel="sponsored nofollow noopener"
+                >
+                  See the {{ card_name | escape }} on Amazon
+                </a>
+              </p>
+              {% if section.settings.amazon_note != blank %}
+                <p class="pc-checker__advice-note">{{ section.settings.amazon_note | escape }}</p>
+              {% endif %}
+            {% endif %}
+
+            <h2>The rest of the PC</h2>
+            <p>
+              The processor is only one part, and in most games the graphics card decides the quality level. Add
+              your graphics card, memory and drive in the checker below for the full result.
             </p>
           </div>
         {% elsif page.content != blank %}
@@ -572,6 +694,17 @@
         {% endif %}
         <ul class="pc-checker__cards-list">
           {% render 'pc-card-links' %}
+        </ul>
+      </nav>
+      <nav
+        class="pc-checker__cards"
+        aria-label="{{ section.settings.cpus_heading | escape }}"
+      >
+        {% if section.settings.cpus_heading != blank %}
+          <h2 class="pc-checker__subtitle">{{ section.settings.cpus_heading | escape }}</h2>
+        {% endif %}
+        <ul class="pc-checker__cards-list">
+          {% render 'pc-cpu-links' %}
         </ul>
       </nav>
     {% endif %}
@@ -1461,13 +1594,13 @@
       "type": "checkbox",
       "id": "use_page_content",
       "label": "Use the page's own title and text",
-      "info": "For pages about one graphics card. The heading and introduction above are then not used.",
+      "info": "For pages about one graphics card or processor. The heading and introduction above are then not used.",
       "default": false
     },
     {
       "type": "checkbox",
       "id": "show_card_links",
-      "label": "Show links to the graphics card pages",
+      "label": "Show links to the graphics card and processor pages",
       "default": true
     },
     {
@@ -1475,6 +1608,12 @@
       "id": "cards_heading",
       "label": "Heading above the graphics card links",
       "default": "Check a specific graphics card"
+    },
+    {
+      "type": "text",
+      "id": "cpus_heading",
+      "label": "Heading above the processor links",
+      "default": "Check a specific processor"
     },
     {
       "type": "text",

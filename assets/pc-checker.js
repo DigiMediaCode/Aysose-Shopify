@@ -410,6 +410,13 @@ function init(root) {
     touched = true;
   }
 
+  // A page about one processor starts with that processor selected.
+  const preselectCpu = root.dataset.preselectCpu || '';
+  if (preselectCpu && find(CPUS, preselectCpu)) {
+    cpuSelect.value = preselectCpu;
+    touched = true;
+  }
+
   if (stats) {
     const facts = [
       [countItems(GPUS), 'graphics cards'],
