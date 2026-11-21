@@ -648,10 +648,32 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Implications:** the card pages are the traffic engine, so more pages of the same kind (processors, laptop
   cards) are the obvious next step; upgrade links should point at retailers that serve the United States first.
 
+### 22 Nov 2026 — Monetisation direction and affiliate programs
+- **Owner asked:** convert to a gaming store with GTA 6 merchandise, or put Google ads on the site?
+  **Advice given:** neither yet. Unlicensed game merchandise risks the whole store; ads pay very little at
+  about 680 sessions a week. Start with affiliate links to PC parts (the upgrade link boxes are already built),
+  keep the checker as the homepage, and add any shop beside it later under its own addresses.
+- **Owner has joined Amazon Associates** (which country's program is not yet confirmed).
+- **Programs compared (rates from web research; only Amazon's is from its own published table, the rest are
+  third-party reports that disagree):**
+  - Amazon.com: PC and PC components 2.5%; physical games and consoles 1%; 24-hour cookie. OneLink can send
+    visitors from Canada, UK, Germany, France, Italy and Spain to their local Amazon from a US account.
+  - Newegg (Rakuten Advertising): reported 0.5–2.5%, 7-day cookie.
+  - Best Buy (Impact): reported 0–1%, computers possibly 0%, 1-day cookie. Not worth it.
+  - eBay Partner Network: computers reported 1.5%, 24-hour window.
+  - B&H (Impact): reported 2–8%, base about 2%.
+  - Prebuilt PC makers: NZXT reported 3–5%, Skytech 6%, Corsair 3–8%; iBuyPower and CyberPowerPC not found.
+- **Recommendation:** Amazon as the main program; one prebuilt-PC maker for the "replace the whole machine" link.
+- **Amazon rules to respect:** show an "As an Amazon Associate I earn from qualifying purchases" notice; do not
+  show Amazon prices typed by hand; keep affiliate links out of emails until the owner has checked his own
+  agreement (sources conflict on whether email is now allowed).
+- **Proposed build, not started:** a theme setting for the Amazon tracking ID so each recommended part links
+  to an Amazon search for that exact part, on the result and in the free text of every card page.
+
 ### Open items
+- Owner: confirm which Amazon program he joined (Amazon.com or Amazon Australia) and say go on the link build.
 - Owner decision: build processor pages next (recommended).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps and sitemap submission.
 - Owner to supply the business name and address for the contact information policy.
-- Owner decisions: affiliate programs for the upgrade links (US-first, given the traffic).
 - Parked: all earlier niche ideas above.
