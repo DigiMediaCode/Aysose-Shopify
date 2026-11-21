@@ -670,8 +670,27 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Proposed build, not started:** a theme setting for the Amazon tracking ID so each recommended part links
   to an Amazon search for that exact part, on the result and in the free text of every card page.
 
+### 22 Nov 2026 — Amazon links built (live, switched off until the IDs are entered)
+- **Owner joined both Amazon.com (United States) and Amazon.com.au (Australia) Associates.**
+- **Three new settings on the PC checker section:** "Amazon.com tracking ID (United States)", "Amazon.com.au
+  tracking ID (Australia)" and the Amazon notice text. Nothing shows until the United States ID is filled in.
+- **What appears once filled in:** on the result, each suggested part (graphics card, processor, memory, SSD,
+  whole PC) gets a "See <part> on Amazon" link to an Amazon search for that part; on every card page the
+  suggested upgrade cards are links, plus a "See <card> cards on Amazon" link. The notice "As an Amazon
+  Associate I earn from qualifying purchases." shows wherever links show and in the page footer line.
+- **Which Amazon:** visitors whose device is on an Australian time zone go to Amazon.com.au with the Australian
+  ID (if set); everyone else goes to Amazon.com with the United States ID. Links are marked sponsored / nofollow.
+- The five manual link boxes still work and win over the Amazon link for that part.
+- **Section settings are saved per template:** the IDs must be entered twice, on the homepage and on the
+  graphics card page template (`gpu-check`).
+- No prices are shown (Amazon rule). Keep the links out of emails until the owner has checked his agreement.
+- **Tested outside Shopify at 380px** with test IDs: United States, United Kingdom and Sydney time zones gave
+  the right store and ID; no links and no notice with the boxes empty; no sideways scroll; no script errors.
+- Not done: other countries' Amazon stores (Amazon OneLink, set up inside the owner's Amazon account, can
+  redirect UK / Canada / Germany visitors; it needs sign-ups to those programs).
+
 ### Open items
-- Owner: confirm which Amazon program he joined (Amazon.com or Amazon Australia) and say go on the link build.
+- Owner: paste both Amazon tracking IDs into the theme editor (homepage and the graphics card page template).
 - Owner decision: build processor pages next (recommended).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps and sitemap submission.

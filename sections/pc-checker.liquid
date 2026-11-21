@@ -50,6 +50,7 @@
   assign level_names = '1080p, low settings|1080p, high settings|1440p, high settings|4K, high settings' | split: '|'
   assign level_cards = 'GTX 1660 Super or RX 5600 XT|RTX 3060 Ti or RX 6700 XT|RTX 4070 Super or RX 7800 XT|RTX 4080 or RX 9070 XT' | split: '|'
   assign level_memory = '6|8|12|16' | split: '|'
+  assign amazon_tag = section.settings.amazon_tag | strip
 %}
 
 <div
@@ -75,7 +76,10 @@
           "ssd": {{ section.settings.ssd_link | json }},
           "pc": {{ section.settings.pc_link | json }}
         },
-        "affiliateNote": {{ section.settings.affiliate_note | json }}
+        "affiliateNote": {{ section.settings.affiliate_note | json }},
+        "amazonTag": {{ section.settings.amazon_tag | strip | json }},
+        "amazonTagAu": {{ section.settings.amazon_tag_au | strip | json }},
+        "amazonNote": {{ section.settings.amazon_note | json }}
       }
     </script>
 
@@ -156,7 +160,25 @@
             {% if card_next >= 0 %}
               <p>
                 The {{ card_name | escape }} has {{ card_memory }} GB of video memory. Our estimate for
-                {{ level_names[card_next] }} is a card around {{ level_cards[card_next] }} with {{ level_memory[card_next] }} GB.
+                {{ level_names[card_next] }} is a card around
+                {% assign upgrade_cards = level_cards[card_next] | split: ' or ' %}
+                {%- for upgrade_card in upgrade_cards -%}
+                  {%- unless forloop.first %} or {% endunless -%}
+                  {%- if amazon_tag != blank -%}
+                    {%- assign upgrade_search = upgrade_card | append: ' graphics card' | url_encode -%}
+                    <a
+                      href="https://www.amazon.com/s?k={{ upgrade_search }}&tag={{ amazon_tag | url_encode }}"
+                      data-pc-amazon="{{ upgrade_card | append: ' graphics card' | escape }}"
+                      target="_blank"
+                      rel="sponsored nofollow noopener"
+                    >
+                      {{- upgrade_card -}}
+                    </a>
+                  {%- else -%}
+                    {{- upgrade_card -}}
+                  {%- endif -%}
+                {%- endfor %}
+                with {{ level_memory[card_next] }} GB.
               </p>
             {% else %}
               <p>
@@ -178,6 +200,23 @@
                   is the next card up.
                 {% endif %}
               </p>
+            {% endif %}
+
+            {% if amazon_tag != blank %}
+              {% assign own_search = card_name | append: ' graphics card' | url_encode %}
+              <p>
+                <a
+                  href="https://www.amazon.com/s?k={{ own_search }}&tag={{ amazon_tag | url_encode }}"
+                  data-pc-amazon="{{ card_name | append: ' graphics card' | escape }}"
+                  target="_blank"
+                  rel="sponsored nofollow noopener"
+                >
+                  See {{ card_name | escape }} cards on Amazon
+                </a>
+              </p>
+              {% if section.settings.amazon_note != blank %}
+                <p class="pc-checker__advice-note">{{ section.settings.amazon_note | escape }}</p>
+              {% endif %}
             {% endif %}
 
             <h2>Laptop version</h2>
@@ -546,6 +585,9 @@
         &copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}
         {% if shop.privacy_policy %}
           <a href="{{ shop.privacy_policy.url }}">Privacy policy</a>
+        {% endif %}
+        {% if amazon_tag != blank and section.settings.amazon_note != blank %}
+          <span>{{ section.settings.amazon_note | escape }}</span>
         {% endif %}
       </p>
     {% endif %}
@@ -1526,6 +1568,25 @@
       "type": "url",
       "id": "pc_link",
       "label": "Gaming PCs link"
+    },
+    {
+      "type": "text",
+      "id": "amazon_tag",
+      "label": "Amazon.com tracking ID (United States)",
+      "info": "From Amazon Associates, for example yourname-20. When filled in, each recommended part links to an Amazon.com search for that part. The link boxes above, when filled in, are used instead for that part."
+    },
+    {
+      "type": "text",
+      "id": "amazon_tag_au",
+      "label": "Amazon.com.au tracking ID (Australia)",
+      "info": "Optional, for example yourname-22. Visitors whose device is set to an Australian time zone are sent to Amazon.com.au with this ID."
+    },
+    {
+      "type": "text",
+      "id": "amazon_note",
+      "label": "Amazon notice",
+      "info": "Amazon requires this notice wherever its links appear.",
+      "default": "As an Amazon Associate I earn from qualifying purchases."
     },
     {
       "type": "text",

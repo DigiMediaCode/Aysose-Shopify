@@ -298,6 +298,27 @@ function scaleBar(title, value, max, marks, valueLabel) {
   return wrap;
 }
 
+// Works out which Amazon store and tracking ID this visitor should get. Visitors whose device
+// is on an Australian time zone go to Amazon.com.au when an Australian ID is set.
+function amazonFor(config) {
+  const usTag = (config.amazonTag || '').trim();
+  const auTag = (config.amazonTagAu || '').trim();
+  let australian = false;
+  try {
+    australian = (Intl.DateTimeFormat().resolvedOptions().timeZone || '').startsWith('Australia/');
+  } catch (error) {
+    australian = false;
+  }
+  const useAu = australian && auTag !== '';
+  const tag = useAu ? auTag : usTag;
+  const host = useAu ? 'www.amazon.com.au' : 'www.amazon.com';
+  return {
+    tag,
+    australian: useAu,
+    search: (words) => `https://${host}/s?k=${encodeURIComponent(words)}&tag=${encodeURIComponent(tag)}`,
+  };
+}
+
 const STORE_KEY = 'pcChecker:parts';
 const UNLOCK_KEY = 'pcChecker:unlocked';
 
@@ -351,6 +372,12 @@ function init(root) {
   const stats = root.querySelector('[data-pc-checker-stats]');
   const gate = root.querySelector('[data-pc-checker-gate]');
   if (!form || !output) return;
+
+  // Links written into the page text point at Amazon.com; send Australian visitors to Amazon.com.au.
+  const amazon = amazonFor(config);
+  if (amazon.australian) {
+    for (const link of root.querySelectorAll('a[data-pc-amazon]')) link.href = amazon.search(link.dataset.pcAmazon);
+  }
 
   const gpuSelect = form.querySelector('[name="gpu"]');
   const cpuSelect = form.querySelector('[name="cpu"]');
@@ -524,14 +551,27 @@ function init(root) {
       advice.append(el('h3', 'pc-checker__advice-title', `To reach ${next.tier.label}`));
       const steps = el('ul', 'pc-checker__advice-list');
       const links = config.links || {};
-      const addStep = (text, url, linkLabel) => {
+      const amazonTag = amazon.tag;
+      let usedAmazon = false;
+      let usedOther = false;
+      const amazonSearch = amazon.search;
+      const partLinks = (manualUrl, manualLabel, names, suffix) => {
+        if (manualUrl) {
+          usedOther = true;
+          return [{ url: manualUrl, label: manualLabel }];
+        }
+        if (!amazonTag) return [];
+        usedAmazon = true;
+        return names.map((name) => ({ url: amazonSearch(`${name} ${suffix}`.trim()), label: `See ${name} on Amazon` }));
+      };
+      const addStep = (text, stepLinks) => {
         const step = el('li', '', text);
-        if (url) {
+        for (const item of stepLinks) {
           step.append(' ');
-          const link = el('a', 'pc-checker__link', linkLabel);
-          link.href = url;
+          const link = el('a', 'pc-checker__link', item.label);
+          link.href = item.url;
           link.target = '_blank';
-          link.rel = 'sponsored noopener';
+          link.rel = 'sponsored nofollow noopener';
           step.append(link);
         }
         steps.append(step);
@@ -539,30 +579,37 @@ function init(root) {
       if (next.parts.gpu !== 'pass' || next.parts.vram !== 'pass') {
         addStep(
           `A graphics card around ${next.tier.gpuExample}, with ${next.tier.vram} GB of video memory.`,
-          links.gpu,
-          'See graphics cards'
+          partLinks(links.gpu, 'See graphics cards', next.tier.gpuExample.split(' or '), 'graphics card')
         );
       }
       if (next.parts.cpu !== 'pass') {
-        addStep(`A processor around ${next.tier.cpuExample}.`, links.cpu, 'See processors');
+        addStep(
+          `A processor around ${next.tier.cpuExample}.`,
+          partLinks(links.cpu, 'See processors', next.tier.cpuExample.split(' or '), 'processor')
+        );
       }
-      if (next.parts.ram !== 'pass') addStep(`${next.tier.ram} GB of memory.`, links.ram, 'See memory');
+      if (next.parts.ram !== 'pass') {
+        addStep(
+          `${next.tier.ram} GB of memory.`,
+          partLinks(links.ram, 'See memory', [`${next.tier.ram}GB RAM`], 'desktop memory')
+        );
+      }
       if (next.parts.storage !== 'pass') {
-        addStep('An SSD to install the game on.', links.ssd, 'See SSDs');
+        addStep('An SSD to install the game on.', partLinks(links.ssd, 'See SSDs', ['1TB NVMe SSD'], ''));
       }
       advice.append(steps);
-      if (links.pc) {
+      const wholePc = partLinks(links.pc, 'See gaming PCs', ['gaming PC'], 'desktop');
+      if (wholePc.length) {
         const whole = el('p', 'pc-checker__advice-note', 'Replacing the whole machine? ');
-        const link = el('a', 'pc-checker__link', 'See gaming PCs');
-        link.href = links.pc;
+        const link = el('a', 'pc-checker__link', links.pc ? wholePc[0].label : 'See gaming PCs on Amazon');
+        link.href = wholePc[0].url;
         link.target = '_blank';
-        link.rel = 'sponsored noopener';
+        link.rel = 'sponsored nofollow noopener';
         whole.append(link);
         advice.append(whole);
       }
-      if (config.affiliateNote && Object.values(links).some(Boolean)) {
-        advice.append(el('p', 'pc-checker__advice-note', config.affiliateNote));
-      }
+      if (usedAmazon && config.amazonNote) advice.append(el('p', 'pc-checker__advice-note', config.amazonNote));
+      if (usedOther && config.affiliateNote) advice.append(el('p', 'pc-checker__advice-note', config.affiliateNote));
       body.append(advice);
     }
 
