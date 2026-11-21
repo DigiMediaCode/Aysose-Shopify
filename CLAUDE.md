@@ -707,9 +707,31 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Gotcha:** in Liquid, do not test a variable that was assigned `blank` with `!= blank`; assign `''` instead.
 - Not tested: whether Amazon credits a real purchase (only the owner's Associates reports can show that).
 
+### 22 Nov 2026 — Upgrade guide pages (live); budget pages rejected
+- **Owner asked for "best card under $200 / $300 / $500" pages. Not built that way.** United States shop
+  prices for graphics cards in November 2026 are far above launch prices (reports: RTX 5070 Ti lowest price
+  about $1,340 against a $749 launch price; RTX 5060 Ti 16GB up to about $769 against $429). A page promising
+  a card "under $300" would be wrong on the day, and Amazon's rules bar prices typed by hand. Honest budget
+  pages need live prices from Amazon's product API, which only opens after the account's first sales.
+- **Built instead: five upgrade guides by quality level**, same page template (`gpu-check`):
+  `/pages/best-graphics-card-for-gta-6-on-pc`, `...-at-1080p`, `...-at-1440p`, `...-at-4k`, and
+  `/pages/best-processor-for-gta-6-on-pc`. The section recognises them by the page title ("Best graphics card
+  for GTA 6 ..." / "Best processor for GTA 6 ...", with "at 1080p", "at 1440p" or "at 4K" choosing the levels).
+- **Picks:** for each level, the three least powerful parts still sold new that clear it in our estimate
+  (current ranges only: RTX 50, RX 9000, Arc B; Ryzen 5000 / 7000 / 9000, Core 13th–14th gen, Core Ultra).
+  Chosen by `tools/generate-card-pages.mjs` into `snippets/pc-best-data.liquid`; the list of current ranges
+  is at the top of that part of the script. Each pick links to our own page for that part and to Amazon
+  ("see today's price on Amazon"). No prices anywhere. The page tells visitors that waiting for the official
+  requirements is the safest time to buy.
+- Homepage and all part pages now show an "Upgrade guides" list above the card and processor lists.
+- **Verified on aysose.com at 380px:** all five pages load with the right picks and Amazon links carrying the
+  right ID for United States and Sydney visitors; no sideways scroll; no script errors.
+- Store now has 69 card pages, 50 processor pages and 5 guides on the `gpu-check` template.
+
 ### Open items
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
-- Owner: Search Console clean-up steps and sitemap submission.
+- Owner: Search Console clean-up steps; resubmit the sitemap (55 new pages since 22 Nov).
+- Later: budget pages with live prices once the Amazon product API is available to the account.
 - Owner to supply the business name and address for the contact information policy.
 - Parked: all earlier niche ideas above.
