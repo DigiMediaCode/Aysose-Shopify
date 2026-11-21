@@ -626,8 +626,15 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Gotcha repeated:** the Shopify connector was pointing at SeenSheen again on 21 Nov. Nothing was read beyond
   the store name and nothing was changed. This task needed no store access. Check the store before any store call.
 
+### 21 Nov 2026 — Connector back on Aysose; subscriber count
+- Connector switched and confirmed on the Aysose store (aysose.com, Advanced plan).
+- **Subscribers (read 21 Nov, consent state only, no names or emails):** 48 customers, all marked Subscribed,
+  none Pending. 45 are single opt-in and 3 confirmed through the email link.
+- **Signups by day (UTC):** 16 Nov 1 (the owner's test), 18 Nov 9, 19 Nov 13, 20 Nov 10, 21 Nov 15 so far.
+- Not known: whether the earlier pending signups were switched by the owner by hand or changed when double
+  opt-in was turned off.
+
 ### Open items
-- Owner: turn double opt-in off; decide what to do with the existing pending signups.
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps and sitemap submission.
 - Owner to supply the business name and address for the contact information policy.
