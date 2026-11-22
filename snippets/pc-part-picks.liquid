@@ -1,0 +1,22 @@
+{%- doc -%}
+  The suggested parts for one quality level, shown as visual cards.
+
+  @param {string} kind - "gpu" for graphics cards, "cpu" for processors.
+  @param {number} level - The quality level number, 0 to 3.
+  @param {string} [amazon_tag] - Amazon.com tracking ID. No buttons are shown without it.
+{%- enddoc -%}
+{%- assign picks_key = kind | append: level -%}
+{%- capture picks_row -%}{% render 'pc-best-data', key: picks_key %}{%- endcapture -%}
+{%- assign picks = picks_row | strip | split: ';' -%}
+<ul class="pc-checker__parts">
+  {%- for pick in picks -%}
+    {%- liquid
+      assign pick_fields = pick | split: '~'
+      assign pick_spec = ''
+      if kind == 'gpu'
+        assign pick_spec = pick_fields[1] | append: ' GB of video memory'
+      endif
+      render 'pc-part-card', name: pick_fields[0], kind: kind, spec: pick_spec, amazon_tag: amazon_tag
+    -%}
+  {%- endfor -%}
+</ul>

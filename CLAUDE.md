@@ -728,6 +728,21 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
   right ID for United States and Sydney visitors; no sideways scroll; no script errors.
 - Store now has 69 card pages, 50 processor pages and 5 guides on the `gpu-check` template.
 
+### 22 Nov 2026 — Visual product cards for recommended parts (live)
+- **Owner's report:** sitemap resubmitted, more signups, no affiliate clicks yet; asked for visuals of the
+  products. Note: the links had been live for about a day, so "no clicks" is not yet a verdict.
+- **Not possible:** real product photos. Amazon product images are only allowed through its product API
+  (opens after the first sales), and manufacturer photos are not ours to use.
+- **Built:** each recommended part is now a card with our own drawing of the part (graphics card or processor
+  chip, tinted by brand family), the name, one line about it, a large "Check price on Amazon" button and a
+  link to our page for that part. Snippets: `snippets/pc-part-card.liquid` (one card) and
+  `snippets/pc-part-picks.liquid` (the three picks for a level, from `pc-best-data.liquid`).
+- **Where:** graphics card pages and processor pages ("What would it take to go higher?") and all five upgrade
+  guides. The card and processor pages now recommend parts still sold new (the picks) instead of linking the
+  older example parts in the sentence, which are mostly only sold used.
+- On phones each card is a compact row with a full-width button; on wider screens three cards sit side by side.
+- When real photos become available (product API), they replace the drawing inside `pc-part-card.liquid`.
+
 ### Open items
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).

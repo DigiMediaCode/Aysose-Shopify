@@ -1,0 +1,90 @@
+{%- doc -%}
+  One recommended part shown as a visual card: our own drawing of the part, its name, one line
+  about it, a button to Amazon (only when a tracking ID is set) and a link to our page for the part.
+  The drawing is original artwork, not a product photo.
+
+  @param {string} name - The part name, exactly as the checker lists it.
+  @param {string} kind - "gpu" for a graphics card, "cpu" for a processor.
+  @param {string} [spec] - A short line shown under the name.
+  @param {string} [amazon_tag] - Amazon.com tracking ID. No button is shown without it.
+{%- enddoc -%}
+{%- liquid
+  assign part_handle = name | handleize
+  assign part_start = name | slice: 0, 3
+  assign part_tone = 'neutral'
+  case part_start
+    when 'RTX', 'GTX'
+      assign part_tone = 'green'
+    when 'RX '
+      assign part_tone = 'red'
+    when 'Arc', 'Cor'
+      assign part_tone = 'blue'
+    when 'Ryz'
+      assign part_tone = 'orange'
+  endcase
+  if kind == 'gpu'
+    assign part_words = name | append: ' graphics card'
+  else
+    assign part_words = name | append: ' processor'
+  endif
+-%}
+<li class="pc-checker__part pc-checker__part--{{ part_tone }}">
+  <span
+    class="pc-checker__part-art"
+    aria-hidden="true"
+  >
+    {%- if kind == 'gpu' -%}
+      <svg
+        viewBox="0 0 120 64"
+        fill="none"
+        focusable="false"
+      >
+        <rect x="4" y="8" width="5" height="50" rx="1.5" fill="currentColor" opacity="0.55"/>
+        <rect x="11" y="12" width="104" height="38" rx="6" fill="currentColor" opacity="0.16"/>
+        <rect x="11" y="12" width="104" height="38" rx="6" stroke="currentColor" stroke-width="2"/>
+        <circle cx="38" cy="31" r="13" stroke="currentColor" stroke-width="2"/>
+        <circle cx="38" cy="31" r="3.5" fill="currentColor"/>
+        <path d="M38 18v9M38 35v9M25 31h9M42 31h9" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <circle cx="86" cy="31" r="13" stroke="currentColor" stroke-width="2"/>
+        <circle cx="86" cy="31" r="3.5" fill="currentColor"/>
+        <path d="M86 18v9M86 35v9M73 31h9M90 31h9" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <rect x="22" y="50" width="44" height="6" rx="1.5" fill="currentColor" opacity="0.55"/>
+      </svg>
+    {%- else -%}
+      <svg
+        viewBox="0 0 120 64"
+        fill="none"
+        focusable="false"
+      >
+        <rect x="38" y="10" width="44" height="44" rx="6" fill="currentColor" opacity="0.16"/>
+        <rect x="38" y="10" width="44" height="44" rx="6" stroke="currentColor" stroke-width="2"/>
+        <rect x="49" y="21" width="22" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+        <path d="M46 4v6M56 4v6M64 4v6M74 4v6M46 54v6M56 54v6M64 54v6M74 54v6M32 18h6M32 28h6M32 36h6M32 46h6M82 18h6M82 28h6M82 36h6M82 46h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+      </svg>
+    {%- endif -%}
+  </span>
+  <span class="pc-checker__part-body">
+    <strong class="pc-checker__part-name">{{ name | escape }}</strong>
+    {%- if spec != blank -%}
+      <span class="pc-checker__part-spec">{{ spec | escape }}</span>
+    {%- endif -%}
+    <a
+      class="pc-checker__part-more"
+      href="{{ routes.root_url }}pages/can-the-{{ part_handle }}-run-gta-6"
+    >
+      Our estimate for this part
+    </a>
+  </span>
+  {%- if amazon_tag != blank -%}
+    <a
+      class="pc-checker__part-button"
+      href="https://www.amazon.com/s?k={{ part_words | url_encode }}&tag={{ amazon_tag | url_encode }}"
+      data-pc-amazon="{{ part_words | escape }}"
+      target="_blank"
+      rel="sponsored nofollow noopener"
+    >
+      Check price on Amazon
+      <span class="visually-hidden">for the {{ name | escape }}</span>
+    </a>
+  {%- endif -%}
+</li>

@@ -197,26 +197,11 @@
             {% if card_next >= 0 %}
               <p>
                 The {{ card_name | escape }} has {{ card_memory }} GB of video memory. Our estimate for
-                {{ level_names[card_next] }} is a card around
-                {% assign upgrade_cards = level_cards[card_next] | split: ' or ' %}
-                {%- for upgrade_card in upgrade_cards -%}
-                  {%- unless forloop.first %} or {% endunless -%}
-                  {%- if amazon_tag != blank -%}
-                    {%- assign upgrade_search = upgrade_card | append: ' graphics card' | url_encode -%}
-                    <a
-                      href="https://www.amazon.com/s?k={{ upgrade_search }}&tag={{ amazon_tag | url_encode }}"
-                      data-pc-amazon="{{ upgrade_card | append: ' graphics card' | escape }}"
-                      target="_blank"
-                      rel="sponsored nofollow noopener"
-                    >
-                      {{- upgrade_card -}}
-                    </a>
-                  {%- else -%}
-                    {{- upgrade_card -}}
-                  {%- endif -%}
-                {%- endfor %}
+                {{ level_names[card_next] }} is a card around {{ level_cards[card_next] }}
                 with {{ level_memory[card_next] }} GB.
               </p>
+              <p>The smallest cards still sold new that clear that level:</p>
+              {% render 'pc-part-picks', kind: 'gpu', level: card_next, amazon_tag: amazon_tag %}
             {% else %}
               <p>
                 The {{ card_name | escape }} has {{ card_memory }} GB of video memory and clears every level in our estimate,
@@ -311,27 +296,11 @@
             <h2>What would it take to go higher?</h2>
             {% if cpu_next >= 0 %}
               <p>
-                Our estimate for {{ level_names[cpu_next] }} is a processor around
-                {% assign upgrade_cpus = level_cpus[cpu_next] | split: ' or ' %}
-                {%- for upgrade_cpu in upgrade_cpus -%}
-                  {%- unless forloop.first %} or {% endunless -%}
-                  {%- if amazon_tag != blank -%}
-                    {%- assign upgrade_search = upgrade_cpu | append: ' processor' | url_encode -%}
-                    <a
-                      href="https://www.amazon.com/s?k={{ upgrade_search }}&tag={{ amazon_tag | url_encode }}"
-                      data-pc-amazon="{{ upgrade_cpu | append: ' processor' | escape }}"
-                      target="_blank"
-                      rel="sponsored nofollow noopener"
-                    >
-                      {{- upgrade_cpu -}}
-                    </a>
-                  {%- else -%}
-                    {{- upgrade_cpu -}}
-                  {%- endif -%}
-                {%- endfor -%}
-                . A newer processor often needs a new motherboard, and sometimes new memory, so check what fits
+                Our estimate for {{ level_names[cpu_next] }} is a processor around {{ level_cpus[cpu_next] }}. A newer processor often needs a new motherboard, and sometimes new memory, so check what fits
                 your PC before buying.
               </p>
+              <p>The smallest processors still sold new that clear that level:</p>
+              {% render 'pc-part-picks', kind: 'cpu', level: cpu_next, amazon_tag: amazon_tag %}
             {% else %}
               <p>
                 The {{ card_name | escape }} clears every level in our estimate, including 4K at high settings. At
@@ -399,10 +368,7 @@
             {% for level_text in best_levels %}
               {% liquid
                 assign level_index = level_text | plus: 0
-                assign best_key = best_kind | append: level_text
               %}
-              {% capture best_row %}{% render 'pc-best-data', key: best_key %}{% endcapture %}
-              {% assign best_parts = best_row | strip | split: ';' %}
               <h2>{{ level_names[level_index] }}</h2>
               <p>
                 {% if best_kind == 'gpu' %}
@@ -413,35 +379,7 @@
                   processors still sold new that clear it:
                 {% endif %}
               </p>
-              <ul>
-                {% for best_part in best_parts %}
-                  {% liquid
-                    assign part_fields = best_part | split: '~'
-                    assign part_name = part_fields[0]
-                    assign part_handle = part_name | handleize
-                    if best_kind == 'gpu'
-                      assign part_words = part_name | append: ' graphics card'
-                    else
-                      assign part_words = part_name | append: ' processor'
-                    endif
-                  %}
-                  <li>
-                    <a href="{{ routes.root_url }}pages/can-the-{{ part_handle }}-run-gta-6">{{ part_name | escape }}</a>
-                    {%- if best_kind == 'gpu' %} ({{ part_fields[1] }} GB of video memory){% endif -%}
-                    {%- if amazon_tag != blank -%}
-                      :
-                      <a
-                        href="https://www.amazon.com/s?k={{ part_words | url_encode }}&tag={{ amazon_tag | url_encode }}"
-                        data-pc-amazon="{{ part_words | escape }}"
-                        target="_blank"
-                        rel="sponsored nofollow noopener"
-                      >
-                        see today's price on Amazon
-                      </a>
-                    {%- endif -%}
-                  </li>
-                {% endfor %}
-              </ul>
+              {% render 'pc-part-picks', kind: best_kind, level: level_index, amazon_tag: amazon_tag %}
             {% endfor %}
 
             {% if amazon_tag != blank and section.settings.amazon_note != blank %}
@@ -1605,6 +1543,121 @@
 
   .pc-checker__back {
     font-size: 0.9375rem;
+  }
+
+  .pc-checker__parts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-checker__part {
+    --pc-part: var(--pc-accent);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--pc-line);
+    border-radius: var(--pc-radius);
+    background: linear-gradient(160deg, var(--pc-surface-2), var(--pc-surface));
+  }
+
+  .pc-checker__part--green {
+    --pc-part: #8fd14f;
+  }
+
+  .pc-checker__part--red {
+    --pc-part: #ff6b6b;
+  }
+
+  .pc-checker__part--blue {
+    --pc-part: #5cb8ff;
+  }
+
+  .pc-checker__part--orange {
+    --pc-part: #ff9a4d;
+  }
+
+  .pc-checker__part-art {
+    display: grid;
+    place-items: center;
+    padding: 0.875rem;
+    border-radius: 0.75rem;
+    background: rgb(255 255 255 / 0.04);
+    color: var(--pc-part);
+  }
+
+  .pc-checker__part-art svg {
+    width: 100%;
+    max-width: 9rem;
+    height: auto;
+  }
+
+  .pc-checker__part-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .pc-checker__part-name {
+    font-family: var(--font-heading--family);
+    font-size: 1.125rem;
+    color: var(--pc-text);
+  }
+
+  .pc-checker__part-spec {
+    color: var(--pc-muted);
+    font-size: 0.9375rem;
+  }
+
+  .pc-checker__article .pc-checker__part-more {
+    font-size: 0.875rem;
+    color: var(--pc-muted);
+  }
+
+  .pc-checker__article .pc-checker__part-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.875rem;
+    padding: 0 1rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(95deg, var(--pc-accent), var(--pc-accent-2));
+    color: #1a1206;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .pc-checker__article .pc-checker__part-button:hover {
+    filter: brightness(1.08);
+  }
+
+  @media screen and (max-width: 479px) {
+    .pc-checker__parts {
+      grid-template-columns: 1fr;
+    }
+
+    .pc-checker__part {
+      display: grid;
+      grid-template-columns: 5.5rem 1fr;
+      align-items: center;
+      column-gap: 0.875rem;
+    }
+
+    .pc-checker__part-art {
+      padding: 0.625rem 0.5rem;
+    }
+
+    .pc-checker__part-button {
+      grid-column: 1 / -1;
+    }
   }
 
   .pc-checker__cards {
