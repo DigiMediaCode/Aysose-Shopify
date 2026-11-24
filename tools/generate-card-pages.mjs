@@ -26,7 +26,7 @@
  * and snippets/pc-best-links.liquid. No prices are stored or shown anywhere.
  */
 import fs from 'node:fs';
-import { GPUS, CPUS, TIERS, checkTier } from '../assets/pc-checker.js';
+import { GPUS, CPUS, TIERS, checkTier, bestPicks } from '../assets/pc-checker.js';
 
 const LAPTOP_FACTOR = 0.8;
 const LETTER = { pass: 'p', near: 'n', fail: 'f' };
@@ -152,38 +152,18 @@ fs.writeFileSync(
 );
 
 // Upgrade guides: for each quality level, the three least powerful parts still sold new that clear
-// the level on their own (usually the cheapest way to reach it). Only current ranges are considered.
-const CURRENT_GPU_GROUPS = ['Nvidia GeForce RTX 50', 'AMD Radeon RX 9000', 'Intel Arc'];
-const CURRENT_GPU_SKIP = ['Arc A770 16GB', 'Arc A750'];
-const CURRENT_CPU_GROUPS = [
-  'AMD Ryzen 9000',
-  'AMD Ryzen 7000',
-  'AMD Ryzen 5000',
-  'Intel Core Ultra',
-  'Intel Core 13th and 14th gen',
-];
-const currentCards = CURRENT_GPU_GROUPS.flatMap((group) => GPUS[group])
-  .filter(([name]) => !CURRENT_GPU_SKIP.includes(name))
-  .map(([name, score, vram]) => ({ name, score, vram }))
-  .sort((a, b) => a.score - b.score);
-const currentProcessors = CURRENT_CPU_GROUPS.flatMap((group) => CPUS[group])
-  .map(([name, score]) => ({ name, score }))
-  .sort((a, b) => a.score - b.score);
-const PICKS = 3;
+// the level on their own. The choice is made by bestPicks in assets/pc-checker.js, so the pages and
+// the checker's result always suggest the same parts.
 const bestRows = TIERS.flatMap((tier, index) => [
   {
     key: `gpu${index}`,
-    row: currentCards
-      .filter((card) => card.score >= tier.gpu && card.vram >= tier.vram)
-      .slice(0, PICKS)
+    row: bestPicks('gpu', tier)
       .map((card) => `${card.name}~${card.vram}`)
       .join(';'),
   },
   {
     key: `cpu${index}`,
-    row: currentProcessors
-      .filter((processor) => processor.score >= tier.cpu)
-      .slice(0, PICKS)
+    row: bestPicks('cpu', tier)
       .map((processor) => processor.name)
       .join(';'),
   },

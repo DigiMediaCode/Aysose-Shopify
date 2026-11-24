@@ -743,6 +743,21 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - On phones each card is a compact row with a full-width button; on wider screens three cards sit side by side.
 - When real photos become available (product API), they replace the drawing inside `pc-part-card.liquid`.
 
+### 24 Nov 2026 — Visual part cards in the checker's result (live)
+- **Owner said go.** The "To reach <level>" box in the result (shown after the email step) now uses the same
+  visual cards as the part pages: for a weak graphics card or processor, the three smallest parts still sold
+  new that clear the next level, each with a "Check price on Amazon" button and a link to our page for it;
+  for memory and the drive, one card each (with a line telling the visitor what to check on their
+  motherboard). "Replacing the whole machine?" stays a text link.
+- **One source for the picks:** `bestPicks()` in `assets/pc-checker.js` now chooses the parts for both the
+  result and the generated pages (`tools/generate-card-pages.mjs` imports it). The list of ranges still sold
+  new lives at the top of that function's section in `pc-checker.js`. The drawings used by the script
+  (`PART_ART`) repeat the two in `snippets/pc-part-card.liquid`; change both together.
+- The five manual link boxes in the theme editor still win: a filled box shows the owner's link, not cards.
+- **Tested outside Shopify** with four sample PCs at 380px and 1280px (weak everything, weak card only, top
+  PC, mid PC): right parts, right Amazon store and ID for United States and Sydney, no sideways scroll, no
+  script errors. A PC that clears every level shows no cards.
+
 ### Open items
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).

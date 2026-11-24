@@ -298,6 +298,82 @@ function scaleBar(title, value, max, marks, valueLabel) {
   return wrap;
 }
 
+// Upgrade suggestions only name parts from ranges that are still sold new.
+const CURRENT_GPU_GROUPS = ['Nvidia GeForce RTX 50', 'AMD Radeon RX 9000', 'Intel Arc'];
+const CURRENT_GPU_SKIP = ['Arc A770 16GB', 'Arc A750'];
+const CURRENT_CPU_GROUPS = [
+  'AMD Ryzen 9000',
+  'AMD Ryzen 7000',
+  'AMD Ryzen 5000',
+  'Intel Core Ultra',
+  'Intel Core 13th and 14th gen',
+];
+
+// The least powerful parts still sold new that clear one quality level on their own
+// (usually the cheapest way to reach it). Used by the result and by tools/generate-card-pages.mjs.
+export function bestPicks(kind, tier, count = 3) {
+  if (kind === 'gpu') {
+    return CURRENT_GPU_GROUPS.flatMap((group) => GPUS[group])
+      .filter(([name]) => !CURRENT_GPU_SKIP.includes(name))
+      .map(([name, score, vram]) => ({ name, score, vram }))
+      .sort((a, b) => a.score - b.score)
+      .filter((card) => card.score >= tier.gpu && card.vram >= tier.vram)
+      .slice(0, count);
+  }
+  return CURRENT_CPU_GROUPS.flatMap((group) => CPUS[group])
+    .map(([name, score]) => ({ name, score }))
+    .sort((a, b) => a.score - b.score)
+    .filter((processor) => processor.score >= tier.cpu)
+    .slice(0, count);
+}
+
+// Our own drawings for the part cards (not product photos). Keep the first two in step with
+// snippets/pc-part-card.liquid.
+const PART_ART = {
+  gpu: '<rect x="4" y="8" width="5" height="50" rx="1.5" fill="currentColor" opacity="0.55"/><rect x="11" y="12" width="104" height="38" rx="6" fill="currentColor" opacity="0.16"/><rect x="11" y="12" width="104" height="38" rx="6" stroke="currentColor" stroke-width="2"/><circle cx="38" cy="31" r="13" stroke="currentColor" stroke-width="2"/><circle cx="38" cy="31" r="3.5" fill="currentColor"/><path d="M38 18v9M38 35v9M25 31h9M42 31h9" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/><circle cx="86" cy="31" r="13" stroke="currentColor" stroke-width="2"/><circle cx="86" cy="31" r="3.5" fill="currentColor"/><path d="M86 18v9M86 35v9M73 31h9M90 31h9" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/><rect x="22" y="50" width="44" height="6" rx="1.5" fill="currentColor" opacity="0.55"/>',
+  cpu: '<rect x="38" y="10" width="44" height="44" rx="6" fill="currentColor" opacity="0.16"/><rect x="38" y="10" width="44" height="44" rx="6" stroke="currentColor" stroke-width="2"/><rect x="49" y="21" width="22" height="22" rx="3" stroke="currentColor" stroke-width="2"/><path d="M46 4v6M56 4v6M64 4v6M74 4v6M46 54v6M56 54v6M64 54v6M74 54v6M32 18h6M32 28h6M32 36h6M32 46h6M82 18h6M82 28h6M82 36h6M82 46h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>',
+  ram: '<rect x="10" y="18" width="100" height="26" rx="4" fill="currentColor" opacity="0.16"/><rect x="10" y="18" width="100" height="26" rx="4" stroke="currentColor" stroke-width="2"/><rect x="20" y="24" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="42" y="24" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="64" y="24" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="86" y="24" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M18 44v6M26 44v6M34 44v6M42 44v6M50 44v6M70 44v6M78 44v6M86 44v6M94 44v6M102 44v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>',
+  ssd: '<rect x="8" y="22" width="104" height="22" rx="4" fill="currentColor" opacity="0.16"/><rect x="8" y="22" width="104" height="22" rx="4" stroke="currentColor" stroke-width="2"/><rect x="18" y="28" width="26" height="10" rx="2" stroke="currentColor" stroke-width="2"/><rect x="52" y="28" width="18" height="10" rx="2" stroke="currentColor" stroke-width="2"/><rect x="78" y="28" width="12" height="10" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="102" cy="33" r="3" fill="currentColor" opacity="0.7"/>',
+  pc: '<rect x="42" y="4" width="36" height="56" rx="5" fill="currentColor" opacity="0.16"/><rect x="42" y="4" width="36" height="56" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="60" cy="24" r="9" stroke="currentColor" stroke-width="2"/><circle cx="60" cy="24" r="2.5" fill="currentColor"/><path d="M50 42h20M50 49h20" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/><circle cx="60" cy="10" r="1.5" fill="currentColor"/>',
+};
+
+function partTone(name) {
+  if (/^(RTX|GTX)/.test(name)) return 'green';
+  if (/^RX /.test(name)) return 'red';
+  if (/^(Arc|Core)/.test(name)) return 'blue';
+  if (/^Ryzen/.test(name)) return 'orange';
+  return 'neutral';
+}
+
+// One recommended part as a visual card with a button to Amazon. `page` adds a link to our own page.
+function partCard({ art, name, spec, url, page }) {
+  const card = el('li', `pc-checker__part pc-checker__part--${partTone(name)}`);
+  const picture = el('span', 'pc-checker__part-art');
+  picture.setAttribute('aria-hidden', 'true');
+  picture.innerHTML = `<svg viewBox="0 0 120 64" fill="none" focusable="false">${PART_ART[art]}</svg>`;
+  const body = el('span', 'pc-checker__part-body');
+  body.append(el('strong', 'pc-checker__part-name', name));
+  if (spec) body.append(el('span', 'pc-checker__part-spec', spec));
+  if (page) {
+    const more = el('a', 'pc-checker__part-more', 'Our estimate for this part');
+    more.href = page;
+    body.append(more);
+  }
+  const button = el('a', 'pc-checker__part-button', 'Check price on Amazon');
+  button.href = url;
+  button.target = '_blank';
+  button.rel = 'sponsored nofollow noopener';
+  button.setAttribute('aria-label', `Check price on Amazon for ${name}`);
+  card.append(picture, body, button);
+  return card;
+}
+
+const partPage = (name) =>
+  `/pages/can-the-${name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')}-run-gta-6`;
+
 // Works out which Amazon store and tracking ID this visitor should get. Visitors whose device
 // is on an Australian time zone go to Amazon.com.au when an Australian ID is set.
 function amazonFor(config) {
@@ -562,56 +638,77 @@ function init(root) {
       let usedAmazon = false;
       let usedOther = false;
       const amazonSearch = amazon.search;
-      const partLinks = (manualUrl, manualLabel, names, suffix) => {
+      // A step is one sentence, then either the visual part cards (Amazon) or the owner's own link.
+      const addStep = (text, manualUrl, manualLabel, cards) => {
+        const step = el('li', 'pc-checker__advice-step');
+        step.append(el('span', '', text));
         if (manualUrl) {
           usedOther = true;
-          return [{ url: manualUrl, label: manualLabel }];
-        }
-        if (!amazonTag) return [];
-        usedAmazon = true;
-        return names.map((name) => ({ url: amazonSearch(`${name} ${suffix}`.trim()), label: `See ${name} on Amazon` }));
-      };
-      const addStep = (text, stepLinks) => {
-        const step = el('li', '', text);
-        for (const item of stepLinks) {
           step.append(' ');
-          const link = el('a', 'pc-checker__link', item.label);
-          link.href = item.url;
+          const link = el('a', 'pc-checker__link', manualLabel);
+          link.href = manualUrl;
           link.target = '_blank';
           link.rel = 'sponsored nofollow noopener';
           step.append(link);
+        } else if (amazonTag && cards.length) {
+          usedAmazon = true;
+          const list = el('ul', 'pc-checker__parts');
+          for (const card of cards) list.append(partCard(card));
+          step.append(list);
         }
         steps.append(step);
       };
       if (next.parts.gpu !== 'pass' || next.parts.vram !== 'pass') {
         addStep(
-          `A graphics card around ${next.tier.gpuExample}, with ${next.tier.vram} GB of video memory.`,
-          partLinks(links.gpu, 'See graphics cards', next.tier.gpuExample.split(' or '), 'graphics card')
+          `A graphics card around ${next.tier.gpuExample}, with ${next.tier.vram} GB of video memory. The smallest cards still sold new that clear it:`,
+          links.gpu,
+          'See graphics cards',
+          bestPicks('gpu', next.tier).map((card) => ({
+            art: 'gpu',
+            name: card.name,
+            spec: `${card.vram} GB of video memory`,
+            url: amazonSearch(`${card.name} graphics card`),
+            page: partPage(card.name),
+          }))
         );
       }
       if (next.parts.cpu !== 'pass') {
         addStep(
-          `A processor around ${next.tier.cpuExample}.`,
-          partLinks(links.cpu, 'See processors', next.tier.cpuExample.split(' or '), 'processor')
+          `A processor around ${next.tier.cpuExample}. The smallest processors still sold new that clear it (check they fit your motherboard):`,
+          links.cpu,
+          'See processors',
+          bestPicks('cpu', next.tier).map((processor) => ({
+            art: 'cpu',
+            name: processor.name,
+            url: amazonSearch(`${processor.name} processor`),
+            page: partPage(processor.name),
+          }))
         );
       }
       if (next.parts.ram !== 'pass') {
-        addStep(
-          `${next.tier.ram} GB of memory.`,
-          partLinks(links.ram, 'See memory', [`${next.tier.ram}GB RAM`], 'desktop memory')
-        );
+        addStep(`${next.tier.ram} GB of memory.`, links.ram, 'See memory', [
+          {
+            art: 'ram',
+            name: `${next.tier.ram} GB memory kit`,
+            spec: 'Match the type your motherboard takes (DDR4 or DDR5)',
+            url: amazonSearch(`${next.tier.ram}GB RAM desktop memory`),
+          },
+        ]);
       }
       if (next.parts.storage !== 'pass') {
-        addStep('An SSD to install the game on.', partLinks(links.ssd, 'See SSDs', ['1TB NVMe SSD'], ''));
+        addStep('An SSD to install the game on.', links.ssd, 'See SSDs', [
+          { art: 'ssd', name: '1TB NVMe SSD', spec: 'Check your motherboard has an M.2 slot', url: amazonSearch('1TB NVMe SSD') },
+        ]);
       }
       advice.append(steps);
-      const wholePc = partLinks(links.pc, 'See gaming PCs', ['gaming PC'], 'desktop');
-      if (wholePc.length) {
+      if (links.pc || amazonTag) {
         const whole = el('p', 'pc-checker__advice-note', 'Replacing the whole machine? ');
-        const link = el('a', 'pc-checker__link', links.pc ? wholePc[0].label : 'See gaming PCs on Amazon');
-        link.href = wholePc[0].url;
+        const link = el('a', 'pc-checker__link', links.pc ? 'See gaming PCs' : 'See gaming PCs on Amazon');
+        link.href = links.pc || amazonSearch('gaming PC desktop');
         link.target = '_blank';
         link.rel = 'sponsored nofollow noopener';
+        if (links.pc) usedOther = true;
+        else usedAmazon = true;
         whole.append(link);
         advice.append(whole);
       }
