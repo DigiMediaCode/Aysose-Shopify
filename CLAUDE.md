@@ -845,8 +845,19 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
   buttons remain in the result after the email step. Waiting for the owner's word to make it live.
 - **Told the owner honestly:** recovery from an automatic demotion can take weeks and is not guaranteed.
 
+### 26 Nov 2026 — 4XX errors explained; Amazon buttons removed from the page text (live)
+- **Crawl stats, "Other client error (4XX)" examples:** old WordPress filter addresses from 25 Oct – 3 Nov
+  (`/collections/<name>/?_category=...&_tag=...`) and one `/search/suggest` request. None is a live page, so
+  Shopify's bot check was not blocking Google. That candidate cause is ruled out; the automatic quality
+  demotion remains the most likely explanation.
+- **Owner said "go, make it live".** The switch "Show Amazon buttons in the page text" is merged to `main`
+  and is off: the written part of the card, processor and guide pages has no Amazon buttons or sponsored
+  links. Amazon buttons remain in the result after the email step. To undo: tick the setting in the theme
+  editor on the homepage and on the `gpu-check` page template.
+- **Next step proposed:** give each part page more depth so the pages stop reading as one template.
+
 ### Open items
-- **URGENT, owner:** say go to make the "no Amazon buttons in page text" change live; open the 4XX row in Crawl stats.
+- Watch Search Console → Performance (24 hours) for impressions returning; expect weeks, not days.
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps; resubmit the sitemap (55 new pages since 22 Nov).
