@@ -813,8 +813,24 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Needed from the owner:** Search Console → Removals, Security & Manual Actions, Pages (indexing), and
   Performance set to "24 hours" / last 7 days by day.
 
+### 26 Nov 2026 — Search Console screens on the traffic collapse
+- **Removals:** six temporary removals from 16 Nov, all old WordPress paths (`/product-tag/`, `/product/`,
+  `/product-category/`, `/collections/`, `shop.aysose.com`). None covers the live `/pages/` addresses. Ruled out.
+- **Manual actions:** none. **Security issues:** none. Both ruled out.
+- **Performance, last 24 hours:** 14 impressions, 0 clicks, average position 4.7 (was about 15,000
+  impressions a day). Google has almost stopped showing the pages; the few times it does, they still rank well.
+  That pattern fits pages dropping out of the index, not a ranking slide.
+- **Page indexing report:** last updated 16 Nov (14 indexed, 14.4k not indexed, mostly old WordPress
+  addresses). Too old to show what happened on 24 Nov.
+- **Cause still not confirmed.** Two candidates: (1) Google's automatic quality systems treating 124
+  near-identical template pages with affiliate buttons on a two-week-old site as mass-produced content (no
+  notice is shown for this); (2) Shopify's bot check answering Google's crawler with a "verifying" page around
+  24 Nov. Asked the owner for URL Inspection of one part page and Settings → Crawl stats to tell them apart.
+- **Advice given:** do not convert the site to something else yet; the demand was proven (about 100,000
+  impressions in a week). Find the cause first, then rebuild the pages with more depth per page.
+
 ### Open items
-- **URGENT, owner:** send the four Search Console screens listed in the 26 Nov traffic entry.
+- **URGENT, owner:** send URL Inspection for one part page and Settings → Crawl stats (26 Nov entry).
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps; resubmit the sitemap (55 new pages since 22 Nov).
