@@ -1,1 +1,1470 @@
-{ "cards": {} }
+{
+  "cards": {
+    "RX 5700 XT": {
+      "release": "July 2019",
+      "launch_price_usd": 399,
+      "vram_gb": 8,
+      "memory_type": "GDDR6",
+      "power_w": 225,
+      "psu_w": 600,
+      "ray_tracing": false,
+      "spec_source": {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Radeon_RX_5000_series"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 58,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 37,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 69,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 56,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RX 5700 XT",
+          "paragraphs": [
+            "The RX 5700 XT is one of the older cards that still clears our lowest level, 1080p with low settings. In the 2023 test above it averaged 58 frames a second in Cyberpunk 2077 at 1080p on the highest settings, so it has some room once settings come down. Its real weakness for a 2026 game is that it has no ray tracing hardware at all, so any lighting GTA 6 builds on ray tracing would have to be switched off or run in a slower fallback."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RX 5700 XT supports AMD's FSR 1, 2 and 3, including FSR 3 frame generation. It does not get AMD's newer machine-learning upscaler, which AMD lists for RX 6000 cards and newer.",
+            "Whether GTA 6 on PC will include FSR has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RX 5700 XT is about level with the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RX 5700 XT?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RTX 3050": {
+      "release": "January 2022",
+      "launch_price_usd": 249,
+      "vram_gb": 8,
+      "memory_type": "GDDR6",
+      "power_w": 130,
+      "psu_w": 550,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 46,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 28,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 45,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 36,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 3050",
+          "paragraphs": [
+            "The RTX 3050 is the slowest RTX card in our list and sits just above our lowest level. Its 8 GB of video memory is more than it can really use: in the 2023 test above it averaged 46 frames a second in Cyberpunk 2077 at 1080p and 28 at 1440p, so speed runs out before memory does. Expect 1080p, low settings and DLSS doing a lot of the work."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 3050 supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It does not support DLSS Frame Generation, which needs an RTX 40 card or newer.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 3050 is slower than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 3050?",
+          "paragraphs": [
+            "Yes, a laptop chip is sold under the RTX 3050 name. It comes with 4 or 6 GB of video memory, where the desktop card has 8 GB, but it is a different, slower chip that runs at lower power, so do not read the desktop numbers on this page as laptop numbers."
+          ]
+        }
+      ]
+    },
+    "RTX 3080 Ti": {
+      "release": "June 2021",
+      "launch_price_usd": 1199,
+      "vram_gb": 12,
+      "memory_type": "GDDR6X",
+      "power_w": 350,
+      "psu_w": 750,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 116,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-3080-ti-founders-edition/",
+          "date": "2021"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 81,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-3080-ti-founders-edition/",
+          "date": "2021"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 120,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-3080-ti-founders-edition/",
+          "date": "2021"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 106,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-3080-ti-founders-edition/",
+          "date": "2021"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 3080 Ti",
+          "paragraphs": [
+            "The RTX 3080 Ti is still a fast card: in its launch review it averaged about 81 frames a second in Cyberpunk 2077 at 1440p. What holds it back in our estimate is its 12 GB of video memory, which is why we stop at 1440p rather than 4K. It also draws about 350 watts, so check your power supply before blaming the card for crashes."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 3080 Ti supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It does not support DLSS Frame Generation, which needs an RTX 40 card or newer.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 3080 Ti is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 3080 Ti?",
+          "paragraphs": [
+            "Yes, a laptop chip is sold under the RTX 3080 Ti name. It comes with 16 GB of video memory, where the desktop card has 12 GB, but it is a different, slower chip that runs at lower power, so do not read the desktop numbers on this page as laptop numbers."
+          ]
+        }
+      ]
+    },
+    "RTX 2080 Ti": {
+      "release": "September 2018",
+      "launch_price_usd": 999,
+      "vram_gb": 11,
+      "memory_type": "GDDR6",
+      "power_w": 260,
+      "psu_w": 650,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 93,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 62,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 91,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 75,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 2080 Ti",
+          "paragraphs": [
+            "The RTX 2080 Ti has aged better than most cards from 2018, largely because of its 11 GB of video memory. In the 2023 test above it was level with the newer RTX 4060 Ti and within a couple of frames of the RTX 3070 in Cyberpunk 2077 at 1080p. We put it at 1080p with high settings, with 1440p possible if GTA 6 supports DLSS."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 2080 Ti supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It does not support DLSS Frame Generation, which needs an RTX 40 card or newer.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 2080 Ti is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 2080 Ti?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RTX 5070": {
+      "release": "March 2025",
+      "launch_price_usd": 549,
+      "vram_gb": 12,
+      "memory_type": "GDDR7",
+      "power_w": 250,
+      "psu_w": 650,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings, ray tracing off, no upscaling",
+          "fps": 158,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5070-founders-edition/",
+          "date": "March 2025"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings, ray tracing off, no upscaling",
+          "fps": 104,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5070-founders-edition/",
+          "date": "March 2025"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 5070",
+          "paragraphs": [
+            "The RTX 5070 clears our 1440p estimate on speed and on its 12 GB of video memory: it averaged about 104 frames a second in Cyberpunk 2077 at 1440p in its launch review. For 4K we think 12 GB is the limit rather than raw speed. It supports every DLSS feature, including Multi Frame Generation."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 5070 supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It also supports DLSS Frame Generation and Multi Frame Generation, which add extra generated frames between the drawn ones. Multi Frame Generation is limited to RTX 50 cards.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 5070 is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 5070?",
+          "paragraphs": [
+            "Yes, a laptop chip is sold under the RTX 5070 name. It comes with 8 or 12 GB of video memory, where the desktop card has 12 GB, but it is a different, slower chip that runs at lower power, so do not read the desktop numbers on this page as laptop numbers."
+          ]
+        }
+      ]
+    },
+    "RTX 3060 Ti": {
+      "release": "December 2020",
+      "launch_price_usd": 399,
+      "vram_gb": 8,
+      "memory_type": "GDDR6",
+      "power_w": 200,
+      "psu_w": 600,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 82,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 53,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 79,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 65,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 3060 Ti",
+          "paragraphs": [
+            "The RTX 3060 Ti is the card we use as the reference point for 1080p with high settings. In the 2023 test above it averaged 82 frames a second in Cyberpunk 2077 at 1080p and 53 at 1440p. Its 8 GB of video memory is the reason we do not put it higher."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 3060 Ti supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It does not support DLSS Frame Generation, which needs an RTX 40 card or newer.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 3060 Ti is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 3060 Ti?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RTX 4080 Super": {
+      "release": "January 2024",
+      "launch_price_usd": 999,
+      "vram_gb": 16,
+      "memory_type": "GDDR6X",
+      "power_w": 320,
+      "psu_w": 750,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings, ray tracing off, no upscaling",
+          "fps": 195,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5070-founders-edition/",
+          "date": "March 2025"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings, ray tracing off, no upscaling",
+          "fps": 123,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5070-founders-edition/",
+          "date": "March 2025"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 4080 Super",
+          "paragraphs": [
+            "The RTX 4080 Super is one of the few cards that clears every level in our estimate, including 4K with high settings. It has 16 GB of video memory and averaged about 123 frames a second in Cyberpunk 2077 at 1440p in the 2025 test above. If your result is lower than you expected with this card, the processor or memory is the part to look at."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 4080 Super supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It also supports DLSS Frame Generation, which adds a generated frame between each pair of drawn ones. It does not have Multi Frame Generation, which is limited to RTX 50 cards.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 4080 Super is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 4080 Super?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RTX 3070": {
+      "release": "October 2020",
+      "launch_price_usd": 499,
+      "vram_gb": 8,
+      "memory_type": "GDDR6",
+      "power_w": 220,
+      "psu_w": 650,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 95,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 62,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 89,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 73,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 3070",
+          "paragraphs": [
+            "The RTX 3070 is fast enough for 1440p in many current games, with about 62 frames a second in Cyberpunk 2077 at 1440p in the 2023 test above. Its 8 GB of video memory is the problem, and it is the reason our estimate stops at 1080p with high settings. If GTA 6 lets you lower texture quality on its own, 1440p may still be reachable."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 3070 supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It does not support DLSS Frame Generation, which needs an RTX 40 card or newer.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 3070 is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 3070?",
+          "paragraphs": [
+            "Yes, a laptop chip is sold under the RTX 3070 name. It has the same 8 GB of video memory as the desktop card, but it is a different, slower chip that runs at lower power, so do not read the desktop numbers on this page as laptop numbers."
+          ]
+        }
+      ]
+    },
+    "RX 6650 XT": {
+      "release": "May 2022",
+      "launch_price_usd": 399,
+      "vram_gb": 8,
+      "memory_type": "GDDR6",
+      "power_w": 180,
+      "psu_w": 500,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "AMD",
+        "url": "https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6650-xt.html"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 72,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 41,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 71,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 56,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RX 6650 XT",
+          "paragraphs": [
+            "The RX 6650 XT is a 1080p card. In the 2023 test above it averaged 72 frames a second in Cyberpunk 2077 at 1080p but only 41 at 1440p. We put it at 1080p with low settings and close to the next level up, so it is one of the cards most likely to move when official requirements arrive."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RX 6650 XT supports AMD's FSR upscaling and FSR 3 frame generation. AMD also lists its newer machine-learning upscaler for RX 6000 desktop cards, but not the machine-learning frame generation, which needs an RX 9000 card.",
+            "Whether GTA 6 on PC will include FSR has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RX 6650 XT is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RX 6650 XT?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RTX 2070": {
+      "release": "October 2018",
+      "launch_price_usd": 499,
+      "vram_gb": 8,
+      "memory_type": "GDDR6",
+      "power_w": 185,
+      "psu_w": 550,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 64,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 41,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 58,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 47,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 2070",
+          "paragraphs": [
+            "The RTX 2070 was a high-end card in 2018 and is now close to our lowest level. In the 2023 test above it averaged 64 frames a second in Cyberpunk 2077 at 1080p. It does support DLSS, which is the most useful thing it has going for it in a game like this."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 2070 supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It does not support DLSS Frame Generation, which needs an RTX 40 card or newer.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 2070 is about level with the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 2070?",
+          "paragraphs": [
+            "Yes, a laptop chip is sold under the RTX 2070 name. It has the same 8 GB of video memory as the desktop card, but it is a different, slower chip that runs at lower power, so do not read the desktop numbers on this page as laptop numbers."
+          ]
+        }
+      ]
+    },
+    "RX 6900 XT": {
+      "release": "December 2020",
+      "launch_price_usd": 999,
+      "vram_gb": 16,
+      "memory_type": "GDDR6",
+      "power_w": 300,
+      "psu_w": 850,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "AMD",
+        "url": "https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6900-xt.html"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 129,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-3080-ti-founders-edition/",
+          "date": "2021"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 86,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-3080-ti-founders-edition/",
+          "date": "2021"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 126,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-3080-ti-founders-edition/",
+          "date": "2021"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 106,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-3080-ti-founders-edition/",
+          "date": "2021"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RX 6900 XT",
+          "paragraphs": [
+            "The RX 6900 XT pairs a lot of speed with 16 GB of video memory, which is why it clears our 1440p estimate comfortably. In the 2021 test above it averaged about 86 frames a second in Cyberpunk 2077 at 1440p."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RX 6900 XT supports AMD's FSR upscaling and FSR 3 frame generation. AMD also lists its newer machine-learning upscaler for RX 6000 desktop cards, but not the machine-learning frame generation, which needs an RX 9000 card.",
+            "Whether GTA 6 on PC will include FSR has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RX 6900 XT is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RX 6900 XT?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RX 9060 XT 16GB": {
+      "release": "June 2025",
+      "launch_price_usd": 349,
+      "vram_gb": 16,
+      "memory_type": "GDDR6",
+      "power_w": 160,
+      "psu_w": 450,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "AMD",
+        "url": "https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9060xt.html"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 112,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/sapphire-radeon-rx-9060-xt-pulse-oc/",
+          "date": "June 2025"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 73,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/sapphire-radeon-rx-9060-xt-pulse-oc/",
+          "date": "June 2025"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RX 9060 XT 16GB",
+          "paragraphs": [
+            "The RX 9060 XT 16GB is unusual: a mid-priced card with 16 GB of video memory that draws only about 160 watts. Memory will not be what limits it; speed will. It averaged about 112 frames a second in Cyberpunk 2077 at 1080p and 73 at 1440p in the 2025 test above, and we put it at 1080p with high settings."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RX 9060 XT 16GB supports all of AMD's FSR features, including the newest machine-learning upscaling and frame generation, which AMD limits to RX 9000 cards for frame generation.",
+            "Whether GTA 6 on PC will include FSR has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RX 9060 XT 16GB is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RX 9060 XT 16GB?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RTX 2070 Super": {
+      "release": "July 2019",
+      "launch_price_usd": 499,
+      "vram_gb": 8,
+      "memory_type": "GDDR6",
+      "power_w": 215,
+      "psu_w": 650,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 67,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/asus-radeon-rx-6600-xt-strix-oc/",
+          "date": "2021"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 44,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/asus-radeon-rx-6600-xt-strix-oc/",
+          "date": "2021"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 66,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/asus-radeon-rx-6600-xt-strix-oc/",
+          "date": "2021"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 55,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/asus-radeon-rx-6600-xt-strix-oc/",
+          "date": "2021"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 2070 Super",
+          "paragraphs": [
+            "The RTX 2070 Super is a little faster than the plain RTX 2070 and lands in the same place in our estimate: 1080p with low settings. In the 2021 test above it averaged about 67 frames a second in Cyberpunk 2077 at 1080p. DLSS support gives it more headroom than its raw speed suggests."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 2070 Super supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It does not support DLSS Frame Generation, which needs an RTX 40 card or newer.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 2070 Super is about level with the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 2070 Super?",
+          "paragraphs": [
+            "Yes, a laptop chip is sold under the RTX 2070 Super name. It has the same 8 GB of video memory as the desktop card, but it is a different, slower chip that runs at lower power, so do not read the desktop numbers on this page as laptop numbers."
+          ]
+        }
+      ]
+    },
+    "GTX 1660 Super": {
+      "release": "October 2019",
+      "launch_price_usd": 229,
+      "vram_gb": 6,
+      "memory_type": "GDDR6",
+      "power_w": 125,
+      "psu_w": 450,
+      "ray_tracing": false,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 40,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/evga-geforce-rtx-3050-xc-black/",
+          "date": "January 2022"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 24,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/evga-geforce-rtx-3050-xc-black/",
+          "date": "January 2022"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 42,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/evga-geforce-rtx-3050-xc-black/",
+          "date": "January 2022"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 35,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/evga-geforce-rtx-3050-xc-black/",
+          "date": "January 2022"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the GTX 1660 Super",
+          "paragraphs": [
+            "The GTX 1660 Super is the card our lowest level is built around, so treat this page as the edge of playable rather than a comfortable yes. It has 6 GB of video memory, no ray tracing hardware and no DLSS. In the 2022 test above it averaged about 40 frames a second in Cyberpunk 2077 at 1080p on that review's settings, and 24 at 1440p."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The GTX 1660 Super has no DLSS of any kind; Nvidia limits DLSS to RTX cards.",
+            "It can still use upscalers that are not tied to one maker's cards, such as AMD's FSR, in games that include them. Whether GTA 6 on PC will include any upscaler has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the GTX 1660 Super is slower than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop GTX 1660 Super?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RTX 3070 Ti": {
+      "release": "June 2021",
+      "launch_price_usd": 599,
+      "vram_gb": 8,
+      "memory_type": "GDDR6X",
+      "power_w": 290,
+      "psu_w": 750,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 101,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 65,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 95,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 78,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 3070 Ti",
+          "paragraphs": [
+            "The RTX 3070 Ti is a few frames faster than the RTX 3070 and has the same 8 GB of video memory, so it lands on the same level in our estimate: 1080p with high settings. It also draws about 290 watts, a lot for what it delivers. In the 2023 test above it averaged 65 frames a second in Cyberpunk 2077 at 1440p."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 3070 Ti supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It does not support DLSS Frame Generation, which needs an RTX 40 card or newer.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 3070 Ti is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 3070 Ti?",
+          "paragraphs": [
+            "Yes, a laptop chip is sold under the RTX 3070 Ti name. It has the same 8 GB of video memory as the desktop card, but it is a different, slower chip that runs at lower power, so do not read the desktop numbers on this page as laptop numbers."
+          ]
+        }
+      ]
+    },
+    "RX 6700 XT": {
+      "release": "March 2021",
+      "launch_price_usd": 479,
+      "vram_gb": 12,
+      "memory_type": "GDDR6",
+      "power_w": 230,
+      "psu_w": 650,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "AMD",
+        "url": "https://www.amd.com/en/products/graphics/desktops/radeon/6000-series/amd-radeon-rx-6700-xt.html"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 83,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 52,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings",
+          "fps": 90,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        },
+        {
+          "game": "Red Dead Redemption 2",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings",
+          "fps": 70,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/amd-radeon-rx-7600/",
+          "date": "May 2023"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RX 6700 XT",
+          "paragraphs": [
+            "The RX 6700 XT has 12 GB of video memory, more than the Nvidia cards it competed with, and that is likely to matter in a big open-world game. In the 2023 test above it averaged 83 frames a second in Cyberpunk 2077 at 1080p and 52 at 1440p. We put it at 1080p with high settings."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RX 6700 XT supports AMD's FSR upscaling and FSR 3 frame generation. AMD also lists its newer machine-learning upscaler for RX 6000 desktop cards, but not the machine-learning frame generation, which needs an RX 9000 card.",
+            "Whether GTA 6 on PC will include FSR has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RX 6700 XT is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RX 6700 XT?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RTX 5070 Ti": {
+      "release": "February 2025",
+      "launch_price_usd": 749,
+      "vram_gb": 16,
+      "memory_type": "GDDR7",
+      "power_w": 300,
+      "psu_w": 750,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings, ray tracing off, no upscaling",
+          "fps": 189,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5070-founders-edition/",
+          "date": "March 2025"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings, ray tracing off, no upscaling",
+          "fps": 125,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5070-founders-edition/",
+          "date": "March 2025"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 5070 Ti",
+          "paragraphs": [
+            "By launch price, the RTX 5070 Ti is the least expensive card in our list that clears our 4K estimate, helped by its 16 GB of video memory. It averaged about 125 frames a second in Cyberpunk 2077 at 1440p in the 2025 test above, level with the RTX 4080 Super. It supports every DLSS feature, including Multi Frame Generation."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 5070 Ti supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It also supports DLSS Frame Generation and Multi Frame Generation, which add extra generated frames between the drawn ones. Multi Frame Generation is limited to RTX 50 cards.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 5070 Ti is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 5070 Ti?",
+          "paragraphs": [
+            "Yes, a laptop chip is sold under the RTX 5070 Ti name. It comes with 12 GB of video memory, where the desktop card has 16 GB, but it is a different, slower chip that runs at lower power, so do not read the desktop numbers on this page as laptop numbers."
+          ]
+        }
+      ]
+    },
+    "RX 9070 XT": {
+      "release": "March 2025",
+      "launch_price_usd": 599,
+      "vram_gb": 16,
+      "memory_type": "GDDR6",
+      "power_w": 304,
+      "psu_w": 750,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "AMD",
+        "url": "https://www.amd.com/en/products/graphics/desktops/radeon/9000-series/amd-radeon-rx-9070xt.html"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 186,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/sapphire-radeon-rx-9070-xt-pulse/",
+          "date": "2025"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 129,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/sapphire-radeon-rx-9070-xt-pulse/",
+          "date": "2025"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RX 9070 XT",
+          "paragraphs": [
+            "The RX 9070 XT clears our 1440p estimate easily and falls just short of our 4K line on speed, not memory: it has 16 GB. A partner version of the card averaged about 129 frames a second in Cyberpunk 2077 at 1440p in the 2025 test above. With upscaling, 4K looks realistic."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RX 9070 XT supports all of AMD's FSR features, including the newest machine-learning upscaling and frame generation, which AMD limits to RX 9000 cards for frame generation.",
+            "Whether GTA 6 on PC will include FSR has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RX 9070 XT is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RX 9070 XT?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "Arc B580": {
+      "release": "December 2024",
+      "launch_price_usd": 249,
+      "vram_gb": 12,
+      "memory_type": "GDDR6",
+      "power_w": 190,
+      "psu_w": 600,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Intel",
+        "url": "https://www.intel.com/content/www/us/en/products/sku/241598/intel-arc-b580-graphics/specifications.html"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "",
+          "fps": 92,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/sapphire-radeon-rx-9060-xt-pulse-oc/",
+          "date": "June 2025"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "",
+          "fps": 62,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/sapphire-radeon-rx-9060-xt-pulse-oc/",
+          "date": "June 2025"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the Arc B580",
+          "paragraphs": [
+            "The Arc B580 offers 12 GB of video memory at a launch price of US$249, more than most cards at that price. It averaged about 92 frames a second in Cyberpunk 2077 at 1080p in the 2025 test above. Intel's graphics drivers are newer than Nvidia's and AMD's, so how well it runs a brand-new game on day one is harder to predict."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The Arc B580 supports Intel's XeSS upscaling, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It can also use AMD's FSR in games that include it. Whether GTA 6 on PC will include either has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the Arc B580 is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop Arc B580?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    },
+    "RTX 4070 Super": {
+      "release": "January 2024",
+      "launch_price_usd": 599,
+      "vram_gb": 12,
+      "memory_type": "GDDR6X",
+      "power_w": 220,
+      "psu_w": 650,
+      "ray_tracing": true,
+      "spec_source": {
+        "name": "Nvidia",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/"
+      },
+      "benchmarks": [
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "1920 x 1080",
+          "settings": "highest settings, ray tracing off, no upscaling",
+          "fps": 149,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5070-founders-edition/",
+          "date": "March 2025"
+        },
+        {
+          "game": "Cyberpunk 2077",
+          "resolution": "2560 x 1440",
+          "settings": "highest settings, ray tracing off, no upscaling",
+          "fps": 89,
+          "source": "TechPowerUp",
+          "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5070-founders-edition/",
+          "date": "March 2025"
+        }
+      ],
+      "sections": [
+        {
+          "heading": "Our take on the RTX 4070 Super",
+          "paragraphs": [
+            "The RTX 4070 Super is the card our 1440p level is built around. It averaged about 89 frames a second in Cyberpunk 2077 at 1440p in the 2025 test above, and it has DLSS Frame Generation. Its 12 GB of video memory is what keeps it out of our 4K level."
+          ]
+        },
+        {
+          "heading": "Upscaling and frame generation",
+          "paragraphs": [
+            "The RTX 4070 Super supports DLSS Super Resolution, which draws the game at a lower resolution and sharpens it to your screen's resolution for more frames a second.",
+            "It also supports DLSS Frame Generation, which adds a generated frame between each pair of drawn ones. It does not have Multi Frame Generation, which is limited to RTX 50 cards.",
+            "Whether GTA 6 on PC will include DLSS has not been announced."
+          ]
+        },
+        {
+          "heading": "Against Rockstar's other PC games",
+          "paragraphs": [
+            "Rockstar's most recent PC release is the 2025 enhanced version of GTA V. Its store page recommends an RTX 3060 or RX 6600 XT with 8 GB of video memory. On our own scoring the RTX 4070 Super is faster than the RTX 3060.",
+            "Red Dead Redemption 2, released on PC in 2019, recommends a GTX 1060 6GB. GTA 6 is a newer and much larger game than either, so expect its requirements to be higher than both."
+          ]
+        },
+        {
+          "heading": "Is there a laptop RTX 4070 Super?",
+          "paragraphs": [
+            "No laptop chip is sold under this exact name, so a laptop listed with a similar-sounding graphics chip is a different part. Check the exact model name in the checker below."
+          ]
+        }
+      ]
+    }
+  }
+}

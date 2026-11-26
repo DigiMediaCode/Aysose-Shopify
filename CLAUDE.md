@@ -856,7 +856,33 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
   editor on the homepage and on the `gpu-check` page template.
 - **Next step proposed:** give each part page more depth so the pages stop reading as one template.
 
+### 26 Nov 2026 — In-depth pages for the 20 most-visited graphics cards (on `dev`, NOT live)
+- **Owner said go on the 20 most-visited cards.** From Shopify sessions since 16 Nov: RX 5700 XT, RTX 3050,
+  RTX 3080 Ti, RTX 2080 Ti, RTX 5070, RTX 3060 Ti, RTX 4080 Super, RTX 3070, RX 6650 XT, RTX 2070, RX 6900 XT,
+  RX 9060 XT 16GB, RTX 2070 Super, GTX 1660 Super, RTX 3070 Ti, RX 6700 XT, RTX 5070 Ti, RX 9070 XT, Arc B580,
+  RTX 4070 Super.
+- **What each of those pages gains (about 180 words before, about 600–690 after):** the card at a glance
+  (release, launch price, memory, power draw, recommended power supply, ray tracing), measured frames a
+  second in Cyberpunk 2077 and, where available, Red Dead Redemption 2 at 1080p and 1440p with the source
+  linked, a short written take, what upscaling the card supports, how it compares with the cards Rockstar
+  recommends for GTA V Enhanced and Red Dead Redemption 2, and whether a laptop version exists.
+- **Sources:** specifications from Nvidia's compare page, AMD and Intel product pages (RX 5700 XT from
+  Wikipedia, its AMD page is gone); release dates and launch prices from Wikipedia; benchmarks from seven
+  TechPowerUp reviews (2021–2025), one review per card, never mixed; game requirements from Steam. 13 cards
+  have both games; 7 newer cards have Cyberpunk 2077 only (TechPowerUp stopped testing Red Dead Redemption 2).
+  Three charts were re-read by hand against the published numbers and matched.
+- **Limits to remember:** the benchmark numbers come from different test systems and years, so they must not
+  be compared between cards from different reviews; the test settings are only confirmed for two of the
+  seven reviews, so no settings are claimed for the others; "no laptop version" means the name was not found
+  in the makers' and Wikipedia's lists.
+- **How it is built:** `tools/card-notes.json` holds the facts and text per card; `tools/build-card-notes.py`
+  is the script that produced it from the research file (kept for reference; the research file itself is not
+  in the repo); `tools/generate-card-pages.mjs` turns it into `snippets/pc-card-notes.liquid`; the section
+  shows it under the quality levels. To add a card: add it to `card-notes.json`, run the generator, commit.
+- **State:** pushed to `dev` and the working branch. Waiting for the owner's word before `main`.
+
 ### Open items
+- **Owner:** say go to put the 20 in-depth card pages live.
 - Watch Search Console → Performance (24 hours) for impressions returning; expect weeks, not days.
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
