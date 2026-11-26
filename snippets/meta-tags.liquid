@@ -18,6 +18,50 @@
   content=""
 >
 
+{%- comment -%}
+  Aysose: the graphics card, processor and upgrade guide pages have no text of their own, so they had
+  no description for search results. Write one from the same estimate data the page shows.
+  Level names must match TIERS in assets/pc-checker.js.
+{%- endcomment -%}
+{%- if request.page_type == 'page' and template.suffix == 'gpu-check' and page_description == blank -%}
+  {%- liquid
+    assign part_name = page.title | remove_first: 'Can the ' | remove: ' run GTA 6?' | strip
+    assign part_levels = '1080p, low settings|1080p, high settings|1440p, high settings|4K, high settings' | split: '|'
+    assign part_title = page.title | downcase
+  -%}
+  {%- capture part_gpu_row -%}{% render 'pc-card-data', name: part_name %}{%- endcapture -%}
+  {%- capture part_cpu_row -%}{% render 'pc-cpu-data', name: part_name %}{%- endcapture -%}
+  {%- liquid
+    assign part_gpu_row = part_gpu_row | strip
+    assign part_cpu_row = part_cpu_row | strip
+    assign part_best = -2
+    if part_gpu_row contains '|'
+      assign part_fields = part_gpu_row | split: '|'
+      assign part_best = part_fields[3] | plus: 0
+      assign part_kind = 'graphics card'
+    elsif part_cpu_row contains '|'
+      assign part_fields = part_cpu_row | split: '|'
+      assign part_best = part_fields[1] | plus: 0
+      assign part_kind = 'processor'
+    endif
+  -%}
+  {%- capture page_description -%}
+    {%- if part_best >= 0 -%}
+      Our estimate: yes, the {{ part_name }} should handle GTA 6 on PC at {{ part_levels[part_best] }}. See every quality level and check your whole PC free. Unofficial estimate.
+    {%- elsif part_best == -1 -%}
+      Our estimate: the {{ part_name }} may struggle with GTA 6 on PC, even at 1080p low. See which {{ part_kind }} would be enough and check your whole PC free.
+    {%- elsif part_title contains 'best processor' -%}
+      The processors we would pick for GTA 6 on PC at 1080p, 1440p and 4K, based on our own estimate of what the game will need. No official requirements exist yet.
+    {%- elsif part_title contains 'best graphics card' -%}
+      The graphics cards we would pick for GTA 6 on PC, by quality level, based on our own estimate of what the game will need. No official requirements exist yet.
+    {%- endif -%}
+  {%- endcapture -%}
+  {%- assign page_description = page_description | strip -%}
+  {%- if page_description == '' -%}
+    {%- assign page_description = nil -%}
+  {%- endif -%}
+{%- endif -%}
+
 {%- liquid
   assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: request.origin

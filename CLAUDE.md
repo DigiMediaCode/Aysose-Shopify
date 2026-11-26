@@ -758,6 +758,23 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
   PC, mid PC): right parts, right Amazon store and ID for United States and Sydney, no sideways scroll, no
   script errors. A PC that clears every level shows no cards.
 
+### 26 Nov 2026 — Search Console numbers; live check; search descriptions (live)
+- **Search Console, 17–23 Nov:** 699 clicks, about 100,000 impressions, click rate 0.7%, average position
+  about 7.4. Roughly 100 Google visits a day. The site is shown far more often than it is clicked.
+- **Owner feared the changes were not live because the Shopify connector is on his other store.** Checked:
+  the connector was on SeenSheen again (nothing read beyond the store name, nothing changed), but the theme
+  reaches the store through GitHub, not the connector. The live site has the part cards and Amazon buttons
+  with the right IDs on card pages, guides and the result.
+- **Why few affiliate clicks (assessment):** visitors are checking a part they already own for a game that is
+  not out on PC, so few are shopping today; most are outside the United States; on a phone the first Amazon
+  button sits about a screen and a half down.
+- **Built:** the 124 part and guide pages had no description for search results. `snippets/meta-tags.liquid`
+  now writes one from the estimate data (e.g. "Our estimate: yes, the RTX 2080 Ti should handle GTA 6 on PC at
+  1080p, high settings. ..."). Aim: raise the 0.7% click rate. Only applies to pages on the `gpu-check`
+  template that have no description of their own.
+- **Cash-flow advice given:** apply for Google AdSense now (small money today, ready for the spike when the
+  PC version is announced); keep growing the email list, which is the real asset for launch day.
+
 ### Open items
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
