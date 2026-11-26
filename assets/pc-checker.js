@@ -406,6 +406,7 @@ const THROWAWAY_DOMAINS = [
   'tmpmail.net', 'minuteinbox.com', 'mailnesia.com', 'inboxkitten.com', 'tempinbox.com', 'luxusmail.org',
   'example.com', 'example.org', 'example.net', 'test.com', 'fake.com', 'asdf.com', 'aaa.com', 'abc.com',
   'none.com', 'no.com', 'email.email', 'mail.mail', 'a.com', 'b.com', 'x.xx',
+  'afronewz.com', 'tanpony.com', 'bcough.com', 'mailchannels.de',
 ];
 const DOMAIN_TYPOS = {
   'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gamil.com': 'gmail.com',
@@ -428,6 +429,8 @@ export function emailProblem(value) {
   const real = 'Please use a real email address you check. It is where your PC release alert goes.';
   if (THROWAWAY_DOMAINS.includes(domain)) return real;
   if (JUNK_NAMES.test(name)) return real;
+  // Gmail does not issue addresses shorter than six characters.
+  if ((domain === 'gmail.com' || domain === 'googlemail.com') && name.replace(/\./g, '').length < 6) return real;
   if (/^(.)\1+$/.test(name)) return real;
   if (name === domain.split('.')[0] && name.length < 5) return real;
   return '';

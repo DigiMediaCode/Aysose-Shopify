@@ -791,7 +791,30 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - Recommended to the owner: turn on the welcome email automation so bad addresses bounce out early, and
   judge the list by "Subscribed and not bounced", not by the customer count.
 
+### 26 Nov 2026 — Connector back on Aysose; signup quality; TRAFFIC COLLAPSE found
+- Connector switched by the owner and confirmed on Aysose before any read.
+- **Signups (read 26 Nov):** 79 customers, all Subscribed. About 11 are clearly made up or throwaway
+  (about 14%), 3 more are doubtful; roughly 65 look like real personal addresses. No addresses are recorded
+  here. The email check was extended with the throwaway domains seen and a rule that Gmail names are at
+  least six characters.
+- **Signups by day (UTC):** 18 Nov 9, 19 Nov 13, 20 Nov 9, 21 Nov 27, 22 Nov 11, 23 Nov 5, 24 Nov 4, then
+  **none since 24 Nov 13:33 UTC**.
+- **Traffic collapse (Shopify analytics, store time):** sessions 22 Nov 171, 23 Nov 163, 24 Nov 183,
+  **25 Nov 49, 26 Nov 9 (part day)**. Google search sessions: 116, 123, 106, then **9 and 1**. By hour the
+  drop starts at 24 Nov 15:00 UTC (about 9 an hour before, 0–3 after).
+- **Checked on 26 Nov, all normal:** homepage and part pages return 200 to a normal browser and to a
+  Googlebot user agent; no noindex tag or header; canonical correct; robots.txt is Shopify's default;
+  sitemap lists the pages; the checker loads with no script errors.
+- **Cause not found.** A theme change went live at 24 Nov 14:52 UTC (result cards), minutes before the drop,
+  but nothing in it touches indexing and the pages load correctly, so it is an unexplained coincidence, not
+  a known cause. Other candidates only the owner can see: a Search Console removal request that covers the
+  live pages, a manual action or security issue, or a ranking drop. During testing Shopify's bot check
+  ("Verifying your connection") appeared twice for a few minutes for the automated browser only.
+- **Needed from the owner:** Search Console → Removals, Security & Manual Actions, Pages (indexing), and
+  Performance set to "24 hours" / last 7 days by day.
+
 ### Open items
+- **URGENT, owner:** send the four Search Console screens listed in the 26 Nov traffic entry.
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps; resubmit the sitemap (55 new pages since 22 Nov).
