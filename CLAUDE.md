@@ -829,8 +829,24 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Advice given:** do not convert the site to something else yet; the demand was proven (about 100,000
   impressions in a week). Find the cause first, then rebuild the pages with more depth per page.
 
+### 26 Nov 2026 — URL inspection and crawl stats; switch built on `dev`, NOT live
+- **URL inspection** of the RTX 2080 Ti page: "URL is on Google", page is indexed. So the pages were not
+  removed from the index; Google has them and has stopped showing them.
+- **Crawl stats (report runs to 24 Nov):** 89% OK, 9% "Other client error (4XX)" (not "not found"), under 1%
+  each for not found / robots.txt not available / redirects. `www.aysose.com` shows "Problems in the past".
+  Which addresses returned the 4XX errors is not known yet (asked the owner to open that row).
+- **Reading:** indexed + no manual action + almost no impressions fits an automatic, site-wide demotion by
+  Google's quality / spam systems, most likely for mass-produced template pages with affiliate buttons. On
+  21–22 Nov the site grew from 70 to 125 pages overnight and every page gained sponsored Amazon buttons; the
+  drop came on 24 Nov. This is the most likely cause, not a proven one; Google sends no notice for it.
+- **Built on `dev` and the working branch only (not on `main`, not live):** a section setting "Show Amazon
+  buttons in the page text" (off by default). Off = the written part of the card, processor and guide pages
+  keeps the part cards and the links to our own pages but has no Amazon buttons or sponsored links; Amazon
+  buttons remain in the result after the email step. Waiting for the owner's word to make it live.
+- **Told the owner honestly:** recovery from an automatic demotion can take weeks and is not guaranteed.
+
 ### Open items
-- **URGENT, owner:** send URL Inspection for one part page and Settings → Crawl stats (26 Nov entry).
+- **URGENT, owner:** say go to make the "no Amazon buttons in page text" change live; open the 4XX row in Crawl stats.
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
 - Owner: Search Console clean-up steps; resubmit the sitemap (55 new pages since 22 Nov).

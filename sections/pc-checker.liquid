@@ -66,6 +66,15 @@
   assign amazon_tag = section.settings.amazon_tag | strip
 
   comment
+    Amazon buttons in the public page text (the part of the page search engines read) are optional.
+    The result shown after the email step always uses the tracking ID.
+  endcomment
+  assign article_tag = ''
+  if section.settings.show_article_amazon
+    assign article_tag = amazon_tag
+  endif
+
+  comment
     Upgrade guide pages: "Best graphics card for GTA 6 ..." and "Best processor for GTA 6 ...".
   endcomment
   assign best_kind = ''
@@ -201,7 +210,7 @@
                 with {{ level_memory[card_next] }} GB.
               </p>
               <p>The smallest cards still sold new that clear that level:</p>
-              {% render 'pc-part-picks', kind: 'gpu', level: card_next, amazon_tag: amazon_tag %}
+              {% render 'pc-part-picks', kind: 'gpu', level: card_next, amazon_tag: article_tag %}
             {% else %}
               <p>
                 The {{ card_name | escape }} has {{ card_memory }} GB of video memory and clears every level in our estimate,
@@ -224,11 +233,11 @@
               </p>
             {% endif %}
 
-            {% if amazon_tag != blank %}
+            {% if article_tag != blank %}
               {% assign own_search = card_name | append: ' graphics card' | url_encode %}
               <p>
                 <a
-                  href="https://www.amazon.com/s?k={{ own_search }}&tag={{ amazon_tag | url_encode }}"
+                  href="https://www.amazon.com/s?k={{ own_search }}&tag={{ article_tag | url_encode }}"
                   data-pc-amazon="{{ card_name | append: ' graphics card' | escape }}"
                   target="_blank"
                   rel="sponsored nofollow noopener"
@@ -300,7 +309,7 @@
                 your PC before buying.
               </p>
               <p>The smallest processors still sold new that clear that level:</p>
-              {% render 'pc-part-picks', kind: 'cpu', level: cpu_next, amazon_tag: amazon_tag %}
+              {% render 'pc-part-picks', kind: 'cpu', level: cpu_next, amazon_tag: article_tag %}
             {% else %}
               <p>
                 The {{ card_name | escape }} clears every level in our estimate, including 4K at high settings. At
@@ -323,11 +332,11 @@
               </p>
             {% endif %}
 
-            {% if amazon_tag != blank %}
+            {% if article_tag != blank %}
               {% assign own_search = card_name | append: ' processor' | url_encode %}
               <p>
                 <a
-                  href="https://www.amazon.com/s?k={{ own_search }}&tag={{ amazon_tag | url_encode }}"
+                  href="https://www.amazon.com/s?k={{ own_search }}&tag={{ article_tag | url_encode }}"
                   data-pc-amazon="{{ card_name | append: ' processor' | escape }}"
                   target="_blank"
                   rel="sponsored nofollow noopener"
@@ -379,10 +388,10 @@
                   processors still sold new that clear it:
                 {% endif %}
               </p>
-              {% render 'pc-part-picks', kind: best_kind, level: level_index, amazon_tag: amazon_tag %}
+              {% render 'pc-part-picks', kind: best_kind, level: level_index, amazon_tag: article_tag %}
             {% endfor %}
 
-            {% if amazon_tag != blank and section.settings.amazon_note != blank %}
+            {% if article_tag != blank and section.settings.amazon_note != blank %}
               <p class="pc-checker__advice-note">{{ section.settings.amazon_note | escape }}</p>
             {% endif %}
 
@@ -1925,6 +1934,13 @@
       "id": "amazon_tag_au",
       "label": "Amazon.com.au tracking ID (Australia)",
       "info": "Optional, for example yourname-22. Visitors whose device is set to an Australian time zone are sent to Amazon.com.au with this ID."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_article_amazon",
+      "label": "Show Amazon buttons in the page text",
+      "info": "Adds Amazon buttons to the written part of the graphics card, processor and guide pages. When off, Amazon buttons only appear in the result after the email step.",
+      "default": false
     },
     {
       "type": "text",
