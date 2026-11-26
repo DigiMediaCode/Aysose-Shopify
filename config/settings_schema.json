@@ -2117,5 +2117,16 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Advertising",
+    "settings": [
+      {
+        "type": "text",
+        "id": "adsense_publisher_id",
+        "label": "Google AdSense publisher ID",
+        "info": "Starts with ca-pub-. Adds the AdSense code to every page so Google can review the site and show ads. Leave empty to remove it."
+      }
+    ]
   }
 ]

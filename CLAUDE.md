@@ -775,6 +775,22 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Cash-flow advice given:** apply for Google AdSense now (small money today, ready for the spike when the
   PC version is announced); keep growing the email list, which is the real asset for launch day.
 
+### 26 Nov 2026 — AdSense applied for; email sanity check (live)
+- **AdSense:** the owner applied on 26 Nov 2026 (review requested 13:50; Google says a few days, up to four
+  weeks). Publisher ID `ca-pub-1108697349086812`, read from the owner's screenshot. It is a new theme setting,
+  **Theme settings → Advertising → Google AdSense publisher ID**; when filled in, `snippets/meta-tags.liquid`
+  adds the AdSense script and account tag to the head of every page. `layout/theme.liquid` was not touched.
+  No ad spots are placed yet; that waits for approval. `/ads.txt` does not exist yet (Shopify needs a
+  redirect or file for it; do it when AdSense asks).
+- **Fake emails (owner's report):** with single opt-in nothing checks an address. Added `emailProblem()` in
+  `assets/pc-checker.js`, run on both email forms before they are sent: rejects malformed addresses, about 50
+  throwaway / placeholder domains (mailinator, example.com, test.com ...), made-up names (test, asdf, 123,
+  one repeated letter) and common typos of gmail / hotmail / yahoo / outlook / icloud, with a short message.
+  It cannot catch an invented but well-formed address; those bounce when the first email is sent and Shopify
+  stops sending to them. Do not block real providers (a rule that rejected qq.com was removed in testing).
+- Recommended to the owner: turn on the welcome email automation so bad addresses bounce out early, and
+  judge the list by "Subscribed and not bounced", not by the customer count.
+
 ### Open items
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).

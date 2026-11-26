@@ -395,6 +395,44 @@ function amazonFor(config) {
   };
 }
 
+// A light check for throwaway and made-up email addresses. It cannot prove an address is real;
+// it stops the obvious ones before they reach the subscriber list.
+const THROWAWAY_DOMAINS = [
+  'mailinator.com', 'guerrillamail.com', 'guerrillamail.net', 'sharklasers.com', '10minutemail.com',
+  '10minutemail.net', 'tempmail.com', 'temp-mail.org', 'tempmail.net', 'tempmailo.com', 'throwawaymail.com',
+  'yopmail.com', 'yopmail.fr', 'trashmail.com', 'getnada.com', 'nada.email', 'dispostable.com',
+  'maildrop.cc', 'fakeinbox.com', 'mintemail.com', 'mohmal.com', 'emailondeck.com', 'moakt.com',
+  'tempr.email', 'discard.email', 'spamgourmet.com', 'mytemp.email', 'burnermail.io', 'tmpmail.org',
+  'tmpmail.net', 'minuteinbox.com', 'mailnesia.com', 'inboxkitten.com', 'tempinbox.com', 'luxusmail.org',
+  'example.com', 'example.org', 'example.net', 'test.com', 'fake.com', 'asdf.com', 'aaa.com', 'abc.com',
+  'none.com', 'no.com', 'email.email', 'mail.mail', 'a.com', 'b.com', 'x.xx',
+];
+const DOMAIN_TYPOS = {
+  'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gamil.com': 'gmail.com',
+  'gnail.com': 'gmail.com', 'gmail.co': 'gmail.com', 'gmail.con': 'gmail.com', 'gmail.cm': 'gmail.com',
+  'gmaill.com': 'gmail.com', 'gmail.comm': 'gmail.com', 'hotmial.com': 'hotmail.com',
+  'hotmai.com': 'hotmail.com', 'hotmail.con': 'hotmail.com', 'hotmail.co': 'hotmail.com',
+  'hotmal.com': 'hotmail.com', 'yaho.com': 'yahoo.com', 'yahooo.com': 'yahoo.com', 'yahoo.con': 'yahoo.com',
+  'yhoo.com': 'yahoo.com', 'outlok.com': 'outlook.com', 'outloo.com': 'outlook.com',
+  'outlook.con': 'outlook.com', 'icloud.con': 'icloud.com', 'iclod.com': 'icloud.com',
+};
+const JUNK_NAMES = /^(test\d*|testing|tester|asdf+|asd|qwerty?|qwe|abc|abcd|fake|fakeemail|none|no|nope|noemail|nomail|email|mail|example|user|admin|null|na|x+|a+|z+|\d{1,4}|sdf+|dfg+|fgh+|hjk+|jkl+|zxc+)$/;
+
+// Returns '' when the address looks usable, or a short message to show the visitor.
+export function emailProblem(value) {
+  const email = String(value || '').trim().toLowerCase();
+  const match = email.match(/^([^@\s]+)@([a-z0-9.-]+\.[a-z]{2,})$/);
+  if (!match) return 'Please enter a full email address, like name@gmail.com.';
+  const [, name, domain] = match;
+  if (DOMAIN_TYPOS[domain]) return `Did you mean ${name}@${DOMAIN_TYPOS[domain]}? Please check the spelling.`;
+  const real = 'Please use a real email address you check. It is where your PC release alert goes.';
+  if (THROWAWAY_DOMAINS.includes(domain)) return real;
+  if (JUNK_NAMES.test(name)) return real;
+  if (/^(.)\1+$/.test(name)) return real;
+  if (name === domain.split('.')[0] && name.length < 5) return real;
+  return '';
+}
+
 const STORE_KEY = 'pcChecker:parts';
 const UNLOCK_KEY = 'pcChecker:unlocked';
 
@@ -728,6 +766,33 @@ function init(root) {
   form.addEventListener('submit', (event) => event.preventDefault());
   const gateForm = gate ? gate.querySelector('form') : null;
   if (gateForm) gateForm.addEventListener('submit', saveParts);
+
+  // Stop obviously made-up addresses before the form is sent, and say why.
+  for (const emailForm of root.querySelectorAll('form.pc-checker__email-form')) {
+    const input = emailForm.querySelector('input[type="email"]');
+    if (!input) continue;
+    const note = el('p', 'pc-checker__form-message pc-checker__form-message--error');
+    note.setAttribute('role', 'alert');
+    note.hidden = true;
+    emailForm.append(note);
+    emailForm.addEventListener(
+      'submit',
+      (event) => {
+        const problem = emailProblem(input.value);
+        note.textContent = problem;
+        note.hidden = !problem;
+        if (problem) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          input.focus();
+        }
+      },
+      true
+    );
+    input.addEventListener('input', () => {
+      note.hidden = true;
+    });
+  }
   render();
 }
 
