@@ -154,11 +154,13 @@
     name="google-adsense-account"
     content="{{ adsense_id | escape }}"
   >
+  {% # theme-check-disable RemoteAsset %}
   <script
     async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_id | url_encode }}"
     crossorigin="anonymous"
   ></script>
+  {% # theme-check-enable RemoteAsset %}
 {%- endif %}
 
 <title>
