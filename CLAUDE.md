@@ -887,7 +887,7 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
 - **Shopify analytics agree:** sessions by hour were 0–3 from 24 Nov 15:00 UTC, started rising at 26 Nov
   10:00 UTC and have run at about 5–18 an hour since. Customers went from 79 to 105 (26 new signups).
 - **What changed before the recovery (all on 26 Nov UTC):** search descriptions added (02:56), AdSense code
-  added (03:00), Amazon buttons removed from the public page text (about 05:00). Recovery began about five
+  added (03:00), Amazon buttons removed from the public page text (about 04:00). Recovery began about six
   hours after the Amazon buttons came off. That fits the "affiliate buttons on template pages" explanation,
   but three changes went live the same morning and Google may also have reversed on its own, so it is the
   likely cause, not a proven one.
