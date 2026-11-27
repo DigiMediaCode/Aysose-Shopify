@@ -881,8 +881,24 @@ homepage. Do not redirect old product pages to the homepage. Remove the `shop` D
   shows it under the quality levels. To add a card: add it to `card-notes.json`, run the generator, commit.
 - **State:** pushed to `dev` and the working branch. Waiting for the owner's word before `main`.
 
+### 27 Nov 2026 — Google traffic is back
+- **Owner's Search Console screen (last 24 hours):** 129 clicks, about 11,100 impressions, click rate 1.2%,
+  average position 7.3. The day before it was 14 impressions and 0 clicks.
+- **Shopify analytics agree:** sessions by hour were 0–3 from 24 Nov 15:00 UTC, started rising at 26 Nov
+  10:00 UTC and have run at about 5–18 an hour since. Customers went from 79 to 105 (26 new signups).
+- **What changed before the recovery (all on 26 Nov UTC):** search descriptions added (02:56), AdSense code
+  added (03:00), Amazon buttons removed from the public page text (about 05:00). Recovery began about five
+  hours after the Amazon buttons came off. That fits the "affiliate buttons on template pages" explanation,
+  but three changes went live the same morning and Google may also have reversed on its own, so it is the
+  likely cause, not a proven one.
+- **Rule from now on:** keep "Show Amazon buttons in the page text" OFF. Do not add affiliate or sponsored
+  links to the public text of the part pages again. Make one change to the live pages at a time and watch
+  Search Console for two or three days after each.
+- **The 20 in-depth card pages are still on `dev` only.** Advice given: hold them a few days so the recovery
+  can be confirmed stable first, then release.
+
 ### Open items
-- **Owner:** say go to put the 20 in-depth card pages live.
+- **Owner:** send the Search Console 24-hour screen again around 30 Nov; if traffic has held, say go for the 20 in-depth card pages.
 - Watch Search Console → Performance (24 hours) for impressions returning; expect weeks, not days.
 - Owner: check Amazon Associates reports for clicks after a few days (both accounts need 3 sales in 180 days).
 - Owner: set up the welcome email automation if not done (it now reaches people straight after signup).
